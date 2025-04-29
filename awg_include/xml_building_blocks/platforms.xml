@@ -1,0 +1,771 @@
+<freInclude xmlns:xi="http://www.w3.org/2003/XInclude">
+  <platform name="ncrc6.intel23">
+    <freVersion>$(FRE_VERSION)</freVersion>
+    <compiler type="intel-classic" version="2023.2.0"/>
+      <project>$(GFDL_GROUP)</project>
+      <directory stem="$(FRE_STEM)">
+        <include>$(xmlDir)/xml_include</include>
+        <root>$(SRC_EXEC_ROOT)/$(FRE_STEM)</root>
+        <scripts>$SCRATCH/$USER/$(FRE_STEM)$(DEBUGLEVEL)/$(name)/$(platform)-$(target)/scripts</scripts>
+        <state>$SCRATCH/$USER/$(FRE_STEM)$(DEBUGLEVEL)/$(name)/$(platform)-$(target)/state</state>
+        <src>$(SRC_EXEC_ROOT)/$(FRE_STEM)/$(BUILD_DATE)/$(name)/src</src>
+        <exec>$(SRC_EXEC_ROOT)/$(FRE_STEM)/$(BUILD_DATE)/$(name)/$(platform)-$(target)/exec</exec>
+        <archive>$SCRATCH/$USER/$(stem)$(DEBUGLEVEL)/$(name)/$(platform)-$(target)/archive</archive>
+        <stdout>$SCRATCH/$USER/$(stem)$(DEBUGLEVEL)/$(name)/$(platform)-$(target)/stdout</stdout>
+        <work>$SCRATCH/$USER/work/$(stem)/$FRE_JOBID</work>
+      </directory>
+      <!--    from Theresa's platforms.xml
+        <project>ira-cefi</project>
+    <directory stem="$(FRE_STEM)">
+      <root>/gpfs/f6/$(NCRC_GROUP)/scratch/$USER/$(stem)</root>
+      <scripts>$(rootDir)/$(name)/$(platform)-$(target)/scripts</scripts>
+      <state>$(rootDir)/$(name)/$(platform)-$(target)/state</state>
+      <src>$HOME/$(stem)/$(name)/src</src>
+      <exec>$HOME/$(stem)/$(name)/$(platform)-$(target)/exec</exec>
+      <archive>$(rootDir)/$(name)/$(platform)-$(target)/archive</archive>
+      <stdout>$(rootDir)/$(name)/$(platform)-$(target)/stdout</stdout>
+      <work>/gpfs/f6/$(NCRC_GROUP)/scratch/$USER/work/$FRE_JOBID</work>
+      </directory>
+      <property name="EXEC_ROOT"         value="$HOME/$(stem)/$(BUILD_DATE)"/> 
+    <property name="NWA12_WORLD"       value="/gpfs/f6/ira-cefi/world-shared/northwest_atlantic/nwa12_input"/>
+    <property name="NWA_ERA5"          value="/gpfs/f6/ira-cefi/world-shared/northwest_atlantic/era5"/>
+    <property name="GLOBAL_WORLD"      value="/gpfs/f6/ira-cefi/world-shared/global"/>
+    <property name="CMIP6_WORLD"       value="/gpfs/f6/ira-cefi/world-shared/cmip6/datasets"/>
+    <property name="GFDL_O_DATASETS"   value="/gpfs/f6/ira-cefi/world-shared/gold/datasets"/>
+    <property name="NWA12_CLIMATE"     value="/gpfs/f6/ira-cefi/world-shared/northwest_atlantic/nwa12_climate"/>
+    <property name="NEP_WORLD"         value="/gpfs/f6/ira-cefi/world-shared/NEP_input"/>
+    <property name="cefi_WS"           value="/gpfs/f6/ira-cefi/world-shared/ARC12_pub"/>
+    <property name="JRA55"             value="/gpfs/f6/ira-cefi/world-shared"/>
+    <property name="GL_WORLD"          value="/gpfs/f6/ira-cefi/world-shared/lakes/greatlakes"/>
+    <property name="ARCHIVE_NNZ"        value=""/>
+    <property name="REFERENCE"         value=""/>
+    <property name="FMS_ARCHIVE_ROOT"    value=""/>
+    <property name="CMIP6_ARCHIVE_ROOT"  value=""/>
+      -->
+
+    <property name="EXEC_ROOT"         value="$(SRC_EXEC_ROOT)/$(stem)/$(BUILD_DATE)"/>
+    <property name="F2003_FLAGS"       value=" -DINTERNAL_FILE_NML -g "/>
+    <property name="AWG_INPUT_HOME"    value="$(AWG_INPUT_HOME_GAEA)"/>
+    <property name="NB_ROOT"           value="/nbhome/$USER/$(FRE_STEM)$(PLATINFO)/$(name)"/>
+    <property name="ARCHIVE_NNZ"        value="/lustre/f2/dev/Niki.Zadeh/archive"/>
+    <!--property name="REFERENCE"         value="/lustre/f2/dev/Niki.Zadeh/archive/answers/$(reference_tag)/$(name)/$(platform)-$(target)"/-->
+    <property name="FMS_ARCHIVE_ROOT"    value="$PDATA/gfdl/fms/module_data/riga"/>
+    <property name="CMIP6_ARCHIVE_ROOT"  value="$PDATA/gfdl/cmip6/datasets"/>
+    <property name="NCORE_PER_NODE"      value="192"/>
+    <property name="NPES_IO_LAND"         value="18"/>
+    <csh><![CDATA[
+      module unload cray-libsci
+      module unload darshan-runtime
+      module load git
+      $(append_to_setup_csh)
+    ]]></csh>
+  </platform>
+
+  <platform name="ncrc5.intel23">
+      <freVersion>$(FRE_VERSION)</freVersion>
+      <compiler type="intel-classic" version="2023.2.0"/>
+      <project>$(GFDL_GROUP)</project>
+      <directory stem="$(FRE_STEM)">
+        <include>$(xmlDir)/xml_include</include>
+        <root>$(SRC_EXEC_ROOT)/$(FRE_STEM)</root>
+        <scripts>$SCRATCH/$USER/$(FRE_STEM)$(DEBUGLEVEL)/$(name)/$(platform)-$(target)/scripts</scripts>
+        <state>$SCRATCH/$USER/$(FRE_STEM)$(DEBUGLEVEL)/$(name)/$(platform)-$(target)/state</state>
+        <src>$(SRC_EXEC_ROOT)/$(FRE_STEM)/$(BUILD_DATE)/$(name)/src</src>
+        <exec>$(SRC_EXEC_ROOT)/$(FRE_STEM)/$(BUILD_DATE)/$(name)/$(platform)-$(target)/exec</exec>
+        <archive>$SCRATCH/$USER/$(stem)$(DEBUGLEVEL)/$(name)/$(platform)-$(target)/archive</archive>
+        <stdout>$SCRATCH/$USER/$(stem)$(DEBUGLEVEL)/$(name)/$(platform)-$(target)/stdout</stdout>
+        <work>$SCRATCH/$USER/work/$(stem)/$FRE_JOBID</work>
+      </directory>
+      <property name="EXEC_ROOT"         value="$(SRC_EXEC_ROOT)/$(stem)/$(BUILD_DATE)"/>
+      <property name="F2003_FLAGS"       value=" -DINTERNAL_FILE_NML -g "/>
+      <property name="AWG_INPUT_HOME"    value="$(AWG_INPUT_HOME_GAEA)"/>
+      <property name="NB_ROOT"           value="/nbhome/$USER/$(FRE_STEM)$(PLATINFO)/$(name)"/>
+      <property name="ARCHIVE_NNZ"        value="/lustre/f2/dev/Niki.Zadeh/archive"/>
+      <!--property name="REFERENCE"         value="/lustre/f2/dev/Niki.Zadeh/archive/answers/$(reference_tag)/$(name)/$(platform)-$(target)"/-->
+      <property name="FMS_ARCHIVE_ROOT"    value="$PDATA/gfdl/fms/module_data/riga"/>
+      <property name="CMIP6_ARCHIVE_ROOT"  value="$PDATA/gfdl/cmip6/datasets"/>
+      <property name="NCORE_PER_NODE"      value="36"/>
+      <property name="NPES_IO_LAND"         value="18"/>
+      <csh><![CDATA[
+        module unload cray-libsci
+        module unload darshan-runtime
+        module load git
+        $(append_to_setup_csh)
+      ]]></csh>
+    </platform>
+
+    <platform name="ncrc4.intel18">
+      <freVersion>$(FRE_VERSION)</freVersion>
+      <compiler type="intel" version="18.0.6.288" />
+      <project>$(GFDL_GROUP)</project>
+      <directory stem="$(FRE_STEM)">
+        <root>$DEV/$USER/$(FRE_STEM)</root>
+        <scripts>$DEV/$USER/$(FRE_STEM)$(DEBUGLEVEL)/$(name)/$(platform)-$(target)/scripts</scripts>
+        <state>$DEV/$USER/$(FRE_STEM)$(DEBUGLEVEL)/$(name)/$(platform)-$(target)/state</state>
+        <src>$DEV/$USER/$(FRE_STEM)/$(BUILD_DATE)/$(name)/src</src>
+        <exec>$DEV/$USER/$(FRE_STEM)/$(BUILD_DATE)/$(name)/$(platform)-$(target)/exec</exec>
+        <archive>$SCRATCH/$USER/$(stem)$(DEBUGLEVEL)/$(name)/$(platform)-$(target)/archive</archive>
+        <stdout>$SCRATCH/$USER/$(stem)$(DEBUGLEVEL)/$(name)/$(platform)-$(target)/stdout</stdout>
+        <work>$SCRATCH/$USER/work/$(stem)/$FRE_JOBID</work>
+      </directory>
+      <property name="EXEC_ROOT"         value="$DEV/$USER/$(stem)/$(BUILD_DATE)"/>
+      <property name="F2003_FLAGS"       value=" -DINTERNAL_FILE_NML -g "/>
+      <property name="AWG_INPUT_HOME"    value="$(AWG_INPUT_HOME_GAEA)"/>
+      <property name="NB_ROOT"           value="/nbhome/$USER/$(FRE_STEM)$(PLATINFO)/$(name)"/>
+      <property name="ARCHIVE_NNZ"        value="/lustre/f2/dev/Niki.Zadeh/archive"/>
+      <property name="REFERENCE"         value="/lustre/f2/dev/Niki.Zadeh/archive/answers/$(reference_tag)/$(name)/$(platform)-$(target)"/>
+      <property name="FMS_ARCHIVE_ROOT"    value="$PDATA/gfdl/fms"/>
+      <property name="CMIP6_ARCHIVE_ROOT"  value="$PDATA/gfdl/cmip6/datasets"/>
+      <property name="NCORE_PER_NODE"      value="36"/>
+      <property name="NPES_IO_LAND"         value="18"/>
+      <csh><![CDATA[
+        module load git
+        setenv KMP_STACKSIZE 512m
+        setenv NC_BLKSZ 1M
+        setenv F_UFMTENDIAN big
+#	module unload darshan
+        $(append_to_setup_csh)
+      ]]></csh>
+    </platform>
+    <platform name="ncrc4.intel22">
+      <freVersion>$(FRE_VERSION)</freVersion>
+      <compiler type="intel" version="2022.2.1" />
+      <project>$(GFDL_GROUP)</project>
+      <directory stem="$(FRE_STEM)">
+        <root>$DEV/$USER/$(FRE_STEM)</root>
+        <scripts>$DEV/$USER/$(FRE_STEM)$(DEBUGLEVEL)/$(name)/$(platform)-$(target)/scripts</scripts>
+        <state>$DEV/$USER/$(FRE_STEM)$(DEBUGLEVEL)/$(name)/$(platform)-$(target)/state</state>
+        <src>$DEV/$USER/$(FRE_STEM)/$(BUILD_DATE)/$(name)/src</src>
+        <exec>$DEV/$USER/$(FRE_STEM)/$(BUILD_DATE)/$(name)/$(platform)-$(target)/exec</exec>
+        <archive>$SCRATCH/$USER/$(stem)$(DEBUGLEVEL)/$(name)/$(platform)-$(target)/archive</archive>
+        <stdout>$SCRATCH/$USER/$(stem)$(DEBUGLEVEL)/$(name)/$(platform)-$(target)/stdout</stdout>
+        <work>$SCRATCH/$USER/work/$(stem)/$FRE_JOBID</work>
+      </directory>
+      <property name="EXEC_ROOT"         value="$DEV/$USER/$(stem)/$(BUILD_DATE)"/>
+      <property name="F2003_FLAGS"       value=" -DINTERNAL_FILE_NML -g "/>
+      <property name="AWG_INPUT_HOME"    value="$(AWG_INPUT_HOME_GAEA)"/>
+      <property name="NB_ROOT"           value="/nbhome/$USER/$(FRE_STEM)$(PLATINFO)/$(name)"/>
+      <property name="ARCHIVE_NNZ"        value="/lustre/f2/dev/Niki.Zadeh/archive"/>
+      <property name="REFERENCE"         value="/lustre/f2/dev/Niki.Zadeh/archive/answers/$(reference_tag)/$(name)/$(platform)-$(target)"/>
+      <property name="FMS_ARCHIVE_ROOT"    value="$PDATA/gfdl/fms"/>
+      <property name="CMIP6_ARCHIVE_ROOT"  value="$PDATA/gfdl/cmip6/datasets"/>
+      <property name="NCORE_PER_NODE"      value="36"/>
+      <property name="NPES_IO_LAND"         value="18"/>
+      <csh><![CDATA[
+        module load git
+        setenv KMP_STACKSIZE 512m
+        setenv NC_BLKSZ 1M
+        setenv F_UFMTENDIAN big
+ 	module unload darshan
+        $(append_to_setup_csh)
+      ]]></csh>
+    </platform>
+    <platform name="ncrc5.intel-classic">
+      <freVersion>$(FRE_VERSION)</freVersion>
+      <compiler type="intel" version="2023.2.0" />
+      <project>$(GFDL_GROUP)</project>
+      <directory stem="$(FRE_STEM)">
+        <root>/gpfs/f5/$(project)/scratch/$USER/$(stem)</root>
+        <scripts>$(rootDir)/$(name)/$(platform)-$(target)/scripts</scripts>
+        <state>$(rootDir)/$(name)/$(platform)-$(target)/state</state>
+        <src>$(rootDir)/$(name)/src</src>
+        <exec>$(rootDir)/$(name)/$(platform)-$(target)/exec</exec>
+        <archive>$(rootDir)/$(name)/$(platform)-$(target)</archive>
+        <stdout>$(rootDir)/$(name)/stdout</stdout>
+        <work>/gpfs/f5/$(project)/scratch/$USER/$FRE_JOBID</work>
+        <ptmp>/gpfs/f5/$(project)/scratch/$USER/ptmp/$(stem)/$(name)</ptmp>
+      </directory>
+      <property name="EXEC_ROOT"         value="$DEV/$USER/$(stem)/$(BUILD_DATE)"/>
+      <property name="F2003_FLAGS"       value=" -DINTERNAL_FILE_NML -g "/>
+      <property name="AWG_INPUT_HOME"    value="$(AWG_INPUT_HOME_GAEA)"/>
+      <property name="NB_ROOT"           value="/nbhome/$USER/$(FRE_STEM)$(PLATINFO)/$(name)"/>
+      <property name="ARCHIVE_NNZ"        value="/lustre/f2/dev/Niki.Zadeh/archive"/>
+      <property name="REFERENCE"         value="/lustre/f2/dev/Niki.Zadeh/archive/answers/$(reference_tag)/$(name)/$(platform)-$(target)"/>
+      <property name="FMS_ARCHIVE_ROOT"    value="$PDATA/gfdl/fms"/>
+      <property name="CMIP6_ARCHIVE_ROOT"  value="$PDATA/gfdl/cmip6/datasets"/>
+      <property name="NCORE_PER_NODE"      value="64"/>
+      <property name="NPES_IO_LAND"         value="18"/>
+      <csh><![CDATA[
+        module load git
+        setenv KMP_STACKSIZE 512m
+        setenv NC_BLKSZ 1M
+        setenv F_UFMTENDIAN big
+        $(append_to_setup_csh)
+      ]]></csh>
+    </platform>
+
+    <platform name="ncrc3.intel18">
+      <xi:include xpointer="xpointer(//freInclude/platform[@name='ncrc4.intel18']/node())" />
+    </platform>
+    <platform name="ncrc4.intel19">
+      <freVersion>$(FRE_VERSION)</freVersion>
+      <compiler type="intel" version="19.1.1.217" />
+      <project>$(GFDL_GROUP)</project>
+      <directory stem="$(FRE_STEM)">
+        <root>$DEV/$USER/$(FRE_STEM)</root>
+        <scripts>$DEV/$USER/$(FRE_STEM)$(DEBUGLEVEL)/$(name)/$(platform)-$(target)/scripts</scripts>
+        <state>$DEV/$USER/$(FRE_STEM)$(DEBUGLEVEL)/$(name)/$(platform)-$(target)/state</state>
+        <src>$DEV/$USER/$(FRE_STEM)/$(BUILD_DATE)/$(name)/src</src>
+        <exec>$DEV/$USER/$(FRE_STEM)/$(BUILD_DATE)/$(name)/$(platform)-$(target)/exec</exec>
+        <archive>$SCRATCH/$USER/$(stem)$(DEBUGLEVEL)/$(name)/$(platform)-$(target)/archive</archive>
+        <stdout>$SCRATCH/$USER/$(stem)$(DEBUGLEVEL)/$(name)/$(platform)-$(target)/stdout</stdout>
+        <work>$SCRATCH/$USER/work/$(stem)/$FRE_JOBID</work>
+      </directory>
+      <property name="EXEC_ROOT"         value="$DEV/$USER/$(stem)/$(BUILD_DATE)"/>
+      <property name="F2003_FLAGS"       value=" -DINTERNAL_FILE_NML -g "/>
+      <property name="AWG_INPUT_HOME"    value="$(AWG_INPUT_HOME_GAEA)"/>
+      <property name="NB_ROOT"           value="/nbhome/$USER/$(FRE_STEM)$(PLATINFO)/$(name)"/>
+      <property name="ARCHIVE_NNZ"        value="/lustre/f2/dev/Niki.Zadeh/archive"/>
+      <property name="REFERENCE"         value="/lustre/f2/dev/Niki.Zadeh/archive/answers/$(reference_tag)/$(name)/$(platform)-$(target)"/>
+      <property name="FMS_ARCHIVE_ROOT"    value="$PDATA/gfdl/fms"/>
+      <property name="CMIP6_ARCHIVE_ROOT"  value="$PDATA/gfdl/cmip6/datasets"/>
+      <property name="NCORE_PER_NODE"      value="36"/>
+      <csh><![CDATA[
+module unload darshan
+module swap cray-mpich cray-mpich/7.7.6
+        module load git
+        setenv KMP_STACKSIZE 512m
+        setenv NC_BLKSZ 1M
+        setenv F_UFMTENDIAN big
+        $(append_to_setup_csh)
+      ]]></csh>
+    </platform>
+    <platform name="ncrc4.pgi18">
+      <freVersion>$(FRE_VERSION)</freVersion>
+      <compiler type="pgi" version="18.7.0" />
+      <project>$(GFDL_GROUP)</project>
+      <directory stem="$(FRE_STEM)">
+        <root>$DEV/$USER/$(FRE_STEM)</root>
+        <scripts>$DEV/$USER/$(FRE_STEM)$(DEBUGLEVEL)/$(name)/$(platform)-$(target)/scripts</scripts>
+        <state>$DEV/$USER/$(FRE_STEM)$(DEBUGLEVEL)/$(name)/$(platform)-$(target)/state</state>
+        <src>$DEV/$USER/$(FRE_STEM)/$(BUILD_DATE)/$(name)/src</src>
+        <exec>$DEV/$USER/$(FRE_STEM)/$(BUILD_DATE)/$(name)/$(platform)-$(target)/exec</exec>
+        <archive>$SCRATCH/$USER/$(stem)$(DEBUGLEVEL)/$(name)/$(platform)-$(target)/archive</archive>
+        <stdout>$SCRATCH/$USER/$(stem)$(DEBUGLEVEL)/$(name)/$(platform)-$(target)/stdout</stdout>
+        <work>$SCRATCH/$USER/work/$(stem)/$FRE_JOBID</work>
+      </directory>
+      <property name="EXEC_ROOT"          value="/lustre/f2/dev/$USER/$(stem)"/>
+      <property name="F2003_FLAGS"        value=" -DINTERNAL_FILE_NML -g -traceback"/>
+      <property name="AWG_INPUT_HOME"     value="$(AWG_INPUT_HOME_GAEA)"/>
+      <property name="NB_ROOT"            value="/nbhome/$USER/$(FRE_STEM)$(PLATINFO)/$(name)"/>
+      <property name="ARCHIVE_NNZ"        value="/lustre/f2/dev/Niki.Zadeh/archive"/>
+      <property name="REFERENCE"          value="/lustre/f2/dev/Niki.Zadeh/archive/answers/$(reference_tag)/$(name)/$(platform)-$(target)"/>
+      <property name="FMS_ARCHIVE_ROOT"    value="$PDATA/gfdl/fms"/>
+      <property name="CMIP6_ARCHIVE_ROOT"  value="$PDATA/gfdl/cmip6/datasets"/>
+      <property name="NCORE_PER_NODE"      value="36"/>
+      <csh><![CDATA[
+#          source $MODULESHOME/init/csh
+#          module use -a /ncrc/home2/fms/local/modulefiles
+#          module unload PrgEnv-pgi PrgEnv-pathscale PrgEnv-intel PrgEnv-gnu PrgEnv-cray
+#          module unload netcdf fre fre-commands
+#          module load gcc/4.9.3
+#          module load PrgEnv-gnu
+          setenv KMP_STACKSIZE 512m
+          setenv NC_BLKSZ 1M
+          # MAIN_PROGRAM env is needed by the GNU compiler
+          setenv MAIN_PROGRAM $(PROG_MAIN)
+          module load git
+      ]]></csh>
+     <mkmfTemplate file="/ncrc/home2/Niki.Zadeh/bin/pgi.mk"/>
+    </platform>
+    <platform name="ncrc4.pgi19">
+      <freVersion>$(FRE_VERSION)</freVersion>
+      <compiler type="pgi" version="19.10.0" />
+      <project>$(GFDL_GROUP)</project>
+      <directory stem="$(FRE_STEM)">
+        <root>/lustre/f2/dev/$USER/$(FRE_STEM)</root>
+        <scripts>/lustre/f2/dev/$USER/$(FRE_STEM)$(DEBUGLEVEL)/$(name)/$(platform)-$(target)/scripts</scripts>
+        <state>/lustre/f2/dev/$USER/$(FRE_STEM)$(DEBUGLEVEL)/$(name)/$(platform)-$(target)/state</state>
+        <src>/lustre/f2/dev/$USER/$(FRE_STEM)/$(name)/src</src>
+        <exec>/lustre/f2/dev/$USER/$(FRE_STEM)/$(name)/$(platform)-$(target)/exec</exec>
+        <archive>/lustre/f2/scratch/$USER/$(stem)$(DEBUGLEVEL)/$(name)/$(platform)-$(target)/archive</archive>
+        <stdout>/lustre/f2/scratch/$USER/$(stem)$(DEBUGLEVEL)/$(name)/$(platform)-$(target)/stdout</stdout>
+        <work>/lustre/f2/scratch//$USER/work/$(stem)/$FRE_JOBID</work>
+      </directory>
+      <property name="EXEC_ROOT"          value="/lustre/f2/dev/$USER/$(stem)"/>
+      <property name="F2003_FLAGS"        value=" -DINTERNAL_FILE_NML -g -traceback"/>
+      <property name="AWG_INPUT_HOME"     value="$(AWG_INPUT_HOME_GAEA)"/>
+      <property name="NB_ROOT"            value="/nbhome/$USER/$(FRE_STEM)$(PLATINFO)/$(name)"/>
+      <property name="ARCHIVE_NNZ"        value="/lustre/f2/dev/Niki.Zadeh/archive"/>
+      <property name="REFERENCE"          value="/lustre/f2/dev/Niki.Zadeh/archive/answers/$(reference_tag)/$(name)/$(platform)-$(target)"/>
+      <property name="FMS_ARCHIVE_ROOT"   value="$CDATA/fms"/>
+      <property name="CMIP6_ARCHIVE_ROOT" value="/lustre/f2/pdata/gfdl/cmip6/datasets"/>
+      <property name="NCORE_PER_NODE"      value="36"/>
+      <csh><![CDATA[
+#          source $MODULESHOME/init/csh
+#          module use -a /ncrc/home2/fms/local/modulefiles
+#          module unload PrgEnv-pgi PrgEnv-pathscale PrgEnv-intel PrgEnv-gnu PrgEnv-cray
+#          module unload netcdf fre fre-commands
+#          module load gcc/4.9.3
+#          module load PrgEnv-gnu
+          setenv KMP_STACKSIZE 512m
+          setenv NC_BLKSZ 1M
+          # MAIN_PROGRAM env is needed by the GNU compiler
+          setenv MAIN_PROGRAM $(PROG_MAIN)
+          module load git
+      ]]></csh>
+
+     <mkmfTemplate file="/ncrc/home2/Niki.Zadeh/bin/pgi.mk"/>
+    </platform>
+    <platform name="ncrc4.gnu7">
+      <freVersion>$(FRE_VERSION)</freVersion>
+      <compiler type="gnu" version="7.3.0" />
+      <project>$(GFDL_GROUP)</project>
+      <directory stem="$(FRE_STEM)">
+        <root>/lustre/f2/dev/$USER/$(FRE_STEM)</root>
+        <scripts>/lustre/f2/dev/$USER/$(FRE_STEM)$(DEBUGLEVEL)/$(name)/$(platform)-$(target)/scripts</scripts>
+        <state>/lustre/f2/dev/$USER/$(FRE_STEM)$(DEBUGLEVEL)/$(name)/$(platform)-$(target)/state</state>
+        <src>/lustre/f2/dev/$USER/$(FRE_STEM)/$(name)/src</src>
+        <exec>/lustre/f2/dev/$USER/$(FRE_STEM)/$(name)/$(platform)-$(target)/exec</exec>
+        <archive>/lustre/f2/scratch/$USER/$(stem)$(DEBUGLEVEL)/$(name)/$(platform)-$(target)/archive</archive>
+        <stdout>/lustre/f2/scratch/$USER/$(stem)$(DEBUGLEVEL)/$(name)/$(platform)-$(target)/stdout</stdout>
+        <work>/lustre/f2/scratch//$USER/work/$(stem)/$FRE_JOBID</work>
+      </directory>
+      <property name="EXEC_ROOT"          value="/lustre/f2/dev/$USER/$(stem)"/>
+      <property name="F2003_FLAGS"        value=" -DINTERNAL_FILE_NML -g "/>
+      <property name="AWG_INPUT_HOME"     value="$(AWG_INPUT_HOME_GAEA)"/>
+      <property name="NB_ROOT"            value="/nbhome/$USER/$(FRE_STEM)$(PLATINFO)/$(name)"/>
+      <property name="ARCHIVE_NNZ"        value="/lustre/f2/dev/Niki.Zadeh/archive"/>
+      <property name="REFERENCE"          value="/lustre/f2/dev/Niki.Zadeh/archive/answers/$(reference_tag)/$(name)/$(platform)-$(target)"/>
+      <property name="FMS_ARCHIVE_ROOT"   value="$CDATA/fms"/>
+      <property name="CMIP6_ARCHIVE_ROOT" value="/lustre/f2/pdata/gfdl/cmip6/datasets"/>
+      <property name="NCORE_PER_NODE"      value="36"/>
+      <csh><![CDATA[
+module swap gcc gcc/7.3.0
+          setenv KMP_STACKSIZE 512m
+          setenv NC_BLKSZ 1M
+          # MAIN_PROGRAM env is needed by the GNU compiler
+          setenv MAIN_PROGRAM $(PROG_MAIN)
+          module load git
+      ]]></csh>
+
+     <!--mkmfTemplate file="/ncrc/home2/Niki.Zadeh/bin/gnu7.mk"/-->
+    </platform>
+    <platform name="ncrc3.gnu7">
+      <xi:include xpointer="xpointer(//freInclude/platform[@name='ncrc4.gnu7']/node())" />
+    </platform>
+    <platform name="ncrc4.gnu7CLE6">
+      <freVersion>$(FRE_VERSION)</freVersion>
+      <compiler type="gnu" version="7.3.0" />
+      <project>$(GFDL_GROUP)</project>
+      <directory stem="$(FRE_STEM)">
+        <root>/lustre/f2/dev/$USER/$(FRE_STEM)</root>
+        <scripts>/lustre/f2/dev/$USER/$(FRE_STEM)$(DEBUGLEVEL)/$(name)/$(platform)-$(target)/scripts</scripts>
+        <state>/lustre/f2/dev/$USER/$(FRE_STEM)$(DEBUGLEVEL)/$(name)/$(platform)-$(target)/state</state>
+        <src>/lustre/f2/dev/$USER/$(FRE_STEM)/$(name)/src</src>
+        <exec>/lustre/f2/dev/$USER/$(FRE_STEM)/$(name)/$(platform)-$(target)/exec</exec>
+        <archive>/lustre/f2/scratch/$USER/$(stem)$(DEBUGLEVEL)/$(name)/$(platform)-$(target)/archive</archive>
+        <stdout>/lustre/f2/scratch/$USER/$(stem)$(DEBUGLEVEL)/$(name)/$(platform)-$(target)/stdout</stdout>
+        <work>/lustre/f2/scratch//$USER/work/$(stem)/$FRE_JOBID</work>
+      </directory>
+      <property name="EXEC_ROOT"          value="/lustre/f2/dev/$USER/$(stem)"/>
+      <property name="F2003_FLAGS"        value=" -DINTERNAL_FILE_NML -g "/>
+      <property name="AWG_INPUT_HOME"     value="$(AWG_INPUT_HOME_GAEA)"/>
+      <property name="NB_ROOT"            value="/nbhome/$USER/$(FRE_STEM)$(PLATINFO)/$(name)"/>
+      <property name="ARCHIVE_NNZ"        value="/lustre/f2/dev/Niki.Zadeh/archive"/>
+      <property name="REFERENCE"          value="/lustre/f2/dev/Niki.Zadeh/archive/answers/$(reference_tag)/$(name)/$(platform)-$(target)"/>
+      <property name="FMS_ARCHIVE_ROOT"   value="$CDATA/fms"/>
+      <property name="CMIP6_ARCHIVE_ROOT" value="/lustre/f2/pdata/gfdl/cmip6/datasets"/>
+      <property name="NCORE_PER_NODE"      value="36"/>
+      <csh><![CDATA[
+module swap gcc gcc/7.3.0
+          setenv KMP_STACKSIZE 512m
+          setenv NC_BLKSZ 1M
+          # MAIN_PROGRAM env is needed by the GNU compiler
+          setenv MAIN_PROGRAM $(PROG_MAIN)
+          module load git
+      ]]></csh>
+    </platform>
+    <platform name="ncrc4.gnu8">
+      <freVersion>$(FRE_VERSION)</freVersion>
+      <compiler type="gnu" version="8.1.0" />
+      <project>$(GFDL_GROUP)</project>
+      <directory stem="$(FRE_STEM)">
+        <root>/lustre/f2/dev/$USER/$(FRE_STEM)</root>
+        <scripts>/lustre/f2/dev/$USER/$(FRE_STEM)$(DEBUGLEVEL)/$(name)/$(platform)-$(target)/scripts</scripts>
+        <state>/lustre/f2/dev/$USER/$(FRE_STEM)$(DEBUGLEVEL)/$(name)/$(platform)-$(target)/state</state>
+        <src>/lustre/f2/dev/$USER/$(FRE_STEM)/$(name)/src</src>
+        <exec>/lustre/f2/dev/$USER/$(FRE_STEM)/$(name)/$(platform)-$(target)/exec</exec>
+        <archive>/lustre/f2/scratch/$USER/$(stem)$(DEBUGLEVEL)/$(name)/$(platform)-$(target)/archive</archive>
+        <stdout>/lustre/f2/scratch/$USER/$(stem)$(DEBUGLEVEL)/$(name)/$(platform)-$(target)/stdout</stdout>
+        <work>/lustre/f2/scratch//$USER/work/$(stem)/$FRE_JOBID</work>
+      </directory>
+      <property name="EXEC_ROOT"          value="/lustre/f2/dev/$USER/$(stem)"/>
+      <property name="F2003_FLAGS"        value=" -DINTERNAL_FILE_NML -g "/>
+      <property name="AWG_INPUT_HOME"     value="$(AWG_INPUT_HOME_GAEA)"/>
+      <property name="NB_ROOT"            value="/nbhome/$USER/$(FRE_STEM)$(PLATINFO)/$(name)"/>
+      <property name="ARCHIVE_NNZ"        value="/lustre/f2/dev/Niki.Zadeh/archive"/>
+      <property name="REFERENCE"          value="/lustre/f2/dev/Niki.Zadeh/archive/answers/$(reference_tag)/$(name)/$(platform)-$(target)"/>
+      <property name="FMS_ARCHIVE_ROOT"   value="$CDATA/fms"/>
+      <property name="CMIP6_ARCHIVE_ROOT" value="/lustre/f2/pdata/gfdl/cmip6/datasets"/>
+      <property name="NCORE_PER_NODE"      value="36"/>
+      <csh><![CDATA[
+          setenv KMP_STACKSIZE 512m
+          setenv NC_BLKSZ 1M
+          # MAIN_PROGRAM env is needed by the GNU compiler
+          setenv MAIN_PROGRAM $(PROG_MAIN)
+          module load git
+      ]]></csh>
+
+    </platform>
+    <platform name="ncrc4.cray8">
+      <freVersion>$(FRE_VERSION)</freVersion>
+      <compiler type="cce" version="8.5.0" />
+      <project>$(GFDL_GROUP)</project>
+      <directory stem="$(FRE_STEM)">
+        <root>/lustre/f2/dev/$USER/$(FRE_STEM)</root>
+        <scripts>/lustre/f2/dev/$USER/$(FRE_STEM)$(DEBUGLEVEL)/$(name)/$(platform)-$(target)/scripts</scripts>
+        <state>/lustre/f2/dev/$USER/$(FRE_STEM)$(DEBUGLEVEL)/$(name)/$(platform)-$(target)/state</state>
+        <src>/lustre/f2/dev/$USER/$(FRE_STEM)/$(name)/src</src>
+        <exec>/lustre/f2/dev/$USER/$(FRE_STEM)/$(name)/$(platform)-$(target)/exec</exec>
+        <archive>/lustre/f2/scratch/$USER/$(stem)$(DEBUGLEVEL)/$(name)/$(platform)-$(target)/archive</archive>
+        <stdout>/lustre/f2/scratch/$USER/$(stem)$(DEBUGLEVEL)/$(name)/$(platform)-$(target)/stdout</stdout>
+        <work>/lustre/f2/scratch//$USER/work/$(stem)/$FRE_JOBID</work>
+      </directory>
+      <property name="EXEC_ROOT"          value="/lustre/f2/dev/$USER/$(stem)"/>
+      <property name="F2003_FLAGS"        value=" -DINTERNAL_FILE_NML -g -traceback"/>
+      <property name="AWG_INPUT_HOME"     value="$(AWG_INPUT_HOME_GAEA)"/>
+      <property name="NB_ROOT"            value="/nbhome/$USER/$(FRE_STEM)$(PLATINFO)/$(name)"/>
+      <property name="ARCHIVE_NNZ"        value="/lustre/f2/dev/Niki.Zadeh/archive"/>
+      <property name="REFERENCE"          value="/lustre/f2/dev/Niki.Zadeh/archive/answers/$(reference_tag)/$(name)/$(platform)-$(target)"/>
+      <property name="FMS_ARCHIVE_ROOT"   value="$CDATA/fms"/>
+      <property name="CMIP6_ARCHIVE_ROOT" value="/lustre/f2/pdata/gfdl/cmip6/datasets"/>
+      <property name="NCORE_PER_NODE"      value="36"/>
+      <csh><![CDATA[
+          setenv KMP_STACKSIZE 512m
+          setenv NC_BLKSZ 1M
+          # MAIN_PROGRAM env is needed by the GNU compiler
+          setenv MAIN_PROGRAM coupler/coupler_main.o
+          module load git
+      ]]></csh>
+
+     <mkmfTemplate file="/ncrc/home2/Niki.Zadeh/bin/cray.mk"/>
+    </platform>
+    <platform name="ncrc3.intel16">
+      <freVersion>$(FRE_VERSION)</freVersion>
+      <compiler type="intel" version="16.0.3.210" />
+      <project>$(GFDL_GROUP)</project>
+      <directory stem="$(FRE_STEM)">
+        <root>/lustre/f2/dev/$USER/$(FRE_STEM)</root>
+        <scripts>/lustre/f2/dev/$USER/$(FRE_STEM)$(DEBUGLEVEL)/$(name)/$(platform)-$(target)/scripts</scripts>
+        <state>/lustre/f2/dev/$USER/$(FRE_STEM)$(DEBUGLEVEL)/$(name)/$(platform)-$(target)/state</state>
+        <src>/lustre/f2/dev/$USER/$(FRE_STEM)/$(name)/src</src>
+        <exec>/lustre/f2/dev/$USER/$(FRE_STEM)/$(name)/$(platform)-$(target)/exec</exec>
+        <archive>/lustre/f2/scratch/$USER/$(stem)$(DEBUGLEVEL)/$(name)/$(platform)-$(target)/archive</archive>
+        <stdout>/lustre/f2/scratch/$USER/$(stem)$(DEBUGLEVEL)/$(name)/$(platform)-$(target)/stdout</stdout>
+        <work>/lustre/f2/scratch//$USER/work/$(stem)/$FRE_JOBID</work>
+      </directory>
+      <property name="EXEC_ROOT"          value="/lustre/f2/dev/$USER/$(stem)"/>
+      <property name="F2003_FLAGS"        value=" -DINTERNAL_FILE_NML -g -traceback"/>
+      <property name="AWG_INPUT_HOME"     value="$(AWG_INPUT_HOME_GAEA)"/>
+      <property name="NB_ROOT"            value="/nbhome/$USER/$(FRE_STEM)$(PLATINFO)/$(name)"/>
+      <property name="ARCHIVE_NNZ"        value="/lustre/f2/dev/Niki.Zadeh/archive"/>
+      <property name="REFERENCE"          value="/lustre/f2/dev/Niki.Zadeh/archive/answers/$(reference_tag)/$(name)/$(platform)-$(target)"/>
+      <property name="FMS_ARCHIVE_ROOT"   value="$CDATA/fms"/>
+      <property name="CMIP6_ARCHIVE_ROOT" value="/lustre/f2/pdata/gfdl/cmip6/datasets"/>
+      <property name="NCORE_PER_NODE"      value="36"/>
+      <csh><![CDATA[
+        module load git
+        setenv KMP_STACKSIZE 512m
+        setenv NC_BLKSZ 1M
+        setenv F_UFMTENDIAN big
+        $(append_to_setup_csh)
+      ]]></csh>
+
+    </platform>
+    <platform name="ncrc3.cray8">
+      <freVersion>$(FRE_VERSION)</freVersion>
+      <compiler type="cce" version="8.5.0" />
+      <project>$(GFDL_GROUP)</project>
+      <directory stem="$(FRE_STEM)">
+        <root>/lustre/f2/dev/$USER/$(FRE_STEM)</root>
+        <scripts>/lustre/f2/dev/$USER/$(FRE_STEM)$(DEBUGLEVEL)/$(name)/$(platform)-$(target)/scripts</scripts>
+        <state>/lustre/f2/dev/$USER/$(FRE_STEM)$(DEBUGLEVEL)/$(name)/$(platform)-$(target)/state</state>
+        <src>/lustre/f2/dev/$USER/$(FRE_STEM)/$(name)/src</src>
+        <exec>/lustre/f2/dev/$USER/$(FRE_STEM)/$(name)/$(platform)-$(target)/exec</exec>
+        <archive>/lustre/f2/scratch/$USER/$(stem)$(DEBUGLEVEL)/$(name)/$(platform)-$(target)/archive</archive>
+        <stdout>/lustre/f2/scratch/$USER/$(stem)$(DEBUGLEVEL)/$(name)/$(platform)-$(target)/stdout</stdout>
+        <work>/lustre/f2/scratch//$USER/work/$(stem)/$FRE_JOBID</work>
+      </directory>
+      <property name="EXEC_ROOT"          value="/lustre/f2/dev/$USER/$(stem)"/>
+      <property name="F2003_FLAGS"        value=" -DINTERNAL_FILE_NML -g -traceback"/>
+      <property name="AWG_INPUT_HOME"     value="$(AWG_INPUT_HOME_GAEA)"/>
+      <property name="NB_ROOT"            value="/nbhome/$USER/$(FRE_STEM)$(PLATINFO)/$(name)"/>
+      <property name="ARCHIVE_NNZ"        value="/lustre/f2/dev/Niki.Zadeh/archive"/>
+      <property name="REFERENCE"          value="/lustre/f2/dev/Niki.Zadeh/archive/answers/$(reference_tag)/$(name)/$(platform)-$(target)"/>
+      <property name="FMS_ARCHIVE_ROOT"   value="$CDATA/fms"/>
+      <property name="CMIP6_ARCHIVE_ROOT" value="/lustre/f2/pdata/gfdl/cmip6/datasets"/>
+      <property name="NCORE_PER_NODE"      value="36"/>
+      <csh><![CDATA[
+          setenv KMP_STACKSIZE 512m
+          setenv NC_BLKSZ 1M
+          # MAIN_PROGRAM env is needed by the GNU compiler
+          setenv MAIN_PROGRAM coupler/coupler_main.o
+          module load git
+      ]]></csh>
+
+    </platform>
+    <platform name="orion.intel18">
+      <freVersion>$(FRE_VERSION)</freVersion>
+      <compiler type="intel" version="2018.4" />
+      <project>noaatest</project>
+      <directory stem="$(FRE_STEM)">
+        <root>/work/noaa/gfdlscr/$USER/$(FRE_STEM)</root>
+        <scripts>/work/noaa/gfdlscr/$USER/$(FRE_STEM)$(DEBUGLEVEL)/$(name)/$(platform)-$(target)/scripts</scripts>
+        <state>/work/noaa/gfdlscr/$USER/$(FRE_STEM)$(DEBUGLEVEL)/$(name)/$(platform)-$(target)/state</state>
+        <src>/work/noaa/gfdlscr/$USER/$(FRE_STEM)/$(name)/src</src>
+        <exec>/work/noaa/gfdlscr/$USER/$(FRE_STEM)/$(name)/$(platform)-$(target)/exec</exec>
+        <archive>/work/noaa/gfdlscr/$USER/$(stem)$(DEBUGLEVEL)/$(name)/$(platform)-$(target)/archive</archive>
+        <stdout>/work/noaa/gfdlscr/$USER/$(stem)$(DEBUGLEVEL)/$(name)/$(platform)-$(target)/stdout</stdout>
+        <work>/work/noaa/gfdlscr/$USER/work/$(stem)/$FRE_JOBID</work>
+      </directory>
+      <property name="EXEC_ROOT"         value="$DEV/$USER/$(stem)"/>
+      <property name="F2003_FLAGS"       value=" -DINTERNAL_FILE_NML -g "/>
+      <property name="AWG_INPUT_HOME"    value="$(AWG_INPUT_HOME_GAEA)"/>
+      <property name="NB_ROOT"           value="/nbhome/$USER/$(FRE_STEM)$(PLATINFO)/$(name)"/>
+      <property name="ARCHIVE_NNZ"       value="/work/noaa/gfdlscr/nzadeh/archives"/>
+      <property name="REFERENCE"         value="/work/noaa/gfdlscr/nzadeh/archives/answers/$(reference_tag)/$(name)/$(platform)-$(target)"/>
+      <property name="FMS_ARCHIVE_ROOT"    value="$PDATA/gfdl/fms"/>
+      <property name="CMIP6_ARCHIVE_ROOT"  value="$PDATA/gfdl/cmip6/datasets"/>
+      <property name="NCORE_PER_NODE"       value="40"/>
+      <property name="NPES_IO_LAND"         value="20"/>
+      <csh><![CDATA[
+        setenv KMP_STACKSIZE 512m
+        setenv NC_BLKSZ 1M
+        setenv F_UFMTENDIAN big
+        $(append_to_setup_csh)
+      ]]></csh>
+    </platform>
+
+    <platform name="orion.intel19">
+      <freVersion>$(FRE_VERSION)</freVersion>
+      <compiler type="intel" version="2019.5" />
+      <project>noaatest</project>
+      <directory stem="$(FRE_STEM)">
+        <root>/work/noaa/gfdlscr/$USER/$(FRE_STEM)</root>
+        <scripts>/work/noaa/gfdlscr/$USER/$(FRE_STEM)$(DEBUGLEVEL)/$(name)/$(platform)-$(target)/scripts</scripts>
+        <state>/work/noaa/gfdlscr/$USER/$(FRE_STEM)$(DEBUGLEVEL)/$(name)/$(platform)-$(target)/state</state>
+        <src>/work/noaa/gfdlscr/$USER/$(FRE_STEM)/$(name)/src</src>
+        <exec>/work/noaa/gfdlscr/$USER/$(FRE_STEM)/$(name)/$(platform)-$(target)/exec</exec>
+        <archive>/work/noaa/gfdlscr/$USER/$(stem)$(DEBUGLEVEL)/$(name)/$(platform)-$(target)/archive</archive>
+        <stdout>/work/noaa/gfdlscr/$USER/$(stem)$(DEBUGLEVEL)/$(name)/$(platform)-$(target)/stdout</stdout>
+        <work>/work/noaa/gfdlscr/$USER/work/$(stem)/$FRE_JOBID</work>
+      </directory>
+      <property name="EXEC_ROOT"         value="$DEV/$USER/$(stem)"/>
+      <property name="F2003_FLAGS"       value=" -DINTERNAL_FILE_NML -g "/>
+      <property name="AWG_INPUT_HOME"    value="$(AWG_INPUT_HOME_GAEA)"/>
+      <property name="NB_ROOT"           value="/nbhome/$USER/$(FRE_STEM)$(PLATINFO)/$(name)"/>
+      <property name="ARCHIVE_NNZ"       value="/work/noaa/gfdlscr/nzadeh/archives"/>
+      <property name="REFERENCE"         value="/lustre/f2/dev/Niki.Zadeh/archive/answers/$(reference_tag)/$(name)/$(platform)-$(target)"/>
+      <property name="FMS_ARCHIVE_ROOT"    value="$PDATA/gfdl/fms"/>
+      <property name="CMIP6_ARCHIVE_ROOT"  value="$PDATA/gfdl/cmip6/datasets"/>
+      <property name="NCORE_PER_NODE"       value="40"/>
+      <property name="NPES_IO_LAND"         value="20"/>
+      <csh><![CDATA[
+        setenv KMP_STACKSIZE 512m
+        setenv NC_BLKSZ 1M
+        setenv F_UFMTENDIAN big
+        $(append_to_setup_csh)
+      ]]></csh>
+    </platform>
+
+    <platform name="orion.intel20">
+      <freVersion>$(FRE_VERSION)</freVersion>
+      <compiler type="intel" version="2020" />
+      <project>noaatest</project>
+      <directory stem="$(FRE_STEM)">
+        <root>/work/noaa/gfdlscr/$USER/$(FRE_STEM)</root>
+        <scripts>/work/noaa/gfdlscr/$USER/$(FRE_STEM)$(DEBUGLEVEL)/$(name)/$(platform)-$(target)/scripts</scripts>
+        <state>/work/noaa/gfdlscr/$USER/$(FRE_STEM)$(DEBUGLEVEL)/$(name)/$(platform)-$(target)/state</state>
+        <src>/work/noaa/gfdlscr/$USER/$(FRE_STEM)/$(name)/src</src>
+        <exec>/work/noaa/gfdlscr/$USER/$(FRE_STEM)/$(name)/$(platform)-$(target)/exec</exec>
+        <archive>/work/noaa/gfdlscr/$USER/$(stem)$(DEBUGLEVEL)/$(name)/$(platform)-$(target)/archive</archive>
+        <stdout>/work/noaa/gfdlscr/$USER/$(stem)$(DEBUGLEVEL)/$(name)/$(platform)-$(target)/stdout</stdout>
+        <work>/work/noaa/gfdlscr/$USER/work/$(stem)/$FRE_JOBID</work>
+      </directory>
+      <property name="EXEC_ROOT"         value="$DEV/$USER/$(stem)"/>
+      <property name="F2003_FLAGS"       value=" -DINTERNAL_FILE_NML -g "/>
+      <property name="AWG_INPUT_HOME"    value="$(AWG_INPUT_HOME_GAEA)"/>
+      <property name="NB_ROOT"           value="/nbhome/$USER/$(FRE_STEM)$(PLATINFO)/$(name)"/>
+      <property name="ARCHIVE_NNZ"       value="/work/noaa/gfdlscr/nzadeh/archives"/>
+      <property name="REFERENCE"         value="/lustre/f2/dev/Niki.Zadeh/archive/answers/$(reference_tag)/$(name)/$(platform)-$(target)"/>
+      <property name="FMS_ARCHIVE_ROOT"    value="$PDATA/gfdl/fms"/>
+      <property name="CMIP6_ARCHIVE_ROOT"  value="$PDATA/gfdl/cmip6/datasets"/>
+      <property name="NCORE_PER_NODE"       value="40"/>
+      <property name="NPES_IO_LAND"         value="20"/>
+      <csh><![CDATA[
+        setenv KMP_STACKSIZE 512m
+        setenv NC_BLKSZ 1M
+        setenv F_UFMTENDIAN big
+        $(append_to_setup_csh)
+      ]]></csh>
+    </platform>
+    <platform name="orion.pgi19">
+      <freVersion>$(FRE_VERSION)</freVersion>
+      <compiler type="intel" version="2019" />
+      <project>noaatest</project>
+      <directory stem="$(FRE_STEM)">
+        <root>/work/noaa/gfdlscr/$USER/$(FRE_STEM)</root>
+        <scripts>/work/noaa/gfdlscr/$USER/$(FRE_STEM)$(DEBUGLEVEL)/$(name)/$(platform)-$(target)/scripts</scripts>
+        <state>/work/noaa/gfdlscr/$USER/$(FRE_STEM)$(DEBUGLEVEL)/$(name)/$(platform)-$(target)/state</state>
+        <src>/work/noaa/gfdlscr/$USER/$(FRE_STEM)/$(name)/src</src>
+        <exec>/work/noaa/gfdlscr/$USER/$(FRE_STEM)/$(name)/$(platform)-$(target)/exec</exec>
+        <archive>/work/noaa/gfdlscr/$USER/$(stem)$(DEBUGLEVEL)/$(name)/$(platform)-$(target)/archive</archive>
+        <stdout>/work/noaa/gfdlscr/$USER/$(stem)$(DEBUGLEVEL)/$(name)/$(platform)-$(target)/stdout</stdout>
+        <work>/work/noaa/gfdlscr/$USER/work/$(stem)/$FRE_JOBID</work>
+      </directory>
+      <property name="EXEC_ROOT"         value="$DEV/$USER/$(stem)"/>
+      <property name="F2003_FLAGS"       value=" -DINTERNAL_FILE_NML -g "/>
+      <property name="AWG_INPUT_HOME"    value="$(AWG_INPUT_HOME_GAEA)"/>
+      <property name="NB_ROOT"           value="/nbhome/$USER/$(FRE_STEM)$(PLATINFO)/$(name)"/>
+      <property name="ARCHIVE_NNZ"       value="/work/noaa/gfdlscr/nzadeh/archives"/>
+      <property name="REFERENCE"         value="/lustre/f2/dev/Niki.Zadeh/archive/answers/$(reference_tag)/$(name)/$(platform)-$(target)"/>
+      <property name="FMS_ARCHIVE_ROOT"    value="$PDATA/gfdl/fms"/>
+      <property name="CMIP6_ARCHIVE_ROOT"  value="$PDATA/gfdl/cmip6/datasets"/>
+      <property name="NCORE_PER_NODE"       value="40"/>
+      <property name="NPES_IO_LAND"         value="20"/>
+      <csh><![CDATA[
+module unload intel impi netcdf hdf5
+module load pgi/2019
+
+        setenv KMP_STACKSIZE 512m
+        setenv NC_BLKSZ 1M
+        setenv F_UFMTENDIAN big
+        $(append_to_setup_csh)
+      ]]></csh>
+      <mkmfTemplate file="/home/nzadeh/xmls/xanadu/mdt_xml_RTS/awg_include/xml_building_blocks/orion_pgi19.mk"/>
+    </platform>
+    <platform name="orion.gnu8">
+      <freVersion>$(FRE_VERSION)</freVersion>
+      <compiler type="intel" version="2019" />
+      <project>noaatest</project>
+      <directory stem="$(FRE_STEM)">
+        <root>/work/noaa/gfdlscr/$USER/$(FRE_STEM)</root>
+        <scripts>/work/noaa/gfdlscr/$USER/$(FRE_STEM)$(DEBUGLEVEL)/$(name)/$(platform)-$(target)/scripts</scripts>
+        <state>/work/noaa/gfdlscr/$USER/$(FRE_STEM)$(DEBUGLEVEL)/$(name)/$(platform)-$(target)/state</state>
+        <src>/work/noaa/gfdlscr/$USER/$(FRE_STEM)/$(name)/src</src>
+        <exec>/work/noaa/gfdlscr/$USER/$(FRE_STEM)/$(name)/$(platform)-$(target)/exec</exec>
+        <archive>/work/noaa/gfdlscr/$USER/$(stem)$(DEBUGLEVEL)/$(name)/$(platform)-$(target)/archive</archive>
+        <stdout>/work/noaa/gfdlscr/$USER/$(stem)$(DEBUGLEVEL)/$(name)/$(platform)-$(target)/stdout</stdout>
+        <work>/work/noaa/gfdlscr/$USER/work/$(stem)/$FRE_JOBID</work>
+      </directory>
+      <property name="EXEC_ROOT"         value="$DEV/$USER/$(stem)"/>
+      <property name="F2003_FLAGS"       value=" -DINTERNAL_FILE_NML -g "/>
+      <property name="AWG_INPUT_HOME"    value="$(AWG_INPUT_HOME_GAEA)"/>
+      <property name="NB_ROOT"           value="/nbhome/$USER/$(FRE_STEM)$(PLATINFO)/$(name)"/>
+      <property name="ARCHIVE_NNZ"       value="/work/noaa/gfdlscr/nzadeh/archives"/>
+      <property name="REFERENCE"         value="/lustre/f2/dev/Niki.Zadeh/archive/answers/$(reference_tag)/$(name)/$(platform)-$(target)"/>
+      <property name="FMS_ARCHIVE_ROOT"    value="$PDATA/gfdl/fms"/>
+      <property name="CMIP6_ARCHIVE_ROOT"  value="$PDATA/gfdl/cmip6/datasets"/>
+      <property name="NCORE_PER_NODE"       value="40"/>
+      <property name="NPES_IO_LAND"         value="20"/>
+      <csh><![CDATA[
+module unload intel impi netcdf hdf5
+module load gcc/8.3.0 
+module load mpich/3.3.1
+module load netcdf/4.7.2
+
+
+        setenv KMP_STACKSIZE 512m
+        setenv NC_BLKSZ 1M
+        setenv F_UFMTENDIAN big
+        $(append_to_setup_csh)
+      ]]></csh>
+      <mkmfTemplate file="/home/nzadeh/xmls/xanadu/mdt_xml_RTS/awg_include/xml_building_blocks/orion_gnu8.mk"/>
+    </platform>
+    <platform name="gfdl.default">
+      <freVersion>$(FRE_VERSION)</freVersion>
+      <property name="NB_ROOT"  value="/nbhome/$USER/$(FRE_STEM)$(PLATINFO)/$(name)"/><!--Do not change this! Other platforms use  the same value. -->
+      <directory stem="$(FRE_STEM)">
+        <archive>$ARCHIVE/$(stem)/$(name)/$(platform)-$(target)</archive>
+        <postProcess>$(archiveDir)/pp</postProcess>
+        <ptmp>/ptmp/$USER</ptmp>
+        <analysis>$(NB_ROOT)</analysis><!--Do not change this! frepp translates this to $out_dir. This is also the directory under which  frepp looks for mom6 clone.  -->
+      </directory>
+      <property name="EXEC_ROOT"         value="$(rootDir)"/>
+      <property name="F2003_FLAGS"       value=" -DINTERNAL_FILE_NML"/>
+      <property name="AWG_INPUT_HOME"    value="$(AWG_INPUT_HOME_GFDL)"/>
+      <property name="ARCHIVE_NNZ"       value=""/>
+      <property name="REFERENCE"         value=""/>
+      <property name="FMS_ARCHIVE_ROOT"     value="/archive/fms"/>
+      <property name="CMIP6_ARCHIVE_ROOT"   value="/archive/oar.gfdl.cmip6/datasets"/>
+      <property name="NCORE_PER_NODE"    value=""/>
+      <property name="NPES_IO_LAND"      value=""/>
+            <csh><![CDATA[
+        source $MODULESHOME/init/csh
+        module use -a /home/fms/local/modulefiles
+        module purge
+        module load fre/$(FRE_VERSION)
+        module load fre-analysis
+        module load git
+        setenv FREVERSION fre/$(FRE_VERSION)           
+        setenv NBROOT $(NB_ROOT)
+        /home/Niki.Zadeh/nnz_tools/bin/verify -m $(MOM6_GIT_TAG) -x RTS
+      ]]>
+            </csh> <!--commented out Dec. 9 but put back in due to PPAN jobs failing with loading Python modules--> 
+    </platform>
+    <platform name="gfdl.orion-intel18">
+      <xi:include xpointer="xpointer(//freInclude/platform[@name='gfdl.default']/node())" />
+    </platform>
+     <platform name="gfdl.ncrc5-intel23">
+      <xi:include xpointer="xpointer(//freInclude/platform[@name='gfdl.default']/node())" />
+    </platform>
+    <platform name="gfdl.ncrc5-intel22">
+      <xi:include xpointer="xpointer(//freInclude/platform[@name='gfdl.default']/node())" />
+    </platform>
+    <platform name="gfdl.ncrc4-intel22">
+      <xi:include xpointer="xpointer(//freInclude/platform[@name='gfdl.default']/node())" />
+    </platform>
+    <platform name="gfdl.ncrc4-intel18">
+      <xi:include xpointer="xpointer(//freInclude/platform[@name='gfdl.default']/node())" />
+    </platform>
+    <platform name="gfdl.ncrc3-intel18">
+      <xi:include xpointer="xpointer(//freInclude/platform[@name='gfdl.default']/node())" />
+    </platform>
+    <platform name="gfdl.ncrc5-intel-classic">
+      <xi:include xpointer="xpointer(//freInclude/platform[@name='gfdl.default']/node())" />
+    </platform>
+    <platform name="gfdl.ncrc6-intel23">
+     <xi:include xpointer="xpointer(//freInclude/platform[@name='gfdl.default']/node())" />
+    </platform>
+
+    <platform name="gfdl-ws.default">
+      <xi:include xpointer="xpointer(//freInclude/platform[@name='gfdl.default']/node())" />
+    </platform>
+
+
+    <platform name="ncrc5.intel22">
+     <freVersion>$(FRE_VERSION)</freVersion>
+     <compiler type="intel-classic" version="2022.0.2"/>
+     <project>$(GFDL_GROUP)</project>
+     <directory stem="$(FRE_STEM)">
+        <root>/gpfs/f5/$(project)/scratch/$USER/$(stem)</root>
+        <scripts>$(rootDir)/$(name)/$(platform)-$(target)/scripts</scripts>
+        <state>$(rootDir)/$(name)/$(platform)-$(target)/state</state>
+        <src>$(rootDir)/$(name)/src</src>
+        <exec>$(rootDir)/$(name)/$(platform)-$(target)/exec</exec>
+        <archive>$(rootDir)/$(name)/$(platform)-$(target)</archive>
+        <stdout>$(rootDir)/$(name)/stdout</stdout>
+        <work>/gpfs/f5/$(project)/scratch/$USER/$FRE_JOBID</work>
+        <ptmp>/gpfs/f5/$(project)/scratch/$USER/ptmp/$(stem)/$(name)</ptmp>
+     </directory>
+     <property name="EXEC_ROOT"         value="$DEV/$USER/$(stem)/$(BUILD_DATE)"/>
+     <property name="F2003_FLAGS"       value=" -DINTERNAL_FILE_NML -g "/>
+     <property name="AWG_INPUT_HOME"    value="$(AWG_INPUT_HOME_GAEA)"/>
+     <property name="NB_ROOT"           value="/nbhome/$USER/$(FRE_STEM)$(PLATINFO)/$(name)"/>
+     <property name="ARCHIVE_NNZ"        value="/lustre/f2/dev/Niki.Zadeh/archive"/>
+     <property name="REFERENCE"         value="/lustre/f2/dev/Niki.Zadeh/archive/answers/$(reference_tag)/$(name)/$(platform)-$(target)"/>
+     <property name="FMS_ARCHIVE_ROOT"    value="$PDATA/gfdl/fms"/>
+     <property name="CMIP6_ARCHIVE_ROOT"  value="/gpfs/f5/gfdl_a/world-shared/cmip6/datasets"/>
+     <property name="NCORE_PER_NODE"      value="36"/>
+     <property name="NPES_IO_LAND"         value="18"/>
+     <csh><![CDATA[
+       module load git
+       module unload cray-libsci
+       module unload darshan
+       $(append_to_setup_csh)
+     ]]></csh>
+ </platform>
+
+</freInclude>
+
