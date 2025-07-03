@@ -289,7 +289,7 @@ Experiment to build executable.
   <dataFile label="input" target="INPUT/" chksum="" size="" timestamp="">
        <dataSource platform="$(platform)">/gpfs/f5/gfdl_o/world-shared/datasets//AM2_LM3_MOM6i_1deg/tikal/INPUT/asmsw_data.nc</dataSource>
   </dataFile>
-
+  <!--
   <dataFile label="input" target="INPUT/" chksum="" size="" timestamp="">
        <dataSource platform="$(platform)">/gpfs/f5/gfdl_o/world-shared/datasets//AM2_LM3_MOM6i_1deg/tikal/mosaic.unpacked/atmos_hgrid.nc</dataSource>
   </dataFile>
@@ -305,7 +305,7 @@ Experiment to build executable.
   <dataFile label="input" target="INPUT/" chksum="" size="" timestamp="">
        <dataSource platform="$(platform)">/gpfs/f5/gfdl_o/world-shared/datasets//AM2_LM3_MOM6i_1deg/tikal/mosaic.unpacked/atmos_mosaic_tile1Xocean_mosaic_tile1.nc</dataSource>
   </dataFile>
-
+  -->
   <dataFile label="input" target="INPUT/" chksum="" size="" timestamp="">
        <dataSource platform="$(platform)">/gpfs/f5/gfdl_o/world-shared/datasets//AM2_LM3_MOM6i_1deg/tikal/INPUT/basin.nc</dataSource>
   </dataFile>
@@ -1308,7 +1308,7 @@ SIS_OVERRIDE_EOF
         do_ice = .true.,
         do_ocean = .true.,
         atmos_npes = 0,
-        ocean_npes = 160,
+        ocean_npes = 480,
         concurrent = .true.
         use_lag_fluxes=.true.
       </namelist>
@@ -1374,25 +1374,25 @@ $baseDate
       <production simTime="$(PROD_SIMTIME)" units="years">
           <segment simTime="12" units="months"/>
           <resources jobWallclock="16:00:00" segRuntime="1:30:00">
-               <atm ranks="30" threads="1"     />
-               <lnd                             />
+            <!--               <atm ranks="30" threads="1"     />
+            <lnd                             />-->
                <ice                            />
-               <ocn ranks="90" threads="1"    />
+               <ocn ranks="480" threads="1"    />
            </resources>
       </production>
       <regression name="basic">
         <run months="1"> 
      	     <resources jobWallclock="01:00:00">
-	        <atm ranks="30" threads="1"     />
-               <lnd                             />
+             <!-- <atm ranks="30" threads="1"     />
+             <lnd                             />-->
                <ice                            />
                <ocn ranks="90" threads="1"    />
 	     </resources>
 	</run>
         <run days="15 16"> 
      	     <resources jobWallclock="01:00:00">
-               <atm ranks="30" threads="1"     />
-               <lnd                             />
+             <!--               <atm ranks="30" threads="1"     />
+               <lnd                             />-->
                <ice                            />
                <ocn ranks="90" threads="1"    />
              </resources>
@@ -1401,8 +1401,8 @@ $baseDate
       <regression name="timing">
         <run months="1"> 
      	     <resources jobWallclock="01:00:00">
-	        <atm ranks="30" threads="1"     />
-               <lnd                             />
+             <!--	        <atm ranks="30" threads="1"     />
+          <lnd                             />-->
                <ice                            />
                <ocn ranks="90" threads="1"    />
 	     </resources>
