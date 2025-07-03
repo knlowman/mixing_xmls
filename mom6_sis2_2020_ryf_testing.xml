@@ -837,7 +837,7 @@ Experiment to build executable.
   <dataFile label="input" target="INPUT/" chksum="" size="" timestamp="">
        <dataSource platform="$(platform)">/gpfs/f5/gfdl_o/world-shared/datasets//AM2_LM3_MOM6i_1deg/tikal/INPUT/id2h2orbts</dataSource>
   </dataFile>
-
+  <!--
   <dataFile label="input" target="INPUT/" chksum="" size="" timestamp="">
        <dataSource platform="$(platform)">/gpfs/f5/gfdl_o/world-shared/datasets//AM2_LM3_MOM6i_1deg/tikal/mosaic.unpacked/land_hgrid.nc</dataSource>
   </dataFile>
@@ -849,7 +849,7 @@ Experiment to build executable.
   <dataFile label="input" target="INPUT/" chksum="" size="" timestamp="">
        <dataSource platform="$(platform)">/gpfs/f5/gfdl_o/world-shared/datasets//AM2_LM3_MOM6i_1deg/tikal/mosaic.unpacked/land_mosaic.nc</dataSource>
   </dataFile>
-
+  -->
   <dataFile label="input" target="INPUT/" chksum="" size="" timestamp="">
        <dataSource platform="$(platform)">/gpfs/f5/gfdl_o/world-shared/datasets//AM2_LM3_MOM6i_1deg/tikal/mosaic.unpacked/land_mosaic_tile1Xocean_mosaic_tile1.nc</dataSource>
   </dataFile>
@@ -1241,9 +1241,9 @@ set nyblocks = $nyblock
 	<dataFile label="dataTable" target="INPUT/" chksum="" size="" timestamp="">
 		<dataSource platform="$(platform)">$(MOM6_EXAMPLES)/coupled_AM2_LM3_SIS2/AM2_SIS2_MOM6i_1deg/data_table</dataSource>
 	</dataFile>
-	<dataFile label="fieldTable" target="INPUT/" chksum="" size="" timestamp="">
+  <!--commented out July 3	<dataFile label="fieldTable" target="INPUT/" chksum="" size="" timestamp="">
          	<dataSource platform="$(platform)">$(MOM6_EXAMPLES)/coupled_AM2_LM3_SIS2/AM2_SIS2_MOM6i_1deg/field_table</dataSource>
-	</dataFile>
+  </dataFile>-->
 	<dataFile label="diagTable" target="INPUT/" chksum="" size="" timestamp="">
     <!-- <dataSource platform="$(platform)">$root/$(LIBS_ROOT)/diag_table_updated_tuning</dataSource> -->
     <dataSource platform="$(platform)">awg_include/diag_table/diag_table_mom6_sis2_tuning</dataSource>
@@ -1307,9 +1307,9 @@ SIS_OVERRIDE_EOF
         do_land = .false.,
         do_ice = .true.,
         do_ocean = .true.,
-        atmos_npes = 0,
-        ocean_npes = 480,
-        concurrent = .true.
+        <!--        atmos_npes = 0,
+        ocean_npes = 480,-->
+        concurrent = .false.
         use_lag_fluxes=.true.
       </namelist>
 
