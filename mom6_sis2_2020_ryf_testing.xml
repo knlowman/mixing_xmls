@@ -289,7 +289,7 @@ Experiment to build executable.
   <dataFile label="input" target="INPUT/" chksum="" size="" timestamp="">
        <dataSource platform="$(platform)">/gpfs/f5/gfdl_o/world-shared/datasets//AM2_LM3_MOM6i_1deg/tikal/INPUT/asmsw_data.nc</dataSource>
   </dataFile>
-  <!--
+  
   <dataFile label="input" target="INPUT/" chksum="" size="" timestamp="">
        <dataSource platform="$(platform)">/gpfs/f5/gfdl_o/world-shared/datasets//AM2_LM3_MOM6i_1deg/tikal/mosaic.unpacked/atmos_hgrid.nc</dataSource>
   </dataFile>
@@ -305,7 +305,7 @@ Experiment to build executable.
   <dataFile label="input" target="INPUT/" chksum="" size="" timestamp="">
        <dataSource platform="$(platform)">/gpfs/f5/gfdl_o/world-shared/datasets//AM2_LM3_MOM6i_1deg/tikal/mosaic.unpacked/atmos_mosaic_tile1Xocean_mosaic_tile1.nc</dataSource>
   </dataFile>
-  -->
+  
   <dataFile label="input" target="INPUT/" chksum="" size="" timestamp="">
        <dataSource platform="$(platform)">/gpfs/f5/gfdl_o/world-shared/datasets//AM2_LM3_MOM6i_1deg/tikal/INPUT/basin.nc</dataSource>
   </dataFile>
@@ -754,8 +754,9 @@ Experiment to build executable.
        <dataSource platform="$(platform)">/gpfs/f5/gfdl_o/world-shared/datasets//AM2_LM3_MOM6i_1deg/tikal/mosaic.unpacked/grid_spec.nc</dataSource>
   </dataFile>-->
   <dataFile label="gridSpec" target="INPUT/" chksum="" size="" timestamp="">
-        <dataSource site="ncrc">/gpfs/f5/gfdl_o/world-shared/datasets//AM2_LM3_MOM6i_1deg/tikal/mosaic.unpacked/grid_spec.nc</dataSource>
-        <dataSource site="gfdl">/archive/gold/datasets/AM2_LM3_MOM6i_1deg/tikal/mosaic.unpacked/grid_spec.nc</dataSource>
+    <!--        <dataSource site="ncrc">/gpfs/f5/gfdl_o/world-shared/datasets//AM2_LM3_MOM6i_1deg/tikal/mosaic.unpacked/grid_spec.nc</dataSource>
+    <dataSource site="gfdl">/archive/gold/datasets/AM2_LM3_MOM6i_1deg/tikal/mosaic.unpacked/grid_spec.nc</dataSource>-->
+    <dataSource platform="$(platform)">/gpfs/f5/gfdl_o/world-shared/datasets//AM2_LM3_MOM6i_1deg/tikal/mosaic.unpacked/grid_spec.nc</dataSource>
   </dataFile>
 
   <dataFile label="input" target="INPUT/" chksum="" size="" timestamp="">
@@ -1019,12 +1020,12 @@ Experiment to build executable.
       </dataFile>
       <dataFile label="input" target="INPUT/JRA_friver_360x210.nc" chksum="" size="" timestamp="">
         <!--        <dataSource platform="$(platform)">$(gfdlO_pdata)/datasets/OM5_025/RYF/friver_input4MIPs_atmosphericState_OMIP_MRI-JRA55-do-1-5-0_00020101-00021231.padded.v20240410.nc</dataSource>-->
-        <dataSource site="ncrc">/gpfs/f5/gfdl_o/scratch/Kiera.Lowman/CM2G_input_data/JRA_friver_360x210_1990-05-01_1991_04-30.nc</dataSource>
+        <dataSource platform="$(platform)">/gpfs/f5/gfdl_o/scratch/Kiera.Lowman/CM2G_input_data/JRA_friver_360x210_1990-05-01_1991_04-30.nc</dataSource>
       </dataFile>
 
       <dataFile label="input" target="INPUT/JRA_licalvf_360x210.nc" chksum="" size="" timestamp="">
         <!--        <dataSource platform="$(platform)">$(gfdlO_pdata)/datasets/OM5_025/RYF/licalvf_input4MIPs_atmosphericState_OMIP_MRI-JRA55-do-1-5-0_00020101-00021231.padded.v20240410.nc</dataSource>-->
-        <dataSource site="ncrc">/gpfs/f5/gfdl_o/scratch/Kiera.Lowman/CM2G_input_data/JRA_licalvf_360x210_1990-05-01_1991_04-30.nc</dataSource>
+        <dataSource platform="$(platform)">/gpfs/f5/gfdl_o/scratch/Kiera.Lowman/CM2G_input_data/JRA_licalvf_360x210_1990-05-01_1991_04-30.nc</dataSource>
       </dataFile>
     </input>
   </freInclude>
