@@ -314,9 +314,10 @@ Experiment to build executable.
        <dataSource platform="$(platform)">/gpfs/f5/gfdl_o/world-shared/datasets//AM2_LM3_MOM6i_1deg/tikal/INPUT/BetaDistributionTable.txt</dataSource>
   </dataFile>
 
+  <!--
   <dataFile label="input" target="INPUT/" chksum="" size="" timestamp="">
        <dataSource platform="$(platform)">/gpfs/f5/gfdl_o/world-shared/datasets//AM2_LM3_MOM6i_1deg/tikal/INPUT/cfc.bc.nc</dataSource>
-  </dataFile>
+  </dataFile>-->
 
   <dataFile label="input" target="INPUT/" chksum="" size="" timestamp="">
        <dataSource platform="$(platform)">/gpfs/f5/gfdl_o/world-shared/datasets//AM2_LM3_MOM6i_1deg/tikal/INPUT/ch4_gblannualdata</dataSource>
@@ -935,9 +936,9 @@ Experiment to build executable.
        <dataSource platform="$(platform)">/gpfs/f5/gfdl_o/world-shared/datasets//AM2_LM3_MOM6i_1deg/tikal/INPUT/river_destination_field</dataSource>
   </dataFile>
 
-  <dataFile label="input" target="INPUT/" chksum="" size="" timestamp="">
+  <!-- commented out to use JRA version instead <dataFile label="input" target="INPUT/" chksum="" size="" timestamp="">
        <dataSource platform="$(platform)">/gpfs/f5/gfdl_o/world-shared/datasets//AM2_LM3_MOM6i_1deg/tikal/INPUT/salt_restore.nc</dataSource>
-  </dataFile>
+  </dataFile>-->
 
   <dataFile label="input" target="INPUT/" chksum="" size="" timestamp="">
        <dataSource platform="$(platform)">/gpfs/f5/gfdl_o/world-shared/datasets//AM2_LM3_MOM6i_1deg/tikal/INPUT/seasonal_ozone</dataSource>
@@ -955,9 +956,9 @@ Experiment to build executable.
        <dataSource platform="$(platform)">/gpfs/f5/gfdl_o/world-shared/datasets//AM2_LM3_MOM6i_1deg/tikal/INPUT/soil_brdf.nc</dataSource>
   </dataFile>
 
-  <dataFile label="input" target="INPUT/" chksum="" size="" timestamp="">
+  <!--  <dataFile label="input" target="INPUT/" chksum="" size="" timestamp="">
        <dataSource platform="$(platform)">/gpfs/f5/gfdl_o/world-shared/datasets//AM2_LM3_MOM6i_1deg/tikal/INPUT/sst_ice_clim.nc</dataSource>
-  </dataFile>
+  </dataFile>-->
 
   <dataFile label="input" target="INPUT/" chksum="" size="" timestamp="">
        <dataSource platform="$(platform)">/gpfs/f5/gfdl_o/world-shared/datasets//AM2_LM3_MOM6i_1deg/tikal/INPUT/stdlvls</dataSource>
@@ -1018,15 +1019,23 @@ Experiment to build executable.
       <dataFile label="input" target="INPUT/JRA_vas.nc" chksum="" size="" timestamp="">
         <dataSource platform="$(platform)">$(gfdlO_pdata)/datasets/OM5_025/RYF/vas_input4MIPs_atmosphericState_OMIP_MRI-JRA55-do-1-5-0_00020101-00021231.padded.nc</dataSource>
       </dataFile>
-      <dataFile label="input" target="INPUT/JRA_friver_360x210.nc" chksum="" size="" timestamp="">
+      <dataFile label="input" target="INPUT/JRA_friver" chksum="" size="" timestamp="">
         <!--        <dataSource platform="$(platform)">$(gfdlO_pdata)/datasets/OM5_025/RYF/friver_input4MIPs_atmosphericState_OMIP_MRI-JRA55-do-1-5-0_00020101-00021231.padded.v20240410.nc</dataSource>-->
         <dataSource platform="$(platform)">/gpfs/f5/gfdl_o/scratch/Kiera.Lowman/CM2G_input_data/JRA_friver_360x210_1990-05-01_1991_04-30.nc</dataSource>
       </dataFile>
 
-      <dataFile label="input" target="INPUT/JRA_licalvf_360x210.nc" chksum="" size="" timestamp="">
+      <dataFile label="input" target="INPUT/JRA_licalvf.nc" chksum="" size="" timestamp="">
         <!--        <dataSource platform="$(platform)">$(gfdlO_pdata)/datasets/OM5_025/RYF/licalvf_input4MIPs_atmosphericState_OMIP_MRI-JRA55-do-1-5-0_00020101-00021231.padded.v20240410.nc</dataSource>-->
         <dataSource platform="$(platform)">/gpfs/f5/gfdl_o/scratch/Kiera.Lowman/CM2G_input_data/JRA_licalvf_360x210_1990-05-01_1991_04-30.nc</dataSource>
       </dataFile>
+
+      <dataFile label="input" target="INPUT/" chksum="" size="" timestamp="">
+        <dataSource platform="$(platform)">$(gfdlO_pdata)/datasets/OM4_025/INPUT.JRA.v2019.07.04/salt_restore_JRA.1440x1080.v20190706.nc</dataSource>
+      </dataFile>
+      <dataFile label="input" target="INPUT/" chksum="" size="" timestamp="">
+        <dataSource platform="$(platform)">$(MOM6_EXAMPLES)/ice_ocean_SIS2/OM4_025.JRA/MOM_saltrestore</dataSource>
+      </dataFile>
+
     </input>
   </freInclude>
 
@@ -1231,20 +1240,20 @@ set nyblocks = $nyblock
    </freInclude>
 
    <!--block below created by Kiera-->
-   <freInclude name="OM_1deg_input"><!--originally I was using ice_ocean_SIS2/OM_1deg in place of coupled_AM2_LM3_SIS2/AM2_SIS2_MOM6i_1deg in the paths -->
+   <freInclude name="OM_1deg_input">
     <input>
 	<dataFile label="input" target="INPUT/" chksum="" size="" timestamp="">
-		<dataSource platform="$(platform)">$(MOM6_EXAMPLES)/coupled_AM2_LM3_SIS2/AM2_SIS2_MOM6i_1deg/MOM_input</dataSource>
+		<dataSource platform="$(platform)">$(MOM6_EXAMPLES)/ice_ocean_SIS2/OM4_025.JRA/MOM_input</dataSource>
 	</dataFile>
 	<dataFile label="input" target="INPUT/" chksum="" size="" timestamp="">
-		<dataSource platform="$(platform)">$(MOM6_EXAMPLES)/coupled_AM2_LM3_SIS2/AM2_SIS2_MOM6i_1deg/SIS_input</dataSource>
+		<dataSource platform="$(platform)">$(MOM6_EXAMPLES)/ice_ocean_SIS2/OM4_025.JRA/SIS_input</dataSource>
 	</dataFile>
 	<dataFile label="dataTable" target="INPUT/" chksum="" size="" timestamp="">
-		<dataSource platform="$(platform)">$(MOM6_EXAMPLES)/coupled_AM2_LM3_SIS2/AM2_SIS2_MOM6i_1deg/data_table</dataSource>
+		<dataSource platform="$(platform)">$(MOM6_EXAMPLES)/ice_ocean_SIS2/OM4_025.JRA/data_table</dataSource>
 	</dataFile>
-  <!--commented out July 3	<dataFile label="fieldTable" target="INPUT/" chksum="" size="" timestamp="">
-         	<dataSource platform="$(platform)">$(MOM6_EXAMPLES)/coupled_AM2_LM3_SIS2/AM2_SIS2_MOM6i_1deg/field_table</dataSource>
-  </dataFile>-->
+  <dataFile label="fieldTable" target="INPUT/" chksum="" size="" timestamp="">
+         	<dataSource platform="$(platform)">$(MOM6_EXAMPLES)/ice_ocean_SIS2/OM4_025.JRA/field_table</dataSource>
+        </dataFile><!-- might need to comment out-->
 	<dataFile label="diagTable" target="INPUT/" chksum="" size="" timestamp="">
     <!-- <dataSource platform="$(platform)">$root/$(LIBS_ROOT)/diag_table_updated_tuning</dataSource> -->
     <dataSource platform="$(platform)">awg_include/diag_table/diag_table_mom6_sis2_tuning</dataSource>
@@ -1285,7 +1294,7 @@ SIS_OVERRIDE_EOF
          restart_output_dir = 'RESTART/',
 	 parameter_filename = 'INPUT/MOM_input',
         'INPUT/MOM_override',
-        <!-- 'INPUT/salt_restore.nc'added July 3, I think I should be using input from another folder-->
+        'INPUT/MOM_saltrestore' 
       </namelist>
 
       <namelist name="SIS_input_nml">
@@ -1315,20 +1324,20 @@ SIS_OVERRIDE_EOF
       </namelist>
 
       <!-- Namelist (commented out July 3) -->
-        <!--      <namelist file="$(MOM6_EXAMPLES)/coupled_AM2_LM3_SIS2/AM2_SIS2_MOM6i_1deg/input.nml"/>-->
+              <namelist file="$(MOM6_EXAMPLES)/ice_ocean_SIS2/OM4_025.JRA/input.nml"/>
        <!-- Input datasets -->
         <xi:include xpointer="xpointer(//freInclude[@name='AM2_LM3_MOM6i_1deg']/input/node())"/>
         <xi:include xpointer="xpointer(//freInclude[@name='ryf_data']/input/node())"/>
      <xi:include xpointer="xpointer(//freInclude[@name='common_init_csh_blocks']/input/node())"/>
      
      <!--common setup for JRA forcing dataset and data_table-->
-      <xi:include xpointer="xpointer(//freInclude[@name='JRA_data_table']/input/node())"/>
-      <!--append the resolution dependent runoff override-->
+        <!--      <xi:include xpointer="xpointer(//freInclude[@name='JRA_data_table']/input/node())"/>-->
+      <!--append the resolution dependent runoff override
       <dataTable order="append">
 #JRA runoff
 "ICE" , "runoff"        , "friver"      , "./INPUT/JRA_friver_360x210.nc", "none" ,  1.0
 "ICE" , "calving"       , "licalvf"     , "./INPUT/JRA_licalvf_360x210.nc", "none" ,  1.0
-      </dataTable>
+      </dataTable>-->
 
 <diagTable>
 $name
@@ -1442,7 +1451,7 @@ SIS_OVERRIDE_EOF
 </input>
 </experiment>
 
-  <freInclude name="JRA_data_table">
+<!--  <freInclude name="JRA_data_table">
     <input>
       <dataTable>
  "ATM", "p_surf",             "psl",      "./INPUT/JRA_psl.nc",     "bilinear",   1.0
@@ -1466,5 +1475,6 @@ SIS_OVERRIDE_EOF
       </dataTable>
     </input>
   </freInclude>
+-->
 
 </experimentSuite>
