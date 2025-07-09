@@ -263,109 +263,173 @@ Experiment to build executable.
 <!--============================-->
 <!--= TEMPLATES FOR INPUT DATA =-->
   <!--============================-->
-   <freInclude name="OM_1deg_data">
+   <freInclude name="MOM6_SIS2_data">
      <input>
 
   <dataFile label="input" target="INPUT/" chksum="" size="" timestamp="">
-    <dataSource platform="$(platform)">$(MOM6_EXAMPLES)/ice_ocean_SIS2/OM_1deg/MOM_input</dataSource>
-  </dataFile>
-  <dataFile label="input" target="INPUT/" chksum="" size="" timestamp="">
-    <dataSource platform="$(platform)">$(MOM6_EXAMPLES)/ice_ocean_SIS2/OM_1deg/SIS_input</dataSource>
-  </dataFile>
-  <dataFile label="dataTable" target="INPUT/" chksum="" size="" timestamp="">
-    <dataSource platform="$(platform)">$(MOM6_EXAMPLES)/ice_ocean_SIS2/OM_1deg/data_table</dataSource>
-  </dataFile>
-  <dataFile label="fieldTable" target="INPUT/" chksum="" size="" timestamp="">
-    <dataSource platform="$(platform)">$(MOM6_EXAMPLES)/ice_ocean_SIS2/OM_1deg/field_table</dataSource>
-  </dataFile>
-  <dataFile label="diagTable" target="INPUT/" chksum="" size="" timestamp="">
-    <!-- <dataSource platform="$(platform)">$root/$(LIBS_ROOT)/diag_table_updated_tuning</dataSource> -->
-    <dataSource platform="$(platform)">awg_include/diag_table/diag_table_mom6_sis2_tuning</dataSource>
-   </dataFile>
-
-  <dataFile label="input" target="INPUT/" chksum="" size="" timestamp="">
-       <dataSource platform="$(platform)">/gpfs/f5/gfdl_o/world-shared/datasets/OM_1deg/INPUT/atmos_mosaic_tile1Xland_mosaic_tile1.nc</dataSource>
+       <dataSource platform="$(platform)">/gpfs/f5/gfdl_o/world-shared/datasets/GOLD_SIS/riga/mosaic.unpacked/atmos_hgrid.nc</dataSource>
   </dataFile>
 
   <dataFile label="input" target="INPUT/" chksum="" size="" timestamp="">
-       <dataSource platform="$(platform)">/gpfs/f5/gfdl_o/world-shared/datasets/OM_1deg/INPUT/atmos_mosaic_tile1Xocean_mosaic_tile1.nc</dataSource>
-  </dataFile>
-
-  <dataFile label="gridSpec" target="INPUT/" chksum="" size="" timestamp="">
-        <dataSource site="ncrc">/gpfs/f5/gfdl_o/world-shared/datasets/OM_1deg/INPUT/grid_spec.nc</dataSource>
-        <dataSource site="gfdl">/archive/gold/datasets/OM_1deg/INPUT/grid_spec.nc</dataSource>
+       <dataSource platform="$(platform)">/gpfs/f5/gfdl_o/world-shared/datasets/GOLD_SIS/riga/mosaic.unpacked/atmos_mosaic.nc</dataSource>
   </dataFile>
 
   <dataFile label="input" target="INPUT/" chksum="" size="" timestamp="">
-       <dataSource platform="$(platform)">/gpfs/f5/gfdl_o/world-shared/datasets/OM_1deg/INPUT/hycom1_75_800m.nc</dataSource>
+       <dataSource platform="$(platform)">/gpfs/f5/gfdl_o/world-shared/datasets/GOLD_SIS/riga/mosaic.unpacked/atmos_mosaic_tile1Xland_mosaic_tile1.nc</dataSource>
   </dataFile>
 
   <dataFile label="input" target="INPUT/" chksum="" size="" timestamp="">
-       <dataSource platform="$(platform)">/gpfs/f5/gfdl_o/world-shared/datasets/OM_1deg/INPUT/KH_background_2d.nc</dataSource>
+       <dataSource platform="$(platform)">/gpfs/f5/gfdl_o/world-shared/datasets/GOLD_SIS/riga/mosaic.unpacked/atmos_mosaic_tile1Xocean_mosaic_tile1.nc</dataSource>
   </dataFile>
 
   <dataFile label="input" target="INPUT/" chksum="" size="" timestamp="">
-       <dataSource platform="$(platform)">/gpfs/f5/gfdl_o/world-shared/datasets/OM_1deg/INPUT/land_mask.nc</dataSource>
+       <dataSource platform="$(platform)">/gpfs/f5/gfdl_o/world-shared/datasets/GOLD_SIS/riga/INPUT/cfc.bc.nc</dataSource>
   </dataFile>
 
   <dataFile label="input" target="INPUT/" chksum="" size="" timestamp="">
-       <dataSource platform="$(platform)">/gpfs/f5/gfdl_o/world-shared/datasets/OM_1deg/INPUT/land_mosaic_tile1Xocean_mosaic_tile1.nc</dataSource>
+       <dataSource platform="$(platform)">/gpfs/f5/gfdl_o/world-shared/datasets/GOLD_SIS/riga/INPUT/geothermal_heating_cm2g.nc</dataSource>
   </dataFile>
 
   <dataFile label="input" target="INPUT/" chksum="" size="" timestamp="">
-       <dataSource platform="$(platform)">/gpfs/f5/gfdl_o/world-shared/datasets/OM_1deg/INPUT/layer_coord.nc</dataSource>
+       <dataSource platform="$(platform)">/gpfs/f5/gfdl_o/world-shared/datasets/GOLD_SIS/riga/INPUT/GOLD_IC.2010.11.15.nc</dataSource>
   </dataFile>
 
   <dataFile label="input" target="INPUT/" chksum="" size="" timestamp="">
-       <dataSource platform="$(platform)">/gpfs/f5/gfdl_o/world-shared/datasets/OM_1deg/INPUT/MOM_channels_FLOR</dataSource>
+       <dataSource platform="$(platform)">/gpfs/f5/gfdl_o/world-shared/datasets/GOLD_SIS/riga/mosaic.unpacked/grid_spec.nc</dataSource>
   </dataFile>
 
   <dataFile label="input" target="INPUT/" chksum="" size="" timestamp="">
-       <dataSource platform="$(platform)">/gpfs/f5/gfdl_o/world-shared/datasets/OM_1deg/INPUT/MOM_channels_SPEAR</dataSource>
+       <dataSource platform="$(platform)">/gpfs/f5/gfdl_o/world-shared/datasets/GOLD_SIS/riga/INPUT/gustiness_qscat.nc</dataSource>
   </dataFile>
 
   <dataFile label="input" target="INPUT/" chksum="" size="" timestamp="">
-       <dataSource platform="$(platform)">/gpfs/f5/gfdl_o/world-shared/datasets/OM_1deg/INPUT/ocean_hgrid.nc</dataSource>
+       <dataSource platform="$(platform)">/gpfs/f5/gfdl_o/world-shared/datasets/GOLD_SIS/riga/mosaic.unpacked/land_hgrid.nc</dataSource>
   </dataFile>
 
   <dataFile label="input" target="INPUT/" chksum="" size="" timestamp="">
-       <dataSource platform="$(platform)">/gpfs/f5/gfdl_o/world-shared/datasets/OM_1deg/INPUT/ocean_mask.nc</dataSource>
+       <dataSource platform="$(platform)">/gpfs/f5/gfdl_o/world-shared/datasets/GOLD_SIS/riga/mosaic.unpacked/land_mask.nc</dataSource>
   </dataFile>
 
   <dataFile label="input" target="INPUT/" chksum="" size="" timestamp="">
-       <dataSource platform="$(platform)">/gpfs/f5/gfdl_o/world-shared/datasets/OM_1deg/INPUT/ocean_mosaic.nc</dataSource>
+       <dataSource platform="$(platform)">/gpfs/f5/gfdl_o/world-shared/datasets/GOLD_SIS/riga/mosaic.unpacked/land_mosaic.nc</dataSource>
   </dataFile>
 
   <dataFile label="input" target="INPUT/" chksum="" size="" timestamp="">
-       <dataSource platform="$(platform)">/gpfs/f5/gfdl_o/world-shared/datasets/OM_1deg/INPUT/seawifs_1998-2006_smoothed_2X.nc</dataSource>
+       <dataSource platform="$(platform)">/gpfs/f5/gfdl_o/world-shared/datasets/GOLD_SIS/riga/mosaic.unpacked/land_mosaic_tile1Xocean_mosaic_tile1.nc</dataSource>
   </dataFile>
 
   <dataFile label="input" target="INPUT/" chksum="" size="" timestamp="">
-       <dataSource platform="$(platform)">/gpfs/f5/gfdl_o/world-shared/datasets/OM_1deg/INPUT/tidal_amplitude.nc</dataSource>
+       <dataSource platform="$(platform)">/gpfs/f5/gfdl_o/world-shared/datasets/GOLD_SIS/riga/mosaic.unpacked/mosaic.nc</dataSource>
+  </dataFile>
+
+  <!--
+  <dataFile label="input" target="INPUT/" chksum="" size="" timestamp="">
+       <dataSource platform="$(platform)">/gpfs/f5/gfdl_o/world-shared/datasets/GOLD_SIS/riga/INPUT/ncar_precip_clim.nc</dataSource>
   </dataFile>
 
   <dataFile label="input" target="INPUT/" chksum="" size="" timestamp="">
-       <dataSource platform="$(platform)">/gpfs/f5/gfdl_o/world-shared/datasets/OM_1deg/INPUT/topo_edits_011818.nc</dataSource>
+       <dataSource platform="$(platform)">/gpfs/f5/gfdl_o/world-shared/datasets/GOLD_SIS/riga/INPUT/ncar_rad_clim.nc</dataSource>
+  </dataFile>
+  -->
+
+  <dataFile label="input" target="INPUT/" chksum="" size="" timestamp="">
+       <dataSource platform="$(platform)">/gpfs/f5/gfdl_o/world-shared/datasets/GOLD_SIS/riga/INPUT/ocean_grid.nc</dataSource>
   </dataFile>
 
   <dataFile label="input" target="INPUT/" chksum="" size="" timestamp="">
-       <dataSource platform="$(platform)">/gpfs/f5/gfdl_o/world-shared/datasets/OM_1deg/INPUT/topog.nc</dataSource>
+       <dataSource platform="$(platform)">/gpfs/f5/gfdl_o/world-shared/datasets/GOLD_SIS/riga/mosaic.unpacked/ocean_hgrid.nc</dataSource>
   </dataFile>
 
   <dataFile label="input" target="INPUT/" chksum="" size="" timestamp="">
-       <dataSource platform="$(platform)">/gpfs/f5/gfdl_o/world-shared/datasets/OM_1deg/INPUT/vgrid_75_2m.nc</dataSource>
-     </dataFile>
-     <!--
+       <dataSource platform="$(platform)">/gpfs/f5/gfdl_o/world-shared/datasets/GOLD_SIS/riga/mosaic.unpacked/ocean_mask.nc</dataSource>
+  </dataFile>
+
   <dataFile label="input" target="INPUT/" chksum="" size="" timestamp="">
-       <dataSource platform="$(platform)">/gpfs/f5/gfdl_o/world-shared/datasets//AM2_LM3_MOM6i_1deg/tikal/mosaic.unpacked/ocean_vgrid.nc</dataSource>
-     </dataFile>-->
+       <dataSource platform="$(platform)">/gpfs/f5/gfdl_o/world-shared/datasets/GOLD_SIS/riga/mosaic.unpacked/ocean_mosaic.nc</dataSource>
+  </dataFile>
+
+  <dataFile label="input" target="INPUT/" chksum="" size="" timestamp="">
+       <dataSource platform="$(platform)">/gpfs/f5/gfdl_o/world-shared/datasets/GOLD_SIS/riga/mosaic.unpacked/ocean_vgrid.nc</dataSource>
+  </dataFile>
+
+  <dataFile label="input" target="INPUT/" chksum="" size="" timestamp="">
+       <dataSource platform="$(platform)">/gpfs/f5/gfdl_o/world-shared/datasets/GOLD_SIS/riga/INPUT/ocmip2_cfc.res.nc</dataSource>
+  </dataFile>
+
+  <dataFile label="input" target="INPUT/" chksum="" size="" timestamp="">
+       <dataSource platform="$(platform)">/gpfs/f5/gfdl_o/world-shared/datasets/GOLD_SIS/riga/INPUT/OM3_zgrid.nc</dataSource>
+  </dataFile>
+
+  <!--
+  <dataFile label="input" target="INPUT/" chksum="" size="" timestamp="">
+       <dataSource platform="$(platform)">/gpfs/f5/gfdl_o/world-shared/datasets/GOLD_SIS/riga/INPUT/q_10_mod.clim.nc</dataSource>
+  </dataFile>
+  -->
+
+  <dataFile label="input" target="INPUT/" chksum="" size="" timestamp="">
+       <dataSource platform="$(platform)">/gpfs/f5/gfdl_o/world-shared/datasets/GOLD_SIS/riga/mosaic.unpacked/README</dataSource>
+  </dataFile>
+  
+  <!--
+  <dataFile label="input" target="INPUT/" chksum="" size="" timestamp="">
+       <dataSource platform="$(platform)">/gpfs/f5/gfdl_o/world-shared/datasets/GOLD_SIS/riga/INPUT/runoff.nc</dataSource>
+  </dataFile>
+  -->
+
+  <dataFile label="input" target="INPUT/" chksum="" size="" timestamp="">
+       <dataSource platform="$(platform)">/gpfs/f5/gfdl_o/world-shared/datasets/GOLD_SIS/riga/INPUT/salt_restore.nc</dataSource>
+  </dataFile>
+
+  <dataFile label="input" target="INPUT/" chksum="" size="" timestamp="">
+       <dataSource platform="$(platform)">/gpfs/f5/gfdl_o/world-shared/datasets/GOLD_SIS/riga/INPUT/seawifs_1998-2006_GOLD_smoothed_2X.nc</dataSource>
+  </dataFile>
+
+  <dataFile label="input" target="INPUT/" chksum="" size="" timestamp="">
+       <dataSource platform="$(platform)">/gpfs/f5/gfdl_o/world-shared/datasets/GOLD_SIS/riga/INPUT/sgs_h2.nc</dataSource>
+  </dataFile>
+
+  <!--
+  <dataFile label="input" target="INPUT/" chksum="" size="" timestamp="">
+       <dataSource platform="$(platform)">/gpfs/f5/gfdl_o/world-shared/datasets/GOLD_SIS/riga/INPUT/slp.clim.nc</dataSource>
+  </dataFile>
+  
+  <dataFile label="input" target="INPUT/" chksum="" size="" timestamp="">
+       <dataSource platform="$(platform)">/gpfs/f5/gfdl_o/world-shared/datasets/GOLD_SIS/riga/INPUT/sst_ice_clim.nc</dataSource>
+  </dataFile>
+
+  <dataFile label="input" target="INPUT/" chksum="" size="" timestamp="">
+       <dataSource platform="$(platform)">/gpfs/f5/gfdl_o/world-shared/datasets/GOLD_SIS/riga/INPUT/t_10_mod.clim.nc</dataSource>
+  </dataFile>
+  -->
+
+  <dataFile label="input" target="INPUT/" chksum="" size="" timestamp="">
+       <dataSource platform="$(platform)">/gpfs/f5/gfdl_o/world-shared/datasets/GOLD_SIS/riga/INPUT/tideamp.nc</dataSource>
+  </dataFile>
+
+  <dataFile label="input" target="INPUT/" chksum="" size="" timestamp="">
+       <dataSource platform="$(platform)">/gpfs/f5/gfdl_o/world-shared/datasets/GOLD_SIS/riga/INPUT/tke_tidal_cm2p2.nc</dataSource>
+  </dataFile>
+
+  <dataFile label="input" target="INPUT/" chksum="" size="" timestamp="">
+       <dataSource platform="$(platform)">/gpfs/f5/gfdl_o/world-shared/datasets/GOLD_SIS/riga/mosaic.unpacked/topog.nc</dataSource>
+  </dataFile>
+
+  <!--
+  <dataFile label="input" target="INPUT/" chksum="" size="" timestamp="">
+       <dataSource platform="$(platform)">/gpfs/f5/gfdl_o/world-shared/datasets/GOLD_SIS/riga/INPUT/u_10_mod.clim.nc</dataSource>
+  </dataFile>
+
+  <dataFile label="input" target="INPUT/" chksum="" size="" timestamp="">
+       <dataSource platform="$(platform)">/gpfs/f5/gfdl_o/world-shared/datasets/GOLD_SIS/riga/INPUT/v_10_mod.clim.nc</dataSource>
+  </dataFile>
+  -->
 
      </input>
    </freInclude>
 
   <freInclude name="ryf_data">
     <input>
-      <!--
+      
       <dataFile label="input" target="INPUT/JRA_huss.nc" chksum="" size="" timestamp="">
         <dataSource platform="$(platform)">$(gfdlO_pdata)/datasets/OM5_025/RYF/huss_input4MIPs_atmosphericState_OMIP_MRI-JRA55-do-1-5-0_00020101-00021231.padded.nc</dataSource>
       </dataFile>
@@ -392,20 +456,20 @@ Experiment to build executable.
       </dataFile>
       <dataFile label="input" target="INPUT/JRA_vas.nc" chksum="" size="" timestamp="">
         <dataSource platform="$(platform)">$(gfdlO_pdata)/datasets/OM5_025/RYF/vas_input4MIPs_atmosphericState_OMIP_MRI-JRA55-do-1-5-0_00020101-00021231.padded.nc</dataSource>
-      </dataFile>-->
-      <dataFile label="input" target="INPUT/JRA_friver" chksum="" size="" timestamp="">
+      </dataFile>
+      
+      <dataFile label="input" target="INPUT/JRA_friver_360x210.nc" chksum="" size="" timestamp="">
         <!--        <dataSource platform="$(platform)">$(gfdlO_pdata)/datasets/OM5_025/RYF/friver_input4MIPs_atmosphericState_OMIP_MRI-JRA55-do-1-5-0_00020101-00021231.padded.v20240410.nc</dataSource>-->
         <dataSource platform="$(platform)">/gpfs/f5/gfdl_o/scratch/Kiera.Lowman/CM2G_input_data/JRA_friver_360x210_1990-05-01_1991_04-30.nc</dataSource>
       </dataFile>
-
-      <dataFile label="input" target="INPUT/JRA_licalvf.nc" chksum="" size="" timestamp="">
+      <dataFile label="input" target="INPUT/JRA_licalvf_360x210.nc" chksum="" size="" timestamp="">
         <!--        <dataSource platform="$(platform)">$(gfdlO_pdata)/datasets/OM5_025/RYF/licalvf_input4MIPs_atmosphericState_OMIP_MRI-JRA55-do-1-5-0_00020101-00021231.padded.v20240410.nc</dataSource>-->
         <dataSource platform="$(platform)">/gpfs/f5/gfdl_o/scratch/Kiera.Lowman/CM2G_input_data/JRA_licalvf_360x210_1990-05-01_1991_04-30.nc</dataSource>
       </dataFile>
 
-      <dataFile label="input" target="INPUT/salt_restore.nc" chksum="" size="" timestamp="">
+      <!--      <dataFile label="input" target="INPUT/salt_restore.nc" chksum="" size="" timestamp="">
          <dataSource platform="$(platform)">$(gfdlO_pdata)/datasets/OM4_025/INPUT.JRA.v2019.07.04/salt_restore_JRA.1440x1080.v20190706.nc</dataSource>
-      </dataFile>
+      </dataFile>-->
       <dataFile label="input" target="INPUT/" chksum="" size="" timestamp="">
         <dataSource platform="$(platform)">/gpfs/f5/gfdl_o/scratch/Kiera.Lowman/CM2G_input_data/MOM_saltrestore</dataSource>
       </dataFile>
@@ -610,6 +674,24 @@ set nyblocks = $nyblock
 	    interp_method = 'second_order'
 	</namelist>
 
+  <dataFile label="input" target="INPUT/" chksum="" size="" timestamp="">
+        <dataSource platform="$(platform)">$(MOM6_EXAMPLES)/ice_ocean_SIS2/SIS2/MOM_input</dataSource>
+  </dataFile>
+  <dataFile label="input" target="INPUT/" chksum="" size="" timestamp="">
+    <dataSource platform="$(platform)">$(MOM6_EXAMPLES)/ice_ocean_SIS2/SIS2/SIS_input</dataSource>
+  </dataFile>
+  <dataFile label="fieldTable" target="INPUT/" chksum="" size="" timestamp="">
+          <dataSource platform="$(platform)">$(MOM6_EXAMPLES)/ice_ocean_SIS2/SIS2/field_table</dataSource>
+  </dataFile>
+  <dataFile label="diagTable" target="INPUT/" chksum="" size="" timestamp="">
+    <!-- <dataSource platform="$(platform)">$root/$(LIBS_ROOT)/diag_table_updated_tuning</dataSource> -->
+    <dataSource platform="$(platform)">awg_include/diag_table/diag_table_updated_tuning</dataSource>
+   </dataFile>
+  <dataFile label="gridSpec" target="INPUT/" chksum="" size="" timestamp="">
+    <dataSource site="ncrc">$(gfdlO_pdata)/datasets/GOLD_SIS/riga/mosaic.unpacked/grid_spec.nc</dataSource>
+        <dataSource site="gfdl">/archive/gold/datasets/GOLD_SIS/riga/mosaic.unpacked/grid_spec.nc</dataSource>
+  </dataFile>
+
     </input>
    </freInclude>
 
@@ -645,8 +727,8 @@ SIS_OVERRIDE_EOF
          restart_input_dir = 'INPUT/',
          restart_output_dir = 'RESTART/',
 	 parameter_filename = 'INPUT/MOM_input',
-        'INPUT/MOM_override',
-        'INPUT/MOM_saltrestore' 
+        'INPUT/MOM_override'
+        <!--'INPUT/MOM_saltrestore'-->
       </namelist>
 
       <namelist name="SIS_input_nml">
@@ -676,20 +758,20 @@ SIS_OVERRIDE_EOF
       </namelist>
 
       <!-- Namelist (commented out July 3) -->
-              <namelist file="$(MOM6_EXAMPLES)/ice_ocean_SIS2/OM4_025.JRA/input.nml"/>
+              <namelist file="$(MOM6_EXAMPLES)/ice_ocean_SIS2/SIS2/input.nml"/>
        <!-- Input datasets -->
-        <xi:include xpointer="xpointer(//freInclude[@name='OM_1deg_data']/input/node())"/>
+        <xi:include xpointer="xpointer(//freInclude[@name='MOM6_SIS2_data']/input/node())"/>
         <xi:include xpointer="xpointer(//freInclude[@name='ryf_data']/input/node())"/>
      <xi:include xpointer="xpointer(//freInclude[@name='common_init_csh_blocks']/input/node())"/>
      
      <!--common setup for JRA forcing dataset and data_table-->
-        <!--      <xi:include xpointer="xpointer(//freInclude[@name='JRA_data_table']/input/node())"/>-->
-      <!--append the resolution dependent runoff override
+     <xi:include xpointer="xpointer(//freInclude[@name='custom_JRA_data_table']/input/node())"/>
+     <!--append the resolution dependent runoff override-->
       <dataTable order="append">
-#JRA runoff
-"ICE" , "runoff"        , "friver"      , "./INPUT/JRA_friver_360x210.nc", "none" ,  1.0
-"ICE" , "calving"       , "licalvf"     , "./INPUT/JRA_licalvf_360x210.nc", "none" ,  1.0
-      </dataTable>-->
+#JRA runoff and calving
+"ICE" , "runoff"        , "friver"      , "./INPUT/JRA_friver_360x210.nc", .false. ,  1.0
+"ICE" , "calving"       , "licalvf"     , "./INPUT/JRA_licalvf_360x210.nc", .false. ,  1.0
+      </dataTable>
 
 <diagTable>
 $name
@@ -802,30 +884,57 @@ SIS_OVERRIDE_EOF
 </input>
 </experiment>
 
-<!--  <freInclude name="JRA_data_table">
+<freInclude name="custom_JRA_data_table">
     <input>
       <dataTable>
- "ATM", "p_surf",             "psl",      "./INPUT/JRA_psl.nc",     "bilinear",   1.0
- "ATM", "p_bot",              "psl",      "./INPUT/JRA_psl.nc",     "bilinear",   1.0
- "ATM", "t_bot",              "tas",      "./INPUT/JRA_tas.nc",     "bilinear",   1.0
- "ATM", "sphum_bot",          "huss",     "./INPUT/JRA_huss.nc",    "bilinear",   1.0
- "ATM", "u_bot",              "uas",      "./INPUT/JRA_uas.nc",     "bicubic",    1.0
- "ATM", "v_bot",              "vas",      "./INPUT/JRA_vas.nc",     "bicubic",    1.0
- "ATM", "z_bot",              "",         "",                       "bilinear",  10.0
- "ATM", "gust",               "",         "",                       "bilinear",   1.0e-4
- "ICE", "lw_flux_dn",         "rlds",     "./INPUT/JRA_rlds.nc",    "bilinear",   1.0
- "ICE", "sw_flux_vis_dir_dn", "rsds",     "./INPUT/JRA_rsds.nc",    "bilinear",   0.285
- "ICE", "sw_flux_vis_dif_dn", "rsds",     "./INPUT/JRA_rsds.nc",    "bilinear",   0.285
- "ICE", "sw_flux_nir_dir_dn", "rsds",     "./INPUT/JRA_rsds.nc",    "bilinear",   0.215
- "ICE", "sw_flux_nir_dif_dn", "rsds",     "./INPUT/JRA_rsds.nc",    "bilinear",   0.215
- "ICE", "lprec",              "prra",     "./INPUT/JRA_prra.nc",    "bilinear",   1.0
- "ICE", "fprec",              "prsn",     "./INPUT/JRA_prsn.nc",    "bilinear",   1.0
- "ICE", "dhdt",               "",         "",                       "none",      80.0
- "ICE", "dedt",               "",         "",                       "none",       2.0e-6
- "ICE", "drdt",               "",         "",                       "none",      10.0
+"ATM", "cfc_11_flux_pcair_atm","CFC_11", "INPUT/cfc.bc.nc",              .false.,      1.0e-12
+"ATM", "cfc_12_flux_pcair_atm","CFC_12", "INPUT/cfc.bc.nc",              .false.,      1.0e-12
+"ATM", "p_surf",             "psl",      "./INPUT/JRA_psl.nc",           "bilinear",   1.0
+"ATM", "p_bot",              "psl",      "./INPUT/JRA_psl.nc",           "bilinear",   1.0
+"ATM", "t_bot",              "tas",      "./INPUT/JRA_tas.nc",           "bilinear",   1.0
+"ATM", "sphum_bot",          "huss",     "./INPUT/JRA_huss.nc",          "bilinear",   1.0
+"ATM", "u_bot",              "uas",      "./INPUT/JRA_uas.nc",           "bicubic",    1.0
+"ATM", "v_bot",              "vas",      "./INPUT/JRA_vas.nc",           "bicubic",    1.0
+"ATM", "z_bot",              "",         "",                             "bilinear",   10.0
+"ATM", "gust",               "",         "",                             "bilinear",   1.0e-4
+"ICE", "lw_flux_dn",         "rlds",     "./INPUT/JRA_rlds.nc",          "bilinear",   1.0
+"ICE", "sw_flux_vis_dir_dn", "rsds",     "./INPUT/JRA_rsds.nc",          "bilinear",   0.285
+"ICE", "sw_flux_vis_dif_dn", "rsds",     "./INPUT/JRA_rsds.nc",          "bilinear",   0.285
+"ICE", "sw_flux_nir_dir_dn", "rsds",     "./INPUT/JRA_rsds.nc",          "bilinear",   0.215
+"ICE", "sw_flux_nir_dif_dn", "rsds",     "./INPUT/JRA_rsds.nc",          "bilinear",   0.215
+"ICE", "lprec",              "prra",     "./INPUT/JRA_prra.nc",          "bilinear",   1.0
+"ICE", "fprec",              "prsn",     "./INPUT/JRA_prsn.nc",          "bilinear",   1.0
+"ICE", "dhdt",               "",         "",                             .false.,      80.0
+"ICE", "dedt",               "",         "",                             .false.,      2.0e-6
+"ICE", "drdt",               "",         "",                             .false.,      10.0
+"ICE", "sic_obs"        , "SIC"         ,"./INPUT/sst_ice_clim.nc"       , .false. ,   0.00
+"ICE", "sit_obs"        , "SIT"         ,"./INPUT/sst_ice_clim.nc"       , .false. ,   0.00
+"ICE", "sst_obs"        , "SST"         ,"./INPUT/sst_ice_clim.nc"       , .false. ,   1.0
+"LND" , "t_surf"        , ""            , ""                             , .true.  ,   273.0
+"LND" , "t_ca"          , ""            , ""                             , .true.  ,   273.0
+"LND" , "q_ca"          , ""            , ""                             , .true.  ,   0.0
+"LND" , "rough_mom"     , ""            , ""                             , .true.  ,   0.01
+"LND" , "rough_heat"    , ""            , ""                             , .true.  ,   0.1
+"LND" , "albedo"        , ""            , ""                             , .true.  ,   0.1
+"LND" , "t_ca"          , ""            , ""                             , .true.  ,   273.0
+"LND" , "t_surf"        , ""            , ""                             , .true.  ,   273.0
+"LND" , "sphum_surf"    , ""            , ""                             , .true.  ,   0.0
+"LND" , "sphum_ca"      , ""            , ""                             , .true.  ,   0.0
+"LND" , "t_flux"        , ""            , ""                             , .true.  ,   0.0
+"LND" , "sphum_flux"    , ""            , ""                             , .true.  ,   0.0
+"LND" , "lw_flux"       , ""            , ""                             , .true.  ,   0.0
+"LND" , "sw_flux"       , ""            , ""                             , .true.  ,   0.0
+"LND" , "lprec"         , ""            , ""                             , .true.  ,   0.0
+"LND" , "fprec"         , ""            , ""                             , .true.  ,   0.0
+"LND" , "dhdt"          , ""            , ""                             , .true.  ,   5.0
+"LND" , "dedt"          , ""            , ""                             , .true.  ,   2e-6
+"LND" , "dedq"          , ""            , ""                             , .true.  ,   0.0
+"LND" , "drdt"          , ""            , ""                             , .true.  ,   5.0
+"LND" , "drag_q"        , ""            , ""                             , .true.  ,   0.0
+"LND" , "p_surf"        , ""            , ""                             , .true.  ,   1.e5
       </dataTable>
     </input>
   </freInclude>
--->
+
 
 </experimentSuite>
