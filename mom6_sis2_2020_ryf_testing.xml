@@ -392,11 +392,13 @@ Experiment to build executable.
   <dataFile label="input" target="INPUT/" chksum="" size="" timestamp="">
        <dataSource platform="$(platform)">/gpfs/f5/gfdl_o/world-shared/datasets/GOLD_SIS/riga/INPUT/slp.clim.nc</dataSource>
   </dataFile>
-  
+  -->
+
   <dataFile label="input" target="INPUT/" chksum="" size="" timestamp="">
        <dataSource platform="$(platform)">/gpfs/f5/gfdl_o/world-shared/datasets/GOLD_SIS/riga/INPUT/sst_ice_clim.nc</dataSource>
   </dataFile>
 
+  <!--
   <dataFile label="input" target="INPUT/" chksum="" size="" timestamp="">
        <dataSource platform="$(platform)">/gpfs/f5/gfdl_o/world-shared/datasets/GOLD_SIS/riga/INPUT/t_10_mod.clim.nc</dataSource>
   </dataFile>
@@ -769,8 +771,8 @@ SIS_OVERRIDE_EOF
      <!--append the resolution dependent runoff override-->
       <dataTable order="append">
 #JRA runoff and calving
-"ICE" , "runoff"        , "friver"      , "./INPUT/JRA_friver_360x210.nc", .false. ,  1.0
-"ICE" , "calving"       , "licalvf"     , "./INPUT/JRA_licalvf_360x210.nc", .false. ,  1.0
+"ICE" , "runoff"        , "friver"      , "./INPUT/JRA_friver_360x210.nc", "none" ,  1.0
+"ICE" , "calving"       , "licalvf"     , "./INPUT/JRA_licalvf_360x210.nc", "none" ,  1.0
       </dataTable>
 
 <diagTable>
@@ -887,51 +889,51 @@ SIS_OVERRIDE_EOF
 <freInclude name="custom_JRA_data_table">
     <input>
       <dataTable>
-"ATM", "cfc_11_flux_pcair_atm","CFC_11", "INPUT/cfc.bc.nc",              .false.,      1.0e-12
-"ATM", "cfc_12_flux_pcair_atm","CFC_12", "INPUT/cfc.bc.nc",              .false.,      1.0e-12
-"ATM", "p_surf",             "psl",      "./INPUT/JRA_psl.nc",           "bilinear",   1.0
-"ATM", "p_bot",              "psl",      "./INPUT/JRA_psl.nc",           "bilinear",   1.0
-"ATM", "t_bot",              "tas",      "./INPUT/JRA_tas.nc",           "bilinear",   1.0
-"ATM", "sphum_bot",          "huss",     "./INPUT/JRA_huss.nc",          "bilinear",   1.0
-"ATM", "u_bot",              "uas",      "./INPUT/JRA_uas.nc",           "bicubic",    1.0
-"ATM", "v_bot",              "vas",      "./INPUT/JRA_vas.nc",           "bicubic",    1.0
-"ATM", "z_bot",              "",         "",                             "bilinear",   10.0
-"ATM", "gust",               "",         "",                             "bilinear",   1.0e-4
-"ICE", "lw_flux_dn",         "rlds",     "./INPUT/JRA_rlds.nc",          "bilinear",   1.0
-"ICE", "sw_flux_vis_dir_dn", "rsds",     "./INPUT/JRA_rsds.nc",          "bilinear",   0.285
-"ICE", "sw_flux_vis_dif_dn", "rsds",     "./INPUT/JRA_rsds.nc",          "bilinear",   0.285
-"ICE", "sw_flux_nir_dir_dn", "rsds",     "./INPUT/JRA_rsds.nc",          "bilinear",   0.215
-"ICE", "sw_flux_nir_dif_dn", "rsds",     "./INPUT/JRA_rsds.nc",          "bilinear",   0.215
-"ICE", "lprec",              "prra",     "./INPUT/JRA_prra.nc",          "bilinear",   1.0
-"ICE", "fprec",              "prsn",     "./INPUT/JRA_prsn.nc",          "bilinear",   1.0
-"ICE", "dhdt",               "",         "",                             .false.,      80.0
-"ICE", "dedt",               "",         "",                             .false.,      2.0e-6
-"ICE", "drdt",               "",         "",                             .false.,      10.0
-"ICE", "sic_obs"        , "SIC"         ,"./INPUT/sst_ice_clim.nc"       , .false. ,   0.00
-"ICE", "sit_obs"        , "SIT"         ,"./INPUT/sst_ice_clim.nc"       , .false. ,   0.00
-"ICE", "sst_obs"        , "SST"         ,"./INPUT/sst_ice_clim.nc"       , .false. ,   1.0
-"LND" , "t_surf"        , ""            , ""                             , .true.  ,   273.0
-"LND" , "t_ca"          , ""            , ""                             , .true.  ,   273.0
-"LND" , "q_ca"          , ""            , ""                             , .true.  ,   0.0
-"LND" , "rough_mom"     , ""            , ""                             , .true.  ,   0.01
-"LND" , "rough_heat"    , ""            , ""                             , .true.  ,   0.1
-"LND" , "albedo"        , ""            , ""                             , .true.  ,   0.1
-"LND" , "t_ca"          , ""            , ""                             , .true.  ,   273.0
-"LND" , "t_surf"        , ""            , ""                             , .true.  ,   273.0
-"LND" , "sphum_surf"    , ""            , ""                             , .true.  ,   0.0
-"LND" , "sphum_ca"      , ""            , ""                             , .true.  ,   0.0
-"LND" , "t_flux"        , ""            , ""                             , .true.  ,   0.0
-"LND" , "sphum_flux"    , ""            , ""                             , .true.  ,   0.0
-"LND" , "lw_flux"       , ""            , ""                             , .true.  ,   0.0
-"LND" , "sw_flux"       , ""            , ""                             , .true.  ,   0.0
-"LND" , "lprec"         , ""            , ""                             , .true.  ,   0.0
-"LND" , "fprec"         , ""            , ""                             , .true.  ,   0.0
-"LND" , "dhdt"          , ""            , ""                             , .true.  ,   5.0
-"LND" , "dedt"          , ""            , ""                             , .true.  ,   2e-6
-"LND" , "dedq"          , ""            , ""                             , .true.  ,   0.0
-"LND" , "drdt"          , ""            , ""                             , .true.  ,   5.0
-"LND" , "drag_q"        , ""            , ""                             , .true.  ,   0.0
-"LND" , "p_surf"        , ""            , ""                             , .true.  ,   1.e5
+"ATM", "p_surf",             "psl",      "./INPUT/JRA_psl.nc",     "bilinear",   1.0
+"ATM", "p_bot",              "psl",      "./INPUT/JRA_psl.nc",     "bilinear",   1.0
+"ATM", "t_bot",              "tas",      "./INPUT/JRA_tas.nc",     "bilinear",   1.0
+"ATM", "sphum_bot",          "huss",     "./INPUT/JRA_huss.nc",    "bilinear",   1.0
+"ATM", "u_bot",              "uas",      "./INPUT/JRA_uas.nc",     "bicubic",    1.0
+"ATM", "v_bot",              "vas",      "./INPUT/JRA_vas.nc",     "bicubic",    1.0
+"ATM", "z_bot",              "",         "",                       "bilinear",  10.0
+"ATM", "gust",               "",         "",                       "bilinear",   1.0e-4
+"ICE", "lw_flux_dn",         "rlds",     "./INPUT/JRA_rlds.nc",    "bilinear",   1.0
+"ICE", "sw_flux_vis_dir_dn", "rsds",     "./INPUT/JRA_rsds.nc",    "bilinear",   0.285
+"ICE", "sw_flux_vis_dif_dn", "rsds",     "./INPUT/JRA_rsds.nc",    "bilinear",   0.285
+"ICE", "sw_flux_nir_dir_dn", "rsds",     "./INPUT/JRA_rsds.nc",    "bilinear",   0.215
+"ICE", "sw_flux_nir_dif_dn", "rsds",     "./INPUT/JRA_rsds.nc",    "bilinear",   0.215
+"ICE", "lprec",              "prra",     "./INPUT/JRA_prra.nc",    "bilinear",   1.0
+"ICE", "fprec",              "prsn",     "./INPUT/JRA_prsn.nc",    "bilinear",   1.0
+"ICE", "dhdt",               "",         "",                       "none",      80.0
+"ICE", "dedt",               "",         "",                       "none",       2.0e-6
+"ICE", "drdt",               "",         "",                       "none",      10.0
+"ATM", "cfc_11_flux_pcair_atm","CFC_11","INPUT/cfc.bc.nc","bilinear", 1.0e-12
+"ATM", "cfc_12_flux_pcair_atm","CFC_12","INPUT/cfc.bc.nc","bilinear", 1.0e-12
+"ICE", "sic_obs"        , "SIC"         ,"./INPUT/sst_ice_clim.nc"       , "bilinear" ,  0.00
+"ICE", "sit_obs"        , "SIT"         ,"./INPUT/sst_ice_clim.nc"       , "bilinear" ,  0.00
+"ICE", "sst_obs"        , "SST"         ,"./INPUT/sst_ice_clim.nc"       , "bilinear" ,  1.0
+"LND" , "t_surf"        , ""            , ""                             , "none"  ,  273.0
+"LND" , "t_ca"          , ""            , ""                             , "none"  ,  273.0
+"LND" , "q_ca"          , ""            , ""                             , "none"  ,  0.0
+"LND" , "rough_mom"     , ""            , ""                             , "none"  ,  0.01
+"LND" , "rough_heat"    , ""            , ""                             , "none"  ,  0.1
+"LND" , "albedo"        , ""            , ""                             , "none"  ,  0.1
+"LND" , "t_ca"          , ""            , ""                             , "none"  ,  273.0
+"LND" , "t_surf"        , ""            , ""                             , "none"  ,  273.0
+"LND" , "sphum_surf"    , ""            , ""                             , "none"  ,  0.0
+"LND" , "sphum_ca"      , ""            , ""                             , "none"  ,  0.0
+"LND" , "t_flux"        , ""            , ""                             , "none"  ,  0.0
+"LND" , "sphum_flux"    , ""            , ""                             , "none"  ,  0.0
+"LND" , "lw_flux"       , ""            , ""                             , "none"  ,  0.0
+"LND" , "sw_flux"       , ""            , ""                             , "none"  ,  0.0
+"LND" , "lprec"         , ""            , ""                             , "none"  ,  0.0
+"LND" , "fprec"         , ""            , ""                             , "none"  ,  0.0
+"LND" , "dhdt"          , ""            , ""                             , "none"  ,  5.0
+"LND" , "dedt"          , ""            , ""                             , "none"  ,  2e-6
+"LND" , "dedq"          , ""            , ""                             , "none"  ,  0.0
+"LND" , "drdt"          , ""            , ""                             , "none"  ,  5.0
+"LND" , "drag_q"        , ""            , ""                             , "none"  ,  0.0
+"LND" , "p_surf"        , ""            , ""                             , "none"  ,  1.e5
       </dataTable>
     </input>
   </freInclude>
