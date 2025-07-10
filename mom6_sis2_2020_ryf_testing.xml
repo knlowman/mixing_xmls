@@ -322,15 +322,15 @@ Experiment to build executable.
        <dataSource platform="$(platform)">/gpfs/f5/gfdl_o/world-shared/datasets/GOLD_SIS/riga/mosaic.unpacked/mosaic.nc</dataSource>
   </dataFile>
 
-  <!--
+  <!--adding file back in-->
   <dataFile label="input" target="INPUT/" chksum="" size="" timestamp="">
        <dataSource platform="$(platform)">/gpfs/f5/gfdl_o/world-shared/datasets/GOLD_SIS/riga/INPUT/ncar_precip_clim.nc</dataSource>
   </dataFile>
 
+  <!--adding file back in-->
   <dataFile label="input" target="INPUT/" chksum="" size="" timestamp="">
        <dataSource platform="$(platform)">/gpfs/f5/gfdl_o/world-shared/datasets/GOLD_SIS/riga/INPUT/ncar_rad_clim.nc</dataSource>
   </dataFile>
-  -->
 
   <dataFile label="input" target="INPUT/" chksum="" size="" timestamp="">
        <dataSource platform="$(platform)">/gpfs/f5/gfdl_o/world-shared/datasets/GOLD_SIS/riga/INPUT/ocean_grid.nc</dataSource>
@@ -360,21 +360,19 @@ Experiment to build executable.
        <dataSource platform="$(platform)">/gpfs/f5/gfdl_o/world-shared/datasets/GOLD_SIS/riga/INPUT/OM3_zgrid.nc</dataSource>
   </dataFile>
 
-  <!--
+  <!--adding file back in-->
   <dataFile label="input" target="INPUT/" chksum="" size="" timestamp="">
        <dataSource platform="$(platform)">/gpfs/f5/gfdl_o/world-shared/datasets/GOLD_SIS/riga/INPUT/q_10_mod.clim.nc</dataSource>
   </dataFile>
-  -->
 
   <dataFile label="input" target="INPUT/" chksum="" size="" timestamp="">
        <dataSource platform="$(platform)">/gpfs/f5/gfdl_o/world-shared/datasets/GOLD_SIS/riga/mosaic.unpacked/README</dataSource>
   </dataFile>
   
-  <!--
+  <!--adding file back in-->
   <dataFile label="input" target="INPUT/" chksum="" size="" timestamp="">
        <dataSource platform="$(platform)">/gpfs/f5/gfdl_o/world-shared/datasets/GOLD_SIS/riga/INPUT/runoff.nc</dataSource>
   </dataFile>
-  -->
 
   <dataFile label="input" target="INPUT/" chksum="" size="" timestamp="">
        <dataSource platform="$(platform)">/gpfs/f5/gfdl_o/world-shared/datasets/GOLD_SIS/riga/INPUT/salt_restore.nc</dataSource>
@@ -388,21 +386,19 @@ Experiment to build executable.
        <dataSource platform="$(platform)">/gpfs/f5/gfdl_o/world-shared/datasets/GOLD_SIS/riga/INPUT/sgs_h2.nc</dataSource>
   </dataFile>
 
-  <!--
+  <!--adding file back in-->
   <dataFile label="input" target="INPUT/" chksum="" size="" timestamp="">
        <dataSource platform="$(platform)">/gpfs/f5/gfdl_o/world-shared/datasets/GOLD_SIS/riga/INPUT/slp.clim.nc</dataSource>
   </dataFile>
-  -->
 
   <dataFile label="input" target="INPUT/" chksum="" size="" timestamp="">
        <dataSource platform="$(platform)">/gpfs/f5/gfdl_o/world-shared/datasets/GOLD_SIS/riga/INPUT/sst_ice_clim.nc</dataSource>
   </dataFile>
 
-  <!--
+  <!--adding file back in-->
   <dataFile label="input" target="INPUT/" chksum="" size="" timestamp="">
        <dataSource platform="$(platform)">/gpfs/f5/gfdl_o/world-shared/datasets/GOLD_SIS/riga/INPUT/t_10_mod.clim.nc</dataSource>
   </dataFile>
-  -->
 
   <dataFile label="input" target="INPUT/" chksum="" size="" timestamp="">
        <dataSource platform="$(platform)">/gpfs/f5/gfdl_o/world-shared/datasets/GOLD_SIS/riga/INPUT/tideamp.nc</dataSource>
@@ -416,15 +412,15 @@ Experiment to build executable.
        <dataSource platform="$(platform)">/gpfs/f5/gfdl_o/world-shared/datasets/GOLD_SIS/riga/mosaic.unpacked/topog.nc</dataSource>
   </dataFile>
 
-  <!--
+  <!--adding file back in-->
   <dataFile label="input" target="INPUT/" chksum="" size="" timestamp="">
        <dataSource platform="$(platform)">/gpfs/f5/gfdl_o/world-shared/datasets/GOLD_SIS/riga/INPUT/u_10_mod.clim.nc</dataSource>
   </dataFile>
 
+  <!--adding file back in-->
   <dataFile label="input" target="INPUT/" chksum="" size="" timestamp="">
        <dataSource platform="$(platform)">/gpfs/f5/gfdl_o/world-shared/datasets/GOLD_SIS/riga/INPUT/v_10_mod.clim.nc</dataSource>
   </dataFile>
-  -->
 
      </input>
    </freInclude>
@@ -461,12 +457,10 @@ Experiment to build executable.
       </dataFile>
       
       <dataFile label="input" target="INPUT/JRA_friver_360x210.nc" chksum="" size="" timestamp="">
-        <!--        <dataSource platform="$(platform)">$(gfdlO_pdata)/datasets/OM5_025/RYF/friver_input4MIPs_atmosphericState_OMIP_MRI-JRA55-do-1-5-0_00020101-00021231.padded.v20240410.nc</dataSource>-->
         <dataSource platform="$(platform)">/gpfs/f5/gfdl_o/scratch/Kiera.Lowman/CM2G_input_data/JRA_friver_360x210_1990-05-01_1991_04-30.nc</dataSource>
       </dataFile>
       <dataFile label="input" target="INPUT/JRA_licalvf_360x210.nc" chksum="" size="" timestamp="">
-        <!--        <dataSource platform="$(platform)">$(gfdlO_pdata)/datasets/OM5_025/RYF/licalvf_input4MIPs_atmosphericState_OMIP_MRI-JRA55-do-1-5-0_00020101-00021231.padded.v20240410.nc</dataSource>-->
-        <dataSource platform="$(platform)">/gpfs/f5/gfdl_o/scratch/Kiera.Lowman/CM2G_input_data/JRA_licalvf_360x210_1990-05-01_1991_04-30.nc</dataSource>
+         <dataSource platform="$(platform)">/gpfs/f5/gfdl_o/scratch/Kiera.Lowman/CM2G_input_data/JRA_licalvf_360x210_1990-05-01_1991_04-30.nc</dataSource>
       </dataFile>
 
       <!--      <dataFile label="input" target="INPUT/salt_restore.nc" chksum="" size="" timestamp="">
@@ -676,6 +670,11 @@ set nyblocks = $nyblock
 	    interp_method = 'second_order'
 	</namelist>
 
+  <!--for debugging, trying to run with original data table (no JRA)-->
+  <dataFile label="dataTable" target="INPUT/" chksum="" size="" timestamp="">
+        <dataSource platform="$(platform)">$(MOM6_EXAMPLES)/ice_ocean_SIS2/SIS2/data_table</dataSource>
+  </dataFile>
+
   <dataFile label="input" target="INPUT/" chksum="" size="" timestamp="">
         <dataSource platform="$(platform)">$(MOM6_EXAMPLES)/ice_ocean_SIS2/SIS2/MOM_input</dataSource>
   </dataFile>
@@ -718,11 +717,6 @@ SIS_OVERRIDE_EOF
 
      ]]></csh>
 
-      <!-- if there is an issue, create tar files with *mosaic* topog,nc,... -->
-      <!--dataFile label="gridSpec" target="INPUT/" chksum="" size="" timestamp="">
-        <dataSource platform="$(platform)">$(CMIP6_ARCHIVE_ROOT)/CM4/common/c96_grid/c96_OM4_025_grid_No_mg_drag_v20160808.tar</dataSource>
-      </dataFile-->
-      <!--Apr 30 tried changing filenames from 'MOM_input' to 'INPUT/MOM_input' --> 
       <namelist name="MOM_input_nml">
         output_directory = './',
          input_filename = 'F'
@@ -753,8 +747,8 @@ SIS_OVERRIDE_EOF
         do_land = .false.,
         do_ice = .true.,
         do_ocean = .true.,
-        <!--        atmos_npes = 0,
-        ocean_npes = 480,-->
+        atmos_npes = 0,
+        <!--ocean_npes = 480,-->
         concurrent = .false.
         use_lag_fluxes=.true.
       </namelist>
@@ -769,11 +763,11 @@ SIS_OVERRIDE_EOF
      <!--common setup for JRA forcing dataset and data_table-->
      <xi:include xpointer="xpointer(//freInclude[@name='custom_JRA_data_table']/input/node())"/>
      <!--append the resolution dependent runoff override-->
-      <dataTable order="append">
+     <!--      <dataTable order="append">
 #JRA runoff and calving
 "ICE" , "runoff"        , "friver"      , "./INPUT/JRA_friver_360x210.nc", "none" ,  1.0
 "ICE" , "calving"       , "licalvf"     , "./INPUT/JRA_licalvf_360x210.nc", "none" ,  1.0
-      </dataTable>
+      </dataTable>-->
 
 <diagTable>
 $name
@@ -822,7 +816,8 @@ $baseDate
             <!--               <atm ranks="30" threads="1"     />
             <lnd                             />-->
                <ice                            />
-               <ocn ranks="480" threads="1"    />
+            <!--<ocn ranks="512" threads="1"    />-->
+               <ocn ranks="256" threads="1"    />
            </resources>
       </production>
       <regression name="basic">
@@ -889,7 +884,7 @@ SIS_OVERRIDE_EOF
 <freInclude name="custom_JRA_data_table">
     <input>
       <dataTable>
-"ATM", "p_surf",             "psl",      "./INPUT/JRA_psl.nc",     "bilinear",   1.0
+        <!--"ATM", "p_surf",             "psl",      "./INPUT/JRA_psl.nc",     "bilinear",   1.0
 "ATM", "p_bot",              "psl",      "./INPUT/JRA_psl.nc",     "bilinear",   1.0
 "ATM", "t_bot",              "tas",      "./INPUT/JRA_tas.nc",     "bilinear",   1.0
 "ATM", "sphum_bot",          "huss",     "./INPUT/JRA_huss.nc",    "bilinear",   1.0
@@ -933,7 +928,7 @@ SIS_OVERRIDE_EOF
 "LND" , "dedq"          , ""            , ""                             , "none"  ,  0.0
 "LND" , "drdt"          , ""            , ""                             , "none"  ,  5.0
 "LND" , "drag_q"        , ""            , ""                             , "none"  ,  0.0
-"LND" , "p_surf"        , ""            , ""                             , "none"  ,  1.e5
+        "LND" , "p_surf"        , ""            , ""                             , "none"  ,  1.e5-->
       </dataTable>
     </input>
   </freInclude>
