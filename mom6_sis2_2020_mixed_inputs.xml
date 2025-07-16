@@ -421,6 +421,10 @@ Experiment to build executable.
   <!--adding file back in-->
   <dataFile label="input" target="INPUT/" chksum="" size="" timestamp="">
        <dataSource platform="$(platform)">/gpfs/f5/gfdl_o/world-shared/datasets/GOLD_SIS/riga/INPUT/v_10_mod.clim.nc</dataSource>
+     </dataFile>
+
+  <dataFile label="input" target="INPUT/" chksum="" size="" timestamp="">
+       <dataSource platform="$(platform)">/gpfs/f5/gfdl_o/world-shared/datasets//AM2_LM3_MOM6i_1deg/tikal/INPUT/WOA05_pottemp_salt.nc</dataSource>
   </dataFile>
 
      </input>
@@ -677,7 +681,7 @@ set nyblocks = $nyblock
   </dataFile>
 
   <dataFile label="input" target="INPUT/" chksum="" size="" timestamp="">
-        <dataSource platform="$(platform)">$(MOM6_EXAMPLES)/ice_ocean_SIS2/SIS2/MOM_input</dataSource>
+    <dataSource platform="$(platform)">/gpfs/f5/gfdl_o/scratch/Kiera.Lowman/CM2G_input_data/MOM_input</dataSource>
   </dataFile>
   <dataFile label="input" target="INPUT/" chksum="" size="" timestamp="">
     <dataSource platform="$(platform)">$(MOM6_EXAMPLES)/ice_ocean_SIS2/SIS2/SIS_input</dataSource>
