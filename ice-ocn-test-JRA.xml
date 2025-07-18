@@ -676,10 +676,10 @@ set nyblocks = $nyblock
 	</namelist>
 
   <!--for debugging, trying to run with original data table (no JRA)-->
-  <dataFile label="dataTable" target="INPUT/" chksum="" size="" timestamp="">
+  <!--  <dataFile label="dataTable" target="INPUT/" chksum="" size="" timestamp="">
         <dataSource platform="$(platform)">$(MOM6_EXAMPLES)/ice_ocean_SIS2/SIS2/data_table</dataSource>
   </dataFile>
-
+  -->
   <dataFile label="input" target="INPUT/" chksum="" size="" timestamp="">
     <dataSource platform="$(platform)">/gpfs/f5/gfdl_o/scratch/Kiera.Lowman/CM2G_input_data/MOM_input</dataSource>
   </dataFile>
@@ -704,7 +704,7 @@ set nyblocks = $nyblock
    <freInclude name="custom_JRA_data_table">
     <input>
       <dataTable>
-        <!--"ATM", "p_surf",             "psl",      "./INPUT/JRA_psl.nc",     "bilinear",   1.0
+"ATM", "p_surf",             "psl",      "./INPUT/JRA_psl.nc",     "bilinear",   1.0
 "ATM", "p_bot",              "psl",      "./INPUT/JRA_psl.nc",     "bilinear",   1.0
 "ATM", "t_bot",              "tas",      "./INPUT/JRA_tas.nc",     "bilinear",   1.0
 "ATM", "sphum_bot",          "huss",     "./INPUT/JRA_huss.nc",    "bilinear",   1.0
@@ -748,12 +748,12 @@ set nyblocks = $nyblock
 "LND" , "dedq"          , ""            , ""                             , "none"  ,  0.0
 "LND" , "drdt"          , ""            , ""                             , "none"  ,  5.0
 "LND" , "drag_q"        , ""            , ""                             , "none"  ,  0.0
-        "LND" , "p_surf"        , ""            , ""                             , "none"  ,  1.e5-->
+"LND" , "p_surf"        , ""            , ""                             , "none"  ,  1.e5
       </dataTable>
     </input>
   </freInclude>
 
-  <experiment name="mom6_sis2_mixed_inputs_test_5yr" inherit="mom6_sis2_2020_compile">
+  <experiment name="ice_ocn_JRA_test_5yr" inherit="mom6_sis2_2020_compile">
 <description>
 No added diffusivity.
 </description>
@@ -818,11 +818,11 @@ SIS_OVERRIDE_EOF
      <!--common setup for JRA forcing dataset and data_table-->
      <xi:include xpointer="xpointer(//freInclude[@name='custom_JRA_data_table']/input/node())"/>
      <!--append the resolution dependent runoff override-->
-     <!--      <dataTable order="append">
+     <dataTable order="append">
 #JRA runoff and calving
 "ICE" , "runoff"        , "friver"      , "./INPUT/JRA_friver_360x210.nc", "none" ,  1.0
 "ICE" , "calving"       , "licalvf"     , "./INPUT/JRA_licalvf_360x210.nc", "none" ,  1.0
-      </dataTable>-->
+     </dataTable>
 
 <diagTable>
 $name
@@ -869,8 +869,8 @@ $baseDate
           <segment simTime="12" units="months"/>
           <resources jobWallclock="16:00:00" segRuntime="1:30:00">
                <ice                            />
-            <ocn ranks="512" threads="1"    />
-            <!--            <ocn ranks="256" threads="1"    />-->
+            <ocn ranks="256" threads="1"    />
+            <!--            <ocn ranks="512" threads="1"    />-->
            </resources>
       </production>
       <regression name="basic">
@@ -903,10 +903,11 @@ $baseDate
     </runtime>
   </experiment>
 
+  <!--
   <experiment name="mom6_sis2_mixed_inputs_July17" inherit="mom6_sis2_mixed_inputs_test_5yr">
     <description>
     Identical to mom6_sis2_mixed_inputs_test_5yr.
     </description>
   </experiment>
-
+  -->
 </experimentSuite>
