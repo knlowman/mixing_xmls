@@ -2370,4 +2370,104 @@ SIS_OVERRIDE_EOF
 </input>
 </experiment>
 
+<experiment name="mem3_surf_1860IC_200yr_45deg_0.05TW" inherit="mem3_tune_ctrl_1860IC_200yr">
+<description>
+	Added diffusivity experiment for 0.05 TW input, surface-enhanced profile.
+</description>
+<input>
+     <csh><![CDATA[
+cat > $work/INPUT/MOM_override << MOM_OVERRIDE_EOF
+#override USE_OCMIP2_CFC=False
+#override USE_IDEAL_AGE_TRACER=True
+#override TUNE_DIFFUSIVITY=True
+TUNE_KD_ADD=1.0E-05
+TUNING_RHO_V1=1022.00
+TUNING_RHO_V2=1022.01
+TUNING_RHO_V3=1035.24
+TUNING_RHO_V4=1035.25
+KD_POWER_CHANGE=5.0E+10
+TUNING_LAT_RANGE=-45,-45,45,45
+MOM_OVERRIDE_EOF
+
+cat > $work/INPUT/SIS_override << SIS_OVERRIDE_EOF
+SIS_OVERRIDE_EOF
+     ]]></csh>
+</input>
+</experiment>
+
+<experiment name="mem3_therm_1860IC_200yr_45deg_0.05TW" inherit="mem3_tune_ctrl_1860IC_200yr">
+<description>
+	Added diffusivity experiment for 0.05 TW input, thermocline-enhanced profile.
+</description>
+<input>
+     <csh><![CDATA[
+cat > $work/INPUT/MOM_override << MOM_OVERRIDE_EOF
+#override USE_OCMIP2_CFC=False
+#override USE_IDEAL_AGE_TRACER=True
+#override TUNE_DIFFUSIVITY=True
+TUNE_KD_ADD=1.0E-05
+TUNING_RHO_V1=1035.24
+TUNING_RHO_V2=1035.25
+TUNING_RHO_V3=1036.49
+TUNING_RHO_V4=1036.50
+KD_POWER_CHANGE=5.0E+10
+TUNING_LAT_RANGE=-45,-45,45,45
+MOM_OVERRIDE_EOF
+  
+cat > $work/INPUT/SIS_override << SIS_OVERRIDE_EOF
+SIS_OVERRIDE_EOF
+     ]]></csh>
+</input>
+</experiment>
+
+<experiment name="mem3_mid_1860IC_200yr_45deg_0.05TW" inherit="mem3_tune_ctrl_1860IC_200yr">
+<description>
+	Added diffusivity experiment for 0.05 TW input, middepth-enhanced profile.
+</description>
+<input>
+     <csh><![CDATA[
+cat > $work/INPUT/MOM_override << MOM_OVERRIDE_EOF
+#override USE_OCMIP2_CFC=False
+#override USE_IDEAL_AGE_TRACER=True
+#override TUNE_DIFFUSIVITY=True
+TUNE_KD_ADD=1.0E-05
+TUNING_RHO_V1=1036.49
+TUNING_RHO_V2=1036.50
+TUNING_RHO_V3=1036.89
+TUNING_RHO_V4=1036.90
+KD_POWER_CHANGE=5.0E+10
+TUNING_LAT_RANGE=-45,-45,45,45
+MOM_OVERRIDE_EOF
+  
+cat > $work/INPUT/SIS_override << SIS_OVERRIDE_EOF
+SIS_OVERRIDE_EOF
+     ]]></csh>
+</input>
+</experiment>
+
+<experiment name="mem3_bot_1860IC_200yr_45deg_0.05TW" inherit="mem3_tune_ctrl_1860IC_200yr">
+<description>
+	Added diffusivity experiment for 0.05 TW input, bottom-enhanced profile.
+</description>
+<input>
+     <csh><![CDATA[
+cat > $work/INPUT/MOM_override << MOM_OVERRIDE_EOF
+#override USE_OCMIP2_CFC=False
+#override USE_IDEAL_AGE_TRACER=True
+#override TUNE_DIFFUSIVITY=True
+TUNE_KD_ADD=1.0E-05
+TUNING_RHO_V1=1036.89
+TUNING_RHO_V2=1036.90
+TUNING_RHO_V3=1041.99
+TUNING_RHO_V4=1042.00
+KD_POWER_CHANGE=5.0E+10
+TUNING_LAT_RANGE=-45,-45,45,45
+MOM_OVERRIDE_EOF
+
+cat > $work/INPUT/SIS_override << SIS_OVERRIDE_EOF
+SIS_OVERRIDE_EOF
+     ]]></csh>
+</input>
+</experiment>
+
 </experimentSuite>
