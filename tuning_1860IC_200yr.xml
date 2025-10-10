@@ -2691,9 +2691,9 @@ SIS_OVERRIDE_EOF
 </input>
 </experiment>
 
-<experiment name="surf_1860IC_200yr_0.01TW" inherit="tune_ctrl_1860IC_200yr">
+<experiment name="surf_1860IC_200yr_2TW" inherit="tune_ctrl_1860IC_200yr">
 <description>
-	Added diffusivity experiment for 0.01 TW input, surface-enhanced profile.
+	Added diffusivity experiment for 2 TW input, surface-enhanced profile.
 </description>
 <input>
      <csh><![CDATA[
@@ -2706,7 +2706,7 @@ TUNING_RHO_V1=1022.00
 TUNING_RHO_V2=1022.01
 TUNING_RHO_V3=1035.24
 TUNING_RHO_V4=1035.25
-KD_POWER_CHANGE=1.0E+10
+KD_POWER_CHANGE=2.0E+12
 MOM_OVERRIDE_EOF
 
 cat > $work/INPUT/SIS_override << SIS_OVERRIDE_EOF
@@ -2715,9 +2715,9 @@ SIS_OVERRIDE_EOF
 </input>
 </experiment>
 
-<experiment name="therm_1860IC_200yr_0.01TW" inherit="tune_ctrl_1860IC_200yr">
+<experiment name="therm_1860IC_200yr_2TW" inherit="tune_ctrl_1860IC_200yr">
 <description>
-	Added diffusivity experiment for 0.01 TW input, thermocline-enhanced profile.
+	Added diffusivity experiment for 2 TW input, thermocline-enhanced profile.
 </description>
 <input>
      <csh><![CDATA[
@@ -2730,7 +2730,7 @@ TUNING_RHO_V1=1035.24
 TUNING_RHO_V2=1035.25
 TUNING_RHO_V3=1036.49
 TUNING_RHO_V4=1036.50
-KD_POWER_CHANGE=1.0E+10
+KD_POWER_CHANGE=2.0E+12
 MOM_OVERRIDE_EOF
   
 cat > $work/INPUT/SIS_override << SIS_OVERRIDE_EOF
@@ -2739,9 +2739,9 @@ SIS_OVERRIDE_EOF
 </input>
 </experiment>
 
-<experiment name="mid_1860IC_200yr_0.01TW" inherit="tune_ctrl_1860IC_200yr">
+<experiment name="mid_1860IC_200yr_2TW" inherit="tune_ctrl_1860IC_200yr">
 <description>
-	Added diffusivity experiment for 0.01 TW input, middepth-enhanced profile.
+	Added diffusivity experiment for 2 TW input, middepth-enhanced profile.
 </description>
 <input>
      <csh><![CDATA[
@@ -2754,7 +2754,7 @@ TUNING_RHO_V1=1036.49
 TUNING_RHO_V2=1036.50
 TUNING_RHO_V3=1036.89
 TUNING_RHO_V4=1036.90
-KD_POWER_CHANGE=1.0E+10
+KD_POWER_CHANGE=2.0E+12
 MOM_OVERRIDE_EOF
   
 cat > $work/INPUT/SIS_override << SIS_OVERRIDE_EOF
@@ -2763,9 +2763,9 @@ SIS_OVERRIDE_EOF
 </input>
 </experiment>
 
-<experiment name="bot_1860IC_200yr_0.01TW" inherit="tune_ctrl_1860IC_200yr">
+<experiment name="bot_1860IC_200yr_2TW" inherit="tune_ctrl_1860IC_200yr">
 <description>
-	Added diffusivity experiment for 0.01 TW input, bottom-enhanced profile.
+	Added diffusivity experiment for 2 TW input, bottom-enhanced profile.
 </description>
 <input>
      <csh><![CDATA[
@@ -2778,7 +2778,7 @@ TUNING_RHO_V1=1036.89
 TUNING_RHO_V2=1036.90
 TUNING_RHO_V3=1041.99
 TUNING_RHO_V4=1042.00
-KD_POWER_CHANGE=1.0E+10
+KD_POWER_CHANGE=2.0E+12
 MOM_OVERRIDE_EOF
 
 cat > $work/INPUT/SIS_override << SIS_OVERRIDE_EOF
