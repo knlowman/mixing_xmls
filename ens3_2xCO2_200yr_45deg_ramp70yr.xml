@@ -2252,9 +2252,9 @@ SIS_OVERRIDE_EOF
 </input>
 </experiment>
 
-<experiment name="ens3_uni_2xCO2_200yr_45deg_ramp70yr_0.5TW" inherit="ens3_tune_ctrl_2xCO2_200yr">
+<experiment name="ens3_uni_2xCO2_200yr_45deg_ramp70yr_0.3TW" inherit="ens3_tune_ctrl_2xCO2_200yr">
 <description>
-	Added diffusivity experiment for 0.5 TW input, uniform profile.
+	Added diffusivity experiment for 0.3 TW input, uniform profile.
 </description>
 <input>
      <csh><![CDATA[
@@ -2267,7 +2267,7 @@ TUNING_RHO_V1=1000.00
 TUNING_RHO_V2=1000.01
 TUNING_RHO_V3=1045.00
 TUNING_RHO_V4=1045.01
-KD_POWER_CHANGE=5.0E+11
+KD_POWER_CHANGE=3.0E+11
 TUNING_LAT_RANGE=-45,-45,45,45
 TUNING_RAMP_YRS=70.0
 MOM_OVERRIDE_EOF
@@ -2278,9 +2278,9 @@ SIS_OVERRIDE_EOF
 </input>
 </experiment>
 
-<experiment name="ens3_surf_2xCO2_200yr_45deg_ramp70yr_0.5TW" inherit="ens3_tune_ctrl_2xCO2_200yr">
+<experiment name="ens3_surf_2xCO2_200yr_45deg_ramp70yr_0.3TW" inherit="ens3_tune_ctrl_2xCO2_200yr">
 <description>
-	Added diffusivity experiment for 0.5 TW input, surface-enhanced profile.
+	Added diffusivity experiment for 0.3 TW input, surface-enhanced profile.
 </description>
 <input>
      <csh><![CDATA[
@@ -2293,7 +2293,7 @@ TUNING_RHO_V1=1022.00
 TUNING_RHO_V2=1022.01
 TUNING_RHO_V3=1035.24
 TUNING_RHO_V4=1035.25
-KD_POWER_CHANGE=5.0E+11
+KD_POWER_CHANGE=3.0E+11
 TUNING_LAT_RANGE=-45,-45,45,45
 TUNING_RAMP_YRS=70.0
 MOM_OVERRIDE_EOF
@@ -2304,9 +2304,9 @@ SIS_OVERRIDE_EOF
 </input>
 </experiment>
 
-<experiment name="ens3_therm_2xCO2_200yr_45deg_ramp70yr_0.5TW" inherit="ens3_tune_ctrl_2xCO2_200yr">
+<experiment name="ens3_therm_2xCO2_200yr_45deg_ramp70yr_0.3TW" inherit="ens3_tune_ctrl_2xCO2_200yr">
 <description>
-	Added diffusivity experiment for 0.5 TW input, thermocline-enhanced profile.
+	Added diffusivity experiment for 0.3 TW input, thermocline-enhanced profile.
 </description>
 <input>
      <csh><![CDATA[
@@ -2319,7 +2319,7 @@ TUNING_RHO_V1=1035.24
 TUNING_RHO_V2=1035.25
 TUNING_RHO_V3=1036.49
 TUNING_RHO_V4=1036.50
-KD_POWER_CHANGE=5.0E+11
+KD_POWER_CHANGE=3.0E+11
 TUNING_LAT_RANGE=-45,-45,45,45
 TUNING_RAMP_YRS=70.0
 MOM_OVERRIDE_EOF
@@ -2330,9 +2330,9 @@ SIS_OVERRIDE_EOF
 </input>
 </experiment>
 
-<experiment name="ens3_mid_2xCO2_200yr_45deg_ramp70yr_0.5TW" inherit="ens3_tune_ctrl_2xCO2_200yr">
+<experiment name="ens3_mid_2xCO2_200yr_45deg_ramp70yr_0.3TW" inherit="ens3_tune_ctrl_2xCO2_200yr">
 <description>
-	Added diffusivity experiment for 0.5 TW input, middepth-enhanced profile.
+	Added diffusivity experiment for 0.3 TW input, middepth-enhanced profile.
 </description>
 <input>
      <csh><![CDATA[
@@ -2345,7 +2345,7 @@ TUNING_RHO_V1=1036.49
 TUNING_RHO_V2=1036.50
 TUNING_RHO_V3=1036.89
 TUNING_RHO_V4=1036.90
-KD_POWER_CHANGE=5.0E+11
+KD_POWER_CHANGE=3.0E+11
 TUNING_LAT_RANGE=-45,-45,45,45
 TUNING_RAMP_YRS=70.0
 MOM_OVERRIDE_EOF
@@ -2356,9 +2356,9 @@ SIS_OVERRIDE_EOF
 </input>
 </experiment>
 
-<experiment name="ens3_bot_2xCO2_200yr_45deg_ramp70yr_0.5TW" inherit="ens3_tune_ctrl_2xCO2_200yr">
+<experiment name="ens3_bot_2xCO2_200yr_45deg_ramp70yr_0.3TW" inherit="ens3_tune_ctrl_2xCO2_200yr">
 <description>
-	Added diffusivity experiment for 0.5 TW input, bottom-enhanced profile.
+	Added diffusivity experiment for 0.3 TW input, bottom-enhanced profile.
 </description>
 <input>
      <csh><![CDATA[
@@ -2371,7 +2371,7 @@ TUNING_RHO_V1=1036.89
 TUNING_RHO_V2=1036.90
 TUNING_RHO_V3=1041.99
 TUNING_RHO_V4=1042.00
-KD_POWER_CHANGE=5.0E+11
+KD_POWER_CHANGE=3.0E+11
 TUNING_LAT_RANGE=-45,-45,45,45
 TUNING_RAMP_YRS=70.0
 MOM_OVERRIDE_EOF

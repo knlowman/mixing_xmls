@@ -1991,12 +1991,6 @@ $baseDate
     </runtime>
   </experiment>
 
-<experiment name="mem1_tune_ctrl_const_200yr" inherit="mem1_tune_ctrl_2xCO2_200yr">
-<description>
-	Control case, identical to 'tune_ctrl_2xCO2_200yr'.
-</description>
-</experiment>
-
 <experiment name="mem1_uni_2xCO2_200yr_45deg_0.2TW" inherit="mem1_tune_ctrl_2xCO2_200yr">
 <description>
 	Tuning added diffusivity, uniform profile.
