@@ -104,7 +104,7 @@ NOTES:
   <property name="EXP_CPLD_END"     value="0050"/> <!--simulation end   year--> 
   
   <!--The rest of the properties need not to be changed by the user unless to customize the run-->
-  <property name="FRE_VERSION"     value="bronx-22"/> <!-- fre version to be used -->
+  <property name="FRE_VERSION"     value="bronx-23"/> <!-- fre version to be used -->
   <property name="ProjectID"       value="MDT"/>      <!-- database top level -->
   <property name="ANALYSIS_SWITCH" value="on"/>       <!-- on/off switch for ATM/LND analysis -->
   <property name="TS_ANALYSIS_SWITCH" value="off"/>   <!-- on/off switch for ATM/LND time series analysis -->
@@ -1827,19 +1827,19 @@ set nyblocks = $nyblock
          	<dataSource platform="$(platform)">$(MOM6_EXAMPLES)/coupled_AM2_LM3_SIS2/AM2_SIS2_MOM6i_1deg/field_table</dataSource>
 	</dataFile>
 	<dataFile label="diagTable" target="INPUT/" chksum="" size="" timestamp="">
-    <dataSource platform="$(platform)">awg_include/diag_table/diag_table_11.07.25</dataSource>
+    <dataSource platform="$(platform)">awg_include/diag_table/diag_table_12.19.25</dataSource>
 	 </dataFile>	
     </input>
    </freInclude>
 
-  <experiment name="mem4_tune_ctrl_1860IC_200yr" inherit="tuning_diff_exp_compile">
+  <experiment name="ens3_tune_ctrl_1860IC_200yr" inherit="tuning_diff_exp_compile">
 <description>
 No added diffusivity.
 </description>
     <input>
      <dataFile label="initCond" target="INPUT/" chksum="" size="" timestamp="">
   <!--Replace with a tar files containing all the input files that contain res (restart) -->
-       <dataSource site="ncrc">/gpfs/f5/gfdl_o/scratch/Kiera.Lowman/control_restarts/ctrl_06010101.tar</dataSource>
+       <dataSource site="ncrc">/gpfs/f5/gfdl_o/scratch/Kiera.Lowman/control_restarts/ctrl_04010101.tar</dataSource>
      </dataFile>
 
      <csh><![CDATA[
@@ -1879,7 +1879,7 @@ SIS_OVERRIDE_EOF
       <namelist name="coupler_nml">
         months = 12,
         days   = 0,
-        current_date = 601,1,1,0,0,0,
+        current_date = 401,1,1,0,0,0,
         calendar = 'NOLEAP',
         dt_cpld = 7200,
         dt_atmos = 1800,
@@ -1988,13 +1988,13 @@ $baseDate
     </runtime>
   </experiment>
 
-<experiment name="mem4_tune_ctrl_const_200yr" inherit="mem4_tune_ctrl_1860IC_200yr">
+<experiment name="ens3_tune_ctrl_const_200yr" inherit="ens3_tune_ctrl_1860IC_200yr">
 <description>
 	Control case, identical to 'tune_ctrl_1860IC_200yr'.
 </description>
 </experiment>
 
-<experiment name="mem4_uni_1860IC_200yr_45deg_ramp70yr_0.2TW" inherit="mem4_tune_ctrl_1860IC_200yr">
+<experiment name="ens3_uni_1860IC_200yr_45deg_ramp70yr_0.2TW" inherit="ens3_tune_ctrl_1860IC_200yr">
 <description>
 	Tuning added diffusivity, uniform profile.
 </description>
@@ -2012,6 +2012,7 @@ TUNING_RHO_V4=1045.01
 KD_POWER_CHANGE=2.0E+11
 TUNING_LAT_RANGE=-45,-45,45,45
 TUNING_RAMP_YRS=70.0
+TUNING_OFFSET_YRS=200
 MOM_OVERRIDE_EOF
 
 cat > $work/INPUT/SIS_override << SIS_OVERRIDE_EOF
@@ -2020,7 +2021,7 @@ SIS_OVERRIDE_EOF
 </input>
 </experiment>
 
-<experiment name="mem4_surf_1860IC_200yr_45deg_ramp70yr_0.2TW" inherit="mem4_tune_ctrl_1860IC_200yr">
+<experiment name="ens3_surf_1860IC_200yr_45deg_ramp70yr_0.2TW" inherit="ens3_tune_ctrl_1860IC_200yr">
 <description>
 	Tuning added diffusivity, surface-enhanced profile.
 </description>
@@ -2038,6 +2039,7 @@ TUNING_RHO_V4=1035.25
 KD_POWER_CHANGE=2.0E+11
 TUNING_LAT_RANGE=-45,-45,45,45
 TUNING_RAMP_YRS=70.0
+TUNING_OFFSET_YRS=200
 MOM_OVERRIDE_EOF
 
 cat > $work/INPUT/SIS_override << SIS_OVERRIDE_EOF
@@ -2046,7 +2048,7 @@ SIS_OVERRIDE_EOF
 </input>
 </experiment>
 
-<experiment name="mem4_therm_1860IC_200yr_45deg_ramp70yr_0.2TW" inherit="mem4_tune_ctrl_1860IC_200yr">
+<experiment name="ens3_therm_1860IC_200yr_45deg_ramp70yr_0.2TW" inherit="ens3_tune_ctrl_1860IC_200yr">
 <description>
   Tuning added diffusivity, enhanced in thermocline.
 </description>
@@ -2064,6 +2066,7 @@ TUNING_RHO_V4=1036.50
 KD_POWER_CHANGE=2.0E+11
 TUNING_LAT_RANGE=-45,-45,45,45
 TUNING_RAMP_YRS=70.0
+TUNING_OFFSET_YRS=200
 MOM_OVERRIDE_EOF
   
 cat > $work/INPUT/SIS_override << SIS_OVERRIDE_EOF
@@ -2072,7 +2075,7 @@ SIS_OVERRIDE_EOF
 </input>
 </experiment>
 
-<experiment name="mem4_mid_1860IC_200yr_45deg_ramp70yr_0.2TW" inherit="mem4_tune_ctrl_1860IC_200yr">
+<experiment name="ens3_mid_1860IC_200yr_45deg_ramp70yr_0.2TW" inherit="ens3_tune_ctrl_1860IC_200yr">
 <description>
   Tuning added diffusivity, enhanced in lower mid-depths.
 </description>
@@ -2090,6 +2093,7 @@ TUNING_RHO_V4=1036.90
 KD_POWER_CHANGE=2.0E+11
 TUNING_LAT_RANGE=-45,-45,45,45
 TUNING_RAMP_YRS=70.0
+TUNING_OFFSET_YRS=200
 MOM_OVERRIDE_EOF
   
 cat > $work/INPUT/SIS_override << SIS_OVERRIDE_EOF
@@ -2098,7 +2102,7 @@ SIS_OVERRIDE_EOF
 </input>
 </experiment>
 
-<experiment name="mem4_bot_1860IC_200yr_45deg_ramp70yr_0.2TW" inherit="mem4_tune_ctrl_1860IC_200yr">
+<experiment name="ens3_bot_1860IC_200yr_45deg_ramp70yr_0.2TW" inherit="ens3_tune_ctrl_1860IC_200yr">
 <description>
 	Tuning added diffusivity, bottom-enhanced profile.
 </description>
@@ -2116,6 +2120,7 @@ TUNING_RHO_V4=1042.00
 KD_POWER_CHANGE=2.0E+11
 TUNING_LAT_RANGE=-45,-45,45,45
 TUNING_RAMP_YRS=70.0
+TUNING_OFFSET_YRS=200
 MOM_OVERRIDE_EOF
 
 cat > $work/INPUT/SIS_override << SIS_OVERRIDE_EOF
@@ -2124,7 +2129,7 @@ SIS_OVERRIDE_EOF
 </input>
 </experiment>
 
-<experiment name="mem4_uni_1860IC_200yr_45deg_ramp70yr_0.1TW" inherit="mem4_tune_ctrl_1860IC_200yr">
+<experiment name="ens3_uni_1860IC_200yr_45deg_ramp70yr_0.1TW" inherit="ens3_tune_ctrl_1860IC_200yr">
 <description>
 	Added diffusivity experiment for 0.1 TW input, uniform profile.
 </description>
@@ -2142,6 +2147,7 @@ TUNING_RHO_V4=1045.01
 KD_POWER_CHANGE=1.0E+11
 TUNING_LAT_RANGE=-45,-45,45,45
 TUNING_RAMP_YRS=70.0
+TUNING_OFFSET_YRS=200
 MOM_OVERRIDE_EOF
 
 cat > $work/INPUT/SIS_override << SIS_OVERRIDE_EOF
@@ -2150,7 +2156,7 @@ SIS_OVERRIDE_EOF
 </input>
 </experiment>
 
-<experiment name="mem4_surf_1860IC_200yr_45deg_ramp70yr_0.1TW" inherit="mem4_tune_ctrl_1860IC_200yr">
+<experiment name="ens3_surf_1860IC_200yr_45deg_ramp70yr_0.1TW" inherit="ens3_tune_ctrl_1860IC_200yr">
 <description>
 	Added diffusivity experiment for 0.1 TW input, surface-enhanced profile.
 </description>
@@ -2168,6 +2174,7 @@ TUNING_RHO_V4=1035.25
 KD_POWER_CHANGE=1.0E+11
 TUNING_LAT_RANGE=-45,-45,45,45
 TUNING_RAMP_YRS=70.0
+TUNING_OFFSET_YRS=200
 MOM_OVERRIDE_EOF
 
 cat > $work/INPUT/SIS_override << SIS_OVERRIDE_EOF
@@ -2176,7 +2183,7 @@ SIS_OVERRIDE_EOF
 </input>
 </experiment>
 
-<experiment name="mem4_therm_1860IC_200yr_45deg_ramp70yr_0.1TW" inherit="mem4_tune_ctrl_1860IC_200yr">
+<experiment name="ens3_therm_1860IC_200yr_45deg_ramp70yr_0.1TW" inherit="ens3_tune_ctrl_1860IC_200yr">
 <description>
 	Added diffusivity experiment for 0.1 TW input, thermocline-enhanced profile.
 </description>
@@ -2194,6 +2201,7 @@ TUNING_RHO_V4=1036.50
 KD_POWER_CHANGE=1.0E+11
 TUNING_LAT_RANGE=-45,-45,45,45
 TUNING_RAMP_YRS=70.0
+TUNING_OFFSET_YRS=200
 MOM_OVERRIDE_EOF
   
 cat > $work/INPUT/SIS_override << SIS_OVERRIDE_EOF
@@ -2202,7 +2210,7 @@ SIS_OVERRIDE_EOF
 </input>
 </experiment>
 
-<experiment name="mem4_mid_1860IC_200yr_45deg_ramp70yr_0.1TW" inherit="mem4_tune_ctrl_1860IC_200yr">
+<experiment name="ens3_mid_1860IC_200yr_45deg_ramp70yr_0.1TW" inherit="ens3_tune_ctrl_1860IC_200yr">
 <description>
 	Added diffusivity experiment for 0.1 TW input, middepth-enhanced profile.
 </description>
@@ -2220,6 +2228,7 @@ TUNING_RHO_V4=1036.90
 KD_POWER_CHANGE=1.0E+11
 TUNING_LAT_RANGE=-45,-45,45,45
 TUNING_RAMP_YRS=70.0
+TUNING_OFFSET_YRS=200
 MOM_OVERRIDE_EOF
   
 cat > $work/INPUT/SIS_override << SIS_OVERRIDE_EOF
@@ -2228,7 +2237,7 @@ SIS_OVERRIDE_EOF
 </input>
 </experiment>
 
-<experiment name="mem4_bot_1860IC_200yr_45deg_ramp70yr_0.1TW" inherit="mem4_tune_ctrl_1860IC_200yr">
+<experiment name="ens3_bot_1860IC_200yr_45deg_ramp70yr_0.1TW" inherit="ens3_tune_ctrl_1860IC_200yr">
 <description>
 	Added diffusivity experiment for 0.1 TW input, bottom-enhanced profile.
 </description>
@@ -2246,6 +2255,7 @@ TUNING_RHO_V4=1042.00
 KD_POWER_CHANGE=1.0E+11
 TUNING_LAT_RANGE=-45,-45,45,45
 TUNING_RAMP_YRS=70.0
+TUNING_OFFSET_YRS=200
 MOM_OVERRIDE_EOF
 
 cat > $work/INPUT/SIS_override << SIS_OVERRIDE_EOF
@@ -2254,7 +2264,7 @@ SIS_OVERRIDE_EOF
 </input>
 </experiment>
 
-<experiment name="mem4_uni_1860IC_200yr_45deg_ramp70yr_0.5TW" inherit="mem4_tune_ctrl_1860IC_200yr">
+<experiment name="ens3_uni_1860IC_200yr_45deg_ramp70yr_0.5TW" inherit="ens3_tune_ctrl_1860IC_200yr">
 <description>
 	Added diffusivity experiment for 0.5 TW input, uniform profile.
 </description>
@@ -2272,6 +2282,7 @@ TUNING_RHO_V4=1045.01
 KD_POWER_CHANGE=5.0E+11
 TUNING_LAT_RANGE=-45,-45,45,45
 TUNING_RAMP_YRS=70.0
+TUNING_OFFSET_YRS=200
 MOM_OVERRIDE_EOF
 
 cat > $work/INPUT/SIS_override << SIS_OVERRIDE_EOF
@@ -2280,7 +2291,7 @@ SIS_OVERRIDE_EOF
 </input>
 </experiment>
 
-<experiment name="mem4_surf_1860IC_200yr_45deg_ramp70yr_0.5TW" inherit="mem4_tune_ctrl_1860IC_200yr">
+<experiment name="ens3_surf_1860IC_200yr_45deg_ramp70yr_0.5TW" inherit="ens3_tune_ctrl_1860IC_200yr">
 <description>
 	Added diffusivity experiment for 0.5 TW input, surface-enhanced profile.
 </description>
@@ -2298,6 +2309,7 @@ TUNING_RHO_V4=1035.25
 KD_POWER_CHANGE=5.0E+11
 TUNING_LAT_RANGE=-45,-45,45,45
 TUNING_RAMP_YRS=70.0
+TUNING_OFFSET_YRS=200
 MOM_OVERRIDE_EOF
 
 cat > $work/INPUT/SIS_override << SIS_OVERRIDE_EOF
@@ -2306,7 +2318,7 @@ SIS_OVERRIDE_EOF
 </input>
 </experiment>
 
-<experiment name="mem4_therm_1860IC_200yr_45deg_ramp70yr_0.5TW" inherit="mem4_tune_ctrl_1860IC_200yr">
+<experiment name="ens3_therm_1860IC_200yr_45deg_ramp70yr_0.5TW" inherit="ens3_tune_ctrl_1860IC_200yr">
 <description>
 	Added diffusivity experiment for 0.5 TW input, thermocline-enhanced profile.
 </description>
@@ -2324,6 +2336,7 @@ TUNING_RHO_V4=1036.50
 KD_POWER_CHANGE=5.0E+11
 TUNING_LAT_RANGE=-45,-45,45,45
 TUNING_RAMP_YRS=70.0
+TUNING_OFFSET_YRS=200
 MOM_OVERRIDE_EOF
   
 cat > $work/INPUT/SIS_override << SIS_OVERRIDE_EOF
@@ -2332,7 +2345,7 @@ SIS_OVERRIDE_EOF
 </input>
 </experiment>
 
-<experiment name="mem4_mid_1860IC_200yr_45deg_ramp70yr_0.5TW" inherit="mem4_tune_ctrl_1860IC_200yr">
+<experiment name="ens3_mid_1860IC_200yr_45deg_ramp70yr_0.5TW" inherit="ens3_tune_ctrl_1860IC_200yr">
 <description>
 	Added diffusivity experiment for 0.5 TW input, middepth-enhanced profile.
 </description>
@@ -2350,6 +2363,7 @@ TUNING_RHO_V4=1036.90
 KD_POWER_CHANGE=5.0E+11
 TUNING_LAT_RANGE=-45,-45,45,45
 TUNING_RAMP_YRS=70.0
+TUNING_OFFSET_YRS=200
 MOM_OVERRIDE_EOF
   
 cat > $work/INPUT/SIS_override << SIS_OVERRIDE_EOF
@@ -2358,7 +2372,7 @@ SIS_OVERRIDE_EOF
 </input>
 </experiment>
 
-<experiment name="mem4_bot_1860IC_200yr_45deg_ramp70yr_0.5TW" inherit="mem4_tune_ctrl_1860IC_200yr">
+<experiment name="ens3_bot_1860IC_200yr_45deg_ramp70yr_0.5TW" inherit="ens3_tune_ctrl_1860IC_200yr">
 <description>
 	Added diffusivity experiment for 0.5 TW input, bottom-enhanced profile.
 </description>
@@ -2376,6 +2390,7 @@ TUNING_RHO_V4=1042.00
 KD_POWER_CHANGE=5.0E+11
 TUNING_LAT_RANGE=-45,-45,45,45
 TUNING_RAMP_YRS=70.0
+TUNING_OFFSET_YRS=200
 MOM_OVERRIDE_EOF
 
 cat > $work/INPUT/SIS_override << SIS_OVERRIDE_EOF
@@ -2384,7 +2399,7 @@ SIS_OVERRIDE_EOF
 </input>
 </experiment>
 
-<experiment name="mem4_uni_1860IC_200yr_45deg_ramp70yr_0.3TW" inherit="mem4_tune_ctrl_1860IC_200yr">
+<experiment name="ens3_uni_1860IC_200yr_45deg_ramp70yr_0.3TW" inherit="ens3_tune_ctrl_1860IC_200yr">
 <description>
 	Added diffusivity experiment for 0.3 TW input, uniform profile.
 </description>
@@ -2402,6 +2417,7 @@ TUNING_RHO_V4=1045.01
 KD_POWER_CHANGE=3.0E+11
 TUNING_LAT_RANGE=-45,-45,45,45
 TUNING_RAMP_YRS=70.0
+TUNING_OFFSET_YRS=200
 MOM_OVERRIDE_EOF
 
 cat > $work/INPUT/SIS_override << SIS_OVERRIDE_EOF
@@ -2410,7 +2426,7 @@ SIS_OVERRIDE_EOF
 </input>
 </experiment>
 
-<experiment name="mem4_surf_1860IC_200yr_45deg_ramp70yr_0.3TW" inherit="mem4_tune_ctrl_1860IC_200yr">
+<experiment name="ens3_surf_1860IC_200yr_45deg_ramp70yr_0.3TW" inherit="ens3_tune_ctrl_1860IC_200yr">
 <description>
 	Added diffusivity experiment for 0.3 TW input, surface-enhanced profile.
 </description>
@@ -2428,6 +2444,7 @@ TUNING_RHO_V4=1035.25
 KD_POWER_CHANGE=3.0E+11
 TUNING_LAT_RANGE=-45,-45,45,45
 TUNING_RAMP_YRS=70.0
+TUNING_OFFSET_YRS=200
 MOM_OVERRIDE_EOF
 
 cat > $work/INPUT/SIS_override << SIS_OVERRIDE_EOF
@@ -2436,7 +2453,7 @@ SIS_OVERRIDE_EOF
 </input>
 </experiment>
 
-<experiment name="mem4_therm_1860IC_200yr_45deg_ramp70yr_0.3TW" inherit="mem4_tune_ctrl_1860IC_200yr">
+<experiment name="ens3_therm_1860IC_200yr_45deg_ramp70yr_0.3TW" inherit="ens3_tune_ctrl_1860IC_200yr">
 <description>
 	Added diffusivity experiment for 0.3 TW input, thermocline-enhanced profile.
 </description>
@@ -2454,6 +2471,7 @@ TUNING_RHO_V4=1036.50
 KD_POWER_CHANGE=3.0E+11
 TUNING_LAT_RANGE=-45,-45,45,45
 TUNING_RAMP_YRS=70.0
+TUNING_OFFSET_YRS=200
 MOM_OVERRIDE_EOF
   
 cat > $work/INPUT/SIS_override << SIS_OVERRIDE_EOF
@@ -2462,7 +2480,7 @@ SIS_OVERRIDE_EOF
 </input>
 </experiment>
 
-<experiment name="mem4_mid_1860IC_200yr_45deg_ramp70yr_0.3TW" inherit="mem4_tune_ctrl_1860IC_200yr">
+<experiment name="ens3_mid_1860IC_200yr_45deg_ramp70yr_0.3TW" inherit="ens3_tune_ctrl_1860IC_200yr">
 <description>
 	Added diffusivity experiment for 0.3 TW input, middepth-enhanced profile.
 </description>
@@ -2480,6 +2498,7 @@ TUNING_RHO_V4=1036.90
 KD_POWER_CHANGE=3.0E+11
 TUNING_LAT_RANGE=-45,-45,45,45
 TUNING_RAMP_YRS=70.0
+TUNING_OFFSET_YRS=200
 MOM_OVERRIDE_EOF
   
 cat > $work/INPUT/SIS_override << SIS_OVERRIDE_EOF
@@ -2488,7 +2507,7 @@ SIS_OVERRIDE_EOF
 </input>
 </experiment>
 
-<experiment name="mem4_bot_1860IC_200yr_45deg_ramp70yr_0.3TW" inherit="mem4_tune_ctrl_1860IC_200yr">
+<experiment name="ens3_bot_1860IC_200yr_45deg_ramp70yr_0.3TW" inherit="ens3_tune_ctrl_1860IC_200yr">
 <description>
 	Added diffusivity experiment for 0.3 TW input, bottom-enhanced profile.
 </description>
@@ -2506,6 +2525,7 @@ TUNING_RHO_V4=1042.00
 KD_POWER_CHANGE=3.0E+11
 TUNING_LAT_RANGE=-45,-45,45,45
 TUNING_RAMP_YRS=70.0
+TUNING_OFFSET_YRS=200
 MOM_OVERRIDE_EOF
 
 cat > $work/INPUT/SIS_override << SIS_OVERRIDE_EOF
@@ -2514,5 +2534,166 @@ SIS_OVERRIDE_EOF
 </input>
 </experiment>
 
+<experiment name="ens3_surf_1860IC_200yr_45deg_ramp70yr_0.012TW" inherit="ens3_tune_ctrl_1860IC_200yr">
+<description>
+  Added diffusivity experiment for 0.012 TW input, surface-enhanced profile.
+</description>
+<input>
+     <csh><![CDATA[
+cat > $work/INPUT/MOM_override << MOM_OVERRIDE_EOF
+#override USE_OCMIP2_CFC=False
+#override USE_IDEAL_AGE_TRACER=True
+#override TUNE_DIFFUSIVITY=True
+TUNE_KD_ADD=1.0E-05
+TUNING_RHO_V1=1022.00
+TUNING_RHO_V2=1022.01
+TUNING_RHO_V3=1035.24
+TUNING_RHO_V4=1035.25
+KD_POWER_CHANGE=1.2E+10
+TUNING_LAT_RANGE=-45,-45,45,45
+TUNING_RAMP_YRS=70.0
+TUNING_OFFSET_YRS=200
+MOM_OVERRIDE_EOF
+
+cat > $work/INPUT/SIS_override << SIS_OVERRIDE_EOF
+SIS_OVERRIDE_EOF
+     ]]></csh>
+</input>
+</experiment>
+
+<experiment name="ens3_therm_1860IC_200yr_45deg_ramp70yr_0.017TW" inherit="ens3_tune_ctrl_1860IC_200yr">
+<description>
+  Added diffusivity experiment for 0.017 TW input, thermocline-enhanced profile.
+</description>
+<input>
+     <csh><![CDATA[
+cat > $work/INPUT/MOM_override << MOM_OVERRIDE_EOF
+#override USE_OCMIP2_CFC=False
+#override USE_IDEAL_AGE_TRACER=True
+#override TUNE_DIFFUSIVITY=True
+TUNE_KD_ADD=1.0E-05
+TUNING_RHO_V1=1035.24
+TUNING_RHO_V2=1035.25
+TUNING_RHO_V3=1036.49
+TUNING_RHO_V4=1036.50
+KD_POWER_CHANGE=1.7E+10
+TUNING_LAT_RANGE=-45,-45,45,45
+TUNING_RAMP_YRS=70.0
+TUNING_OFFSET_YRS=200
+MOM_OVERRIDE_EOF
+  
+cat > $work/INPUT/SIS_override << SIS_OVERRIDE_EOF
+SIS_OVERRIDE_EOF
+     ]]></csh>
+</input>
+</experiment>
+
+<experiment name="ens3_mid_1860IC_200yr_45deg_ramp70yr_0.4TW" inherit="ens3_tune_ctrl_1860IC_200yr">
+<description>
+  Added diffusivity experiment for 0.4 TW input, middepth-enhanced profile.
+</description>
+<input>
+     <csh><![CDATA[
+cat > $work/INPUT/MOM_override << MOM_OVERRIDE_EOF
+#override USE_OCMIP2_CFC=False
+#override USE_IDEAL_AGE_TRACER=True
+#override TUNE_DIFFUSIVITY=True
+TUNE_KD_ADD=1.0E-05
+TUNING_RHO_V1=1036.49
+TUNING_RHO_V2=1036.50
+TUNING_RHO_V3=1036.89
+TUNING_RHO_V4=1036.90
+KD_POWER_CHANGE=4.0E+11
+TUNING_LAT_RANGE=-45,-45,45,45
+TUNING_RAMP_YRS=70.0
+TUNING_OFFSET_YRS=200
+MOM_OVERRIDE_EOF
+
+cat > $work/INPUT/SIS_override << SIS_OVERRIDE_EOF
+SIS_OVERRIDE_EOF
+     ]]></csh>
+</input>
+</experiment>
+
+<experiment name="ens3_bot_1860IC_200yr_45deg_ramp70yr_3TW" inherit="ens3_tune_ctrl_1860IC_200yr">
+<description>
+  Added diffusivity experiment for 3 TW input, bottom-enhanced profile.
+</description>
+<input>
+     <csh><![CDATA[
+cat > $work/INPUT/MOM_override << MOM_OVERRIDE_EOF
+#override USE_OCMIP2_CFC=False
+#override USE_IDEAL_AGE_TRACER=True
+#override TUNE_DIFFUSIVITY=True
+TUNE_KD_ADD=1.0E-05
+TUNING_RHO_V1=1036.89
+TUNING_RHO_V2=1036.90
+TUNING_RHO_V3=1041.99
+TUNING_RHO_V4=1042.00
+KD_POWER_CHANGE=3.0E+12
+TUNING_LAT_RANGE=-45,-45,45,45
+TUNING_RAMP_YRS=70.0
+TUNING_OFFSET_YRS=200
+MOM_OVERRIDE_EOF
+
+cat > $work/INPUT/SIS_override << SIS_OVERRIDE_EOF
+SIS_OVERRIDE_EOF
+     ]]></csh>
+</input>
+</experiment>
+
+<experiment name="ens3_surf_1860IC_200yr_45deg_ramp70yr_0.12TW" inherit="ens3_tune_ctrl_1860IC_200yr">
+<description>
+  Added diffusivity experiment for 0.12 TW input, surface-enhanced profile.
+</description>
+<input>
+     <csh><![CDATA[
+cat > $work/INPUT/MOM_override << MOM_OVERRIDE_EOF
+#override USE_OCMIP2_CFC=False
+#override USE_IDEAL_AGE_TRACER=True
+#override TUNE_DIFFUSIVITY=True
+TUNE_KD_ADD=1.0E-05
+TUNING_RHO_V1=1022.00
+TUNING_RHO_V2=1022.01
+TUNING_RHO_V3=1035.24
+TUNING_RHO_V4=1035.25
+KD_POWER_CHANGE=1.2E+11
+TUNING_LAT_RANGE=-45,-45,45,45
+TUNING_RAMP_YRS=70.0
+TUNING_OFFSET_YRS=200
+MOM_OVERRIDE_EOF
+
+cat > $work/INPUT/SIS_override << SIS_OVERRIDE_EOF
+SIS_OVERRIDE_EOF
+     ]]></csh>
+</input>
+</experiment>
+
+<experiment name="ens3_therm_1860IC_200yr_45deg_ramp70yr_0.17TW" inherit="ens3_tune_ctrl_1860IC_200yr">
+<description>
+  Added diffusivity experiment for 0.17 TW input, thermocline-enhanced profile.
+</description>
+<input>
+     <csh><![CDATA[
+cat > $work/INPUT/MOM_override << MOM_OVERRIDE_EOF
+#override USE_OCMIP2_CFC=False
+#override USE_IDEAL_AGE_TRACER=True
+#override TUNE_DIFFUSIVITY=True
+TUNE_KD_ADD=1.0E-05
+TUNING_RHO_V1=1035.24
+TUNING_RHO_V2=1035.25
+TUNING_RHO_V3=1036.49
+TUNING_RHO_V4=1036.50
+KD_POWER_CHANGE=1.7E+11
+TUNING_LAT_RANGE=-45,-45,45,45
+TUNING_RAMP_YRS=70.0
+TUNING_OFFSET_YRS=200
+MOM_OVERRIDE_EOF
+
+cat > $work/INPUT/SIS_override << SIS_OVERRIDE_EOF
+SIS_OVERRIDE_EOF
+     ]]></csh>
+</input>
+</experiment>
 
 </experimentSuite>
