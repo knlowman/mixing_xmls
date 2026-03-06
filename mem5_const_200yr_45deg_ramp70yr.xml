@@ -104,7 +104,7 @@ NOTES:
   <property name="EXP_CPLD_END"     value="0050"/> <!--simulation end   year--> 
   
   <!--The rest of the properties need not to be changed by the user unless to customize the run-->
-  <property name="FRE_VERSION"     value="bronx-22"/> <!-- fre version to be used -->
+  <property name="FRE_VERSION"     value="bronx-23"/> <!-- fre version to be used -->
   <property name="ProjectID"       value="MDT"/>      <!-- database top level -->
   <property name="ANALYSIS_SWITCH" value="on"/>       <!-- on/off switch for ATM/LND analysis -->
   <property name="TS_ANALYSIS_SWITCH" value="off"/>   <!-- on/off switch for ATM/LND time series analysis -->
@@ -1827,7 +1827,7 @@ set nyblocks = $nyblock
          	<dataSource platform="$(platform)">$(MOM6_EXAMPLES)/coupled_AM2_LM3_SIS2/AM2_SIS2_MOM6i_1deg/field_table</dataSource>
 	</dataFile>
 	<dataFile label="diagTable" target="INPUT/" chksum="" size="" timestamp="">
-    <dataSource platform="$(platform)">awg_include/diag_table/diag_table_11.07.25</dataSource>
+    <dataSource platform="$(platform)">awg_include/diag_table/diag_table_12.19.25</dataSource>
 	 </dataFile>	
     </input>
    </freInclude>
@@ -2514,5 +2514,108 @@ SIS_OVERRIDE_EOF
 </input>
 </experiment>
 
+<experiment name="mem5_surf_1860IC_200yr_45deg_ramp70yr_0.012TW" inherit="mem5_tune_ctrl_1860IC_200yr">
+<description>
+  Added diffusivity experiment for 0.012 TW input, surface-enhanced profile.
+</description>
+<input>
+     <csh><![CDATA[
+cat > $work/INPUT/MOM_override << MOM_OVERRIDE_EOF
+#override USE_OCMIP2_CFC=False
+#override USE_IDEAL_AGE_TRACER=True
+#override TUNE_DIFFUSIVITY=True
+TUNE_KD_ADD=1.0E-05
+TUNING_RHO_V1=1022.00
+TUNING_RHO_V2=1022.01
+TUNING_RHO_V3=1035.24
+TUNING_RHO_V4=1035.25
+KD_POWER_CHANGE=1.2E+10
+TUNING_LAT_RANGE=-45,-45,45,45
+TUNING_RAMP_YRS=70.0
+MOM_OVERRIDE_EOF
+
+cat > $work/INPUT/SIS_override << SIS_OVERRIDE_EOF
+SIS_OVERRIDE_EOF
+     ]]></csh>
+</input>
+</experiment>
+
+<experiment name="mem5_therm_1860IC_200yr_45deg_ramp70yr_0.017TW" inherit="mem5_tune_ctrl_1860IC_200yr">
+<description>
+  Added diffusivity experiment for 0.017 TW input, thermocline-enhanced profile.
+</description>
+<input>
+     <csh><![CDATA[
+cat > $work/INPUT/MOM_override << MOM_OVERRIDE_EOF
+#override USE_OCMIP2_CFC=False
+#override USE_IDEAL_AGE_TRACER=True
+#override TUNE_DIFFUSIVITY=True
+TUNE_KD_ADD=1.0E-05
+TUNING_RHO_V1=1035.24
+TUNING_RHO_V2=1035.25
+TUNING_RHO_V3=1036.49
+TUNING_RHO_V4=1036.50
+KD_POWER_CHANGE=1.7E+10
+TUNING_LAT_RANGE=-45,-45,45,45
+TUNING_RAMP_YRS=70.0
+MOM_OVERRIDE_EOF
+  
+cat > $work/INPUT/SIS_override << SIS_OVERRIDE_EOF
+SIS_OVERRIDE_EOF
+     ]]></csh>
+</input>
+</experiment>
+
+<experiment name="mem5_mid_1860IC_200yr_45deg_ramp70yr_0.4TW" inherit="mem5_tune_ctrl_1860IC_200yr">
+<description>
+  Added diffusivity experiment for 0.4 TW input, middepth-enhanced profile.
+</description>
+<input>
+     <csh><![CDATA[
+cat > $work/INPUT/MOM_override << MOM_OVERRIDE_EOF
+#override USE_OCMIP2_CFC=False
+#override USE_IDEAL_AGE_TRACER=True
+#override TUNE_DIFFUSIVITY=True
+TUNE_KD_ADD=1.0E-05
+TUNING_RHO_V1=1036.49
+TUNING_RHO_V2=1036.50
+TUNING_RHO_V3=1036.89
+TUNING_RHO_V4=1036.90
+KD_POWER_CHANGE=4.0E+11
+TUNING_LAT_RANGE=-45,-45,45,45
+TUNING_RAMP_YRS=70.0
+MOM_OVERRIDE_EOF
+
+cat > $work/INPUT/SIS_override << SIS_OVERRIDE_EOF
+SIS_OVERRIDE_EOF
+     ]]></csh>
+</input>
+</experiment>
+
+<experiment name="mem5_bot_1860IC_200yr_45deg_ramp70yr_3TW" inherit="mem5_tune_ctrl_1860IC_200yr">
+<description>
+  Added diffusivity experiment for 3 TW input, bottom-enhanced profile.
+</description>
+<input>
+     <csh><![CDATA[
+cat > $work/INPUT/MOM_override << MOM_OVERRIDE_EOF
+#override USE_OCMIP2_CFC=False
+#override USE_IDEAL_AGE_TRACER=True
+#override TUNE_DIFFUSIVITY=True
+TUNE_KD_ADD=1.0E-05
+TUNING_RHO_V1=1036.89
+TUNING_RHO_V2=1036.90
+TUNING_RHO_V3=1041.99
+TUNING_RHO_V4=1042.00
+KD_POWER_CHANGE=3.0E+12
+TUNING_LAT_RANGE=-45,-45,45,45
+TUNING_RAMP_YRS=70.0
+MOM_OVERRIDE_EOF
+
+cat > $work/INPUT/SIS_override << SIS_OVERRIDE_EOF
+SIS_OVERRIDE_EOF
+     ]]></csh>
+</input>
+</experiment>
 
 </experimentSuite>

@@ -2534,9 +2534,9 @@ SIS_OVERRIDE_EOF
 </input>
 </experiment>
 
-<experiment name="ens4_surf_1860IC_200yr_45deg_ramp70yr_0.012TW" inherit="ens4_tune_ctrl_1860IC_200yr">
+<experiment name="ens4_surf_1860IC_200yr_45deg_ramp70yr_0.019TW" inherit="ens4_tune_ctrl_1860IC_200yr">
 <description>
-  Added diffusivity experiment for 0.012 TW input, surface-enhanced profile.
+  Added diffusivity experiment for 0.019 TW input, surface-enhanced profile.
 </description>
 <input>
      <csh><![CDATA[
@@ -2549,7 +2549,7 @@ TUNING_RHO_V1=1022.00
 TUNING_RHO_V2=1022.01
 TUNING_RHO_V3=1035.24
 TUNING_RHO_V4=1035.25
-KD_POWER_CHANGE=1.2E+10
+KD_POWER_CHANGE=1.9E+10
 TUNING_LAT_RANGE=-45,-45,45,45
 TUNING_RAMP_YRS=70.0
 TUNING_OFFSET_YRS=600
@@ -2561,9 +2561,9 @@ SIS_OVERRIDE_EOF
 </input>
 </experiment>
 
-<experiment name="ens4_therm_1860IC_200yr_45deg_ramp70yr_0.017TW" inherit="ens4_tune_ctrl_1860IC_200yr">
+<experiment name="ens4_therm_1860IC_200yr_45deg_ramp70yr_0.036TW" inherit="ens4_tune_ctrl_1860IC_200yr">
 <description>
-  Added diffusivity experiment for 0.017 TW input, thermocline-enhanced profile.
+  Added diffusivity experiment for 0.036 TW input, thermocline-enhanced profile.
 </description>
 <input>
      <csh><![CDATA[
@@ -2576,7 +2576,7 @@ TUNING_RHO_V1=1035.24
 TUNING_RHO_V2=1035.25
 TUNING_RHO_V3=1036.49
 TUNING_RHO_V4=1036.50
-KD_POWER_CHANGE=1.7E+10
+KD_POWER_CHANGE=3.6E+10
 TUNING_LAT_RANGE=-45,-45,45,45
 TUNING_RAMP_YRS=70.0
 TUNING_OFFSET_YRS=600
