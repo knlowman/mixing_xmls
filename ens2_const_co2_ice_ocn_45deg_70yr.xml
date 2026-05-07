@@ -153,7 +153,7 @@ NOTES:
 <!--= COMPILE =-->
 <!--===========-->
   <!--The property MOM6_EXAMPLES should point to the mom6 directory that is checked out. It is needed by MOM6 to access its input data files-->
-  <property name="LIBS_ROOT"      value="tuning_diff_exp_compile"/> <!--name of libs compile experiment-->
+  <property name="LIBS_ROOT"      value="mom6_sis2_2020_compile"/> <!--name of libs compile experiment-->
   
   <property name="MOM6_EXAMPLES"  value="$root/$(LIBS_ROOT)/src/mom6"/>
   <property name="FMS_LIB_DIR"    value="./$(LIBS_ROOT)/$(platform)-$(target)/exec"/>
@@ -646,8 +646,7 @@ set nyblocks = $nyblock
           <dataSource platform="$(platform)">$(MOM6_EXAMPLES)/ice_ocean_SIS2/SIS2/field_table</dataSource>
   </dataFile>
   <dataFile label="diagTable" target="INPUT/" chksum="" size="" timestamp="">
-    <!-- <dataSource platform="$(platform)">$root/$(LIBS_ROOT)/diag_table_updated_tuning</dataSource> -->
-    <dataSource platform="$(platform)">awg_include/diag_table/diag_table_11.07.25</dataSource>
+    <dataSource platform="$(platform)">awg_include/diag_table/diag_table_ocn_only_05.07.26</dataSource>
    </dataFile>
 
     </input>
