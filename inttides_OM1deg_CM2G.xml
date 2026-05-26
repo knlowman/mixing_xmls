@@ -1826,12 +1826,26 @@ set nyblocks = $nyblock
          	<dataSource platform="$(platform)">$(MOM6_EXAMPLES)/coupled_AM2_LM3_SIS2/AM2_SIS2_MOM6i_1deg/field_table</dataSource>
 	</dataFile>
 	<dataFile label="diagTable" target="INPUT/" chksum="" size="" timestamp="">
-    <dataSource platform="$(platform)">awg_include/diag_table/diag_table_12.19.25</dataSource>
+    <dataSource platform="$(platform)">awg_include/diag_table/diag_table_inttides_OM1deg</dataSource>
 	 </dataFile>	
     </input>
-   </freInclude>
+  </freInclude>
 
-  <experiment name="CM2G_OM4_ens2_const_200yr" inherit="CM2G_OM4_compile">
+  <freInclude name="inttides_OM1deg_input">
+    <input>
+      <dataFile label="input" target="INPUT/" chksum="" size="" timestamp="">
+        <dataSource platform="$(platform)">/gpfs/f5/gfdl_o/scratch/Kiera.Lowman/internal_tides_input_OM1deg/internal_waves_RTcoef_OM1deg.nc</dataSource>
+      </dataFile>
+      <dataFile label="input" target="INPUT/" chksum="" size="" timestamp="">
+        <dataSource platform="$(platform)">/gpfs/f5/gfdl_o/scratch/Kiera.Lowman/internal_tides_input_OM1deg/om1deg_leakage_rates_CDL2019_all_harms_ramped.nc</dataSource>
+      </dataFile>
+      <dataFile label="input" target="INPUT/" chksum="" size="" timestamp="">
+        <dataSource platform="$(platform)">/gpfs/f5/gfdl_o/scratch/Kiera.Lowman/internal_tides_input_OM1deg/tidal_amplitude_TPXO9_OM1deg_internaltides.v20260519.nc</dataSource>
+      </dataFile>
+    </input>
+  </freInclude>
+
+  <experiment name="inttides_OM1deg_ens2_const_200yr" inherit="CM2G_OM4_compile">
 <description>
 No added diffusivity.
 </description>
@@ -1842,13 +1856,48 @@ No added diffusivity.
      </dataFile>
 
      <csh><![CDATA[
-cat > $work/INPUT/MOM_override << MOM_OVERRIDE_EOF
-#override USE_OCMIP2_CFC=False
-#override USE_IDEAL_AGE_TRACER=True
-MOM_OVERRIDE_EOF
-
-cat > $work/INPUT/SIS_override << SIS_OVERRIDE_EOF
-SIS_OVERRIDE_EOF
+       cat > $work/INPUT/MOM_override << MOM_OVERRIDE_EOF
+       #override USE_OCMIP2_CFC=False
+       #override USE_IDEAL_AGE_TRACER=True
+       ! this is needed for the CFL of the ray tracing scheme
+       #override DT_ITIDES = 3600.0
+       ! tidal forcing
+       #override TIDEAMP_FILE = tidal_amplitude_TPXO9_OM1deg_internaltides.v20260519.nc
+       ! KAPPA_H2_FACTOR is THE tuning knob to control how much energy goes into the ray tracing, may need to adjust
+       #override KAPPA_H2_FACTOR = 1.0
+       INTERNAL_TIDES = True
+       ! we're gonna start with 8 harmonics and 1 vertical mode
+       TIDAL_PERIODS = 44714., 86164., 43200., 45570., 43082., 92950., 86637., 96726.
+       INTERNAL_TIDE_MODES = 1
+       INTERNAL_TIDE_FREQS = 8
+       ENERGY_FRACTION_PER_MODE = "1.0", "1.0", "1.0", "1.0", "1.0", "1.0", "1.0", "1.0"
+       INTERNAL_TIDES_UPDATE_KD = True
+       ! KD in OM4 is typically 1e-5, this is the background diffusivity we're trying to replace
+       #override KD = 2.0E-06
+       #override KD_MIN = 2.0E-06
+       ! Osborn relationship parameter, 0.2 is good
+       #override ITIDES_MIXING_EFFIC = 0.2
+       #override INT_TIDE_DISSIPATION = True
+       INT_TIDE_LOWMODE_DISSIPATION = False
+       #override INTTIDE_AMP_VARNAMES = tideamp_m2, tideamp_k1, tideamp_s2, tideamp_n2, tideamp_k2, tideamp_o1, tideamp_p1, tideamp_q1
+       #override TIDEAMP_FILE = tidal_amplitude_TPXO9_OM1deg_internaltides.v20260519.nc
+       REFL_ANGLE_FILE = internal_waves_RTcoef_OM1deg.nc
+       REFL_PREF_FILE = internal_waves_RTcoef_OM1deg.nc
+       REFL_DBL_FILE = internal_waves_RTcoef_OM1deg.nc
+       TRANS_FILE = internal_waves_RTcoef_OM1deg.nc
+       USE_2D_INTERNAL_TIDE_DECAY_RATE = True
+       ITIDES_DECAY_FILE = om1deg_leakage_rates_CDL2019_all_harms_ramped.nc
+       INTERNAL_TIDE_WAVE_DRAG = True
+       INTERNAL_TIDE_BACKGROUND_DRAG = True
+       INTERNAL_TIDE_QUAD_DRAG = True
+       INTERNAL_TIDE_FROUDE_DRAG = True
+       INTERNAL_TIDE_RESIDUAL_DRAG = True
+       ! this is what we're trying to replace
+       #override HENYEY_IGW_BACKGROUND = False
+       MOM_OVERRIDE_EOF
+       
+       cat > $work/INPUT/SIS_override << SIS_OVERRIDE_EOF
+       SIS_OVERRIDE_EOF
 
      ]]></csh>
 
@@ -1907,8 +1956,11 @@ $baseDate
  
       <!--Common namelist -->
      <xi:include xpointer="xpointer(//freInclude[@name='AM2_MOM6_common']/input/node())"/>
-	<xi:include xpointer="xpointer(//freInclude[@name='OM_1deg_input']/input/node())"/>
-    </input>
+     <xi:include xpointer="xpointer(//freInclude[@name='OM_1deg_input']/input/node())"/>
+     <xi:include xpointer="xpointer(//freInclude[@name='inttides_OM1deg_input']/input/node())"/>
+
+   </input>
+
     <postProcess>
       <csh><![CDATA[
          cd $work
@@ -1988,13 +2040,13 @@ $baseDate
 
   </experiment>
 
-<experiment name="CM2G_OM4_5yr_test" inherit="CM2G_OM4_ens2_const_200yr">
+<experiment name="inttides_OM1deg_5yr_test" inherit="inttides_OM1deg_ens2_const_200yr">
 <description>
-  1-year test control experiment.
+  5-year test control experiment.
 </description>
 </experiment>
 
-<experiment name="CM2G_OM4_ens2_uni_const_200yr_45deg_ramp70yr_0.2TW" inherit="CM2G_OM4_ens2_const_200yr">
+<experiment name="inttides_OM1deg_ens2_uni_const_200yr_45deg_ramp70yr_0.2TW" inherit="inttides_OM1deg_ens2_const_200yr">
 <description>
 	Tuning added diffusivity, uniform profile.
 </description>

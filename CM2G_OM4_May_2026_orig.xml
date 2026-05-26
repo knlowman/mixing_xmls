@@ -87,7 +87,7 @@ NOTES:
 
 	      <!-- <property name="OM4_ANALYSIS" value="ice_ocean_SIS2/OM4_025"/>commented out by Kiera--> <!-- example containing .frepp scripts for analysis-->
                                                                  <!--Please set the value to ice_ocean_SIS2/OM4_05 for 1/2 degree ocean model runs--> 
-  <property name="PROD_SIMTIME"     value="5"/>  <!--simulation length in YEARS-->
+  <property name="PROD_SIMTIME"     value="1"/>  <!--simulation length in YEARS-->
   <property name="PP_CMIP_CHUNK_A"  value="5yr"/>  <!--smaller chunk length for pp/analysis-->
   <property name="PP_CMIP_CHUNK_B"  value="25yr"/> <!--bigger  chunk length for pp/analysis-->
   <property name="CHUNK_LENGTH_A"   value="5yr"/>
@@ -1887,7 +1887,7 @@ SIS_OVERRIDE_EOF
         do_ice = .true.,
         do_ocean = .true.,
         atmos_npes = 30,
-        ocean_npes = 150,
+        ocean_npes = 90,
         concurrent = .true.
         use_lag_fluxes=.true.
       </namelist>
@@ -1948,7 +1948,7 @@ $baseDate
                <atm ranks="30" threads="1"     />
                <lnd                             />
                <ice                            />
-               <ocn ranks="150" threads="1"    />
+               <ocn ranks="90" threads="1"    />
            </resources>
       </production>
       <regression name="basic">
@@ -1988,7 +1988,7 @@ $baseDate
 
   </experiment>
 
-<experiment name="CM2G_OM4_5yr_test" inherit="CM2G_OM4_ens2_const_200yr">
+<experiment name="CM2G_OM4_1yr_test" inherit="CM2G_OM4_ens2_const_200yr">
 <description>
   1-year test control experiment.
 </description>
