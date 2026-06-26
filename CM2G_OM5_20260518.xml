@@ -68,20 +68,23 @@ NOTES:
 
   <!--User should set the following properties according to the plan for the production run-->	    
   <property name="CITY_TAG"           value="warsaw"/>       <!-- city tag added by Kiera for compiling with AM2-->
-  <property name="RELEASE"           value="2023.01"/>    <!-- git tag for general component source code-->
+  <property name="RELEASE"           value="2019.01.03"/>    <!-- git tag for general component source code-->
   <property name="FMS_GIT_TAG"       value="$(RELEASE)"/>    <!-- git tag for shared source code -->
   <property name="COUPLER_GIT_TAG"   value="xanadu"/>       <!-- git tag for AWG source code -->
   <property name="ATM_FV3_GIT_TAG"   value="2020.02"/>       <!-- git tag for atmos_cubed_sphere and atmos_driver source code -->
   <property name="ATM_DRV_GIT_TAG"   value="2020.01"/>       <!-- git tag for atmos_cubed_sphere and atmos_driver source code -->
-  <property name="ICE_PARAM_TAG" value="2024.02"/>
-        <!--  <property name="ICE_PARAM_GIT_TAG" value="xanadu"/> fails with this tag -->
+        <!--  <property name="ICE_PARAM_TAG" value="2024.02"/> -->
+        <!--  <property name="ICE_PARAM_TAG" value="xanadu"/> -->
+  <property name="ICE_PARAM_TAG" value="2021.03"/>
   <property name="ATM_PHYS_GIT_TAG"  value="8a30ff9a"/>      <!-- gitlab tag for atmos_phys source code -->  
   <property name="LAND_GIT_TAG"      value="verona_201701"/> <!-- git tag for LAND_LAD2 source code - edited by Kiera -->  
-  <property name="MOM6_EXAMPLES_GIT_TAG"   value="cec94e4"/>
+  <property name="MOM6_EXAMPLES_GIT_TAG" value="cec94e4"/>   <!-- git tag for MOM6-examples -->
   <property name="MOM6_DATE"         value="devgfdl_20260518"/> <!-- arbitrary date string for MOM6 source code -->
-  <property name="MOM6_GIT_TAG"      value="ac31b32b"/>      <!-- git tag for MOM6 source code -->
+  <property name="MOM6_GIT_TAG"      value=""/>
+  <!--  <property name="MOM6_GIT_TAG"      value="ac31b32b"/>      git tag for MOM6 source code -->
   <property name="MOM6_GIT_FIX"      value=""/>       <!-- git tag for MOM6 source code -->
-  <property name="SIS2_GIT_TAG"      value="0372a89a"/>      <!-- git tag for MOM6 source code -->
+  <property name="SIS2_GIT_TAG"      value=""/>
+        <!--  <property name="SIS2_GIT_TAG"      value="0372a89a"/>--> 
   <property name="FRE_STEM"  value="FMS$(RELEASE)_$(MOM6_DATE)_kiera"/>     <!-- customize as needed -->
   <!-- Please make sure to change "YOURGROUPLETTER" to your group, such as b, f, g, m, o... -->
   <property name="GFDL_GROUP"   value="gfdl_o"/>    <!-- Replace YOURGROUPLETTER with GFDL group letter -->
@@ -160,13 +163,25 @@ NOTES:
     <description>
 Experiment to build executable.
     </description>
-
+    
+    <!--
     <component name="fms" paths="FMS">
       <source versionControl="git" root="https://github.com/NOAA-GFDL">
             <codeBase version="$(FMS_GIT_TAG)"> FMS.git </codeBase>
       </source>
       <compile>
             <cppDefs>-Duse_libMPI -Duse_netCDF $(F2003_FLAGS) -DMAXFIELDMETHODS_=400</cppDefs>
+      </compile>
+    </component>
+    -->
+
+    <component name="fms" paths="FMS/affinity FMS/amip_interp FMS/column_diagnostics FMS/diag_integral FMS/fft FMS/horiz_interp FMS/memutils FMS/oda_tools FMS/sat_vapor_pres FMS/topography FMS/astronomy FMS/constants  FMS/diag_manager FMS/field_manager FMS/include FMS/monin_obukhov FMS/platform FMS/station_data FMS/tracer_manager FMS/axis_utils FMS/coupler FMS/drifters FMS/fms FMS/fms2_io FMS/interpolator FMS/mosaic FMS/random_numbers FMS/time_interp FMS/tridiagonal FMS/block_control  FMS/data_override FMS/exchange  FMS/mpp FMS/time_manager">
+     <description domainName="infrastructure" communityName="FMS" communityVersion="$(RELEASE)" communityGrid=""/>
+     <source versionControl="git" root="https://github.com/NOAA-GFDL">
+            <codeBase version="$(FMS_GIT_TAG)"> FMS.git </codeBase>
+     </source>
+     <compile>
+        <cppDefs>$(F2003_FLAGS) -Duse_libMPI -Duse_netCDF -DMAXFIELDMETHODS_=500 </cppDefs>
       </compile>
     </component>
 
@@ -203,7 +218,8 @@ Experiment to build executable.
       </compile>
     </component>
 
-    <component name="mom6" requires="fms" paths="mom6/src/MOM6/config_src/{infra/FMS2,memory/dynamic_symmetric,drivers/FMS_cap,external} mom6/src/MOM6/src/{*,*/*}/">
+    <!-- changed infra/FMS2 to infra/FMS -->
+    <component name="mom6" requires="fms" paths="mom6/src/MOM6/config_src/{infra/FMS1,memory/dynamic_symmetric,drivers/FMS_cap,external} mom6/src/MOM6/src/{*,*/*}/">
       <description domainName="Ocean" communityName="GFDL-MOM6" communityVersion="$(MOM6_EXAMPLES_GIT_TAG)" communityGrid="Tripolar"/>
        <source versionControl="git" root="https://github.com/NOAA-GFDL">
          <codeBase version="dev/gfdl"> MOM6-examples.git </codeBase>
@@ -243,33 +259,24 @@ Experiment to build executable.
       </compile>
     </component>
 
-    <!--
+    <!-- removed -DUSE_FMS2_IO flag -->
       <component name="sis2" paths="mom6/src/SIS2/config_src/dynamic_symmetric mom6/src/SIS2/config_src/external/Icepack_interfaces mom6/src/SIS2/src mom6/src/icebergs/src ice_param" requires="fms mom6" includeDir="$root/$(LIBS_ROOT)/src/mom6/src/MOM6/src/framework" >
          <source versionControl="git" root="https://github.com/NOAA-GFDL">
 	   <codeBase version="$(ICE_PARAM_TAG)"> ice_param.git </codeBase>
          </source>
          <compile>
-            <cppDefs><![CDATA[$(F2003_FLAGS) -DUSE_FMS2_IO -D_FILE_VERSION="'"`git-version-string $<`"'"]]></cppDefs>
+            <cppDefs><![CDATA[$(F2003_FLAGS) -D_FILE_VERSION="'"`git-version-string $<`"'"]]></cppDefs>
          </compile>
        </component>
-    -->
-    <component name="sis2" paths="mom6/src/SIS2/config_src/dynamic_symmetric mom6/src/SIS2/src mom6/src/icebergs/src ice_param" requires="fms mom6" includeDir="$root/$(LIBS_ROOT)/src/mom6/src/MOM6/src/framework" > 
-       <source versionControl="git" root="https://github.com/NOAA-GFDL">
-           <codeBase version="$(ICE_PARAM_GIT_TAG)"> ice_param.git </codeBase>
-       </source>
-       <compile>
-            <cppDefs><![CDATA[$(F2003_FLAGS) ]]></cppDefs>
-       </compile>
-      </component>
 
       <component name="coupler" paths="coupler" requires="fms AM2 LM3 sis2  mom6">
         <description domainName="FMS Coupler" communityName="coupler" communityVersion="$(RELEASE)" communityGrid=""/>  
         <source versionControl="git" root="https://github.com/NOAA-GFDL">
-          <codeBase version="$(COUPLER_GIT_TAG)"> coupler.git </codeBase>
+          <codeBase version="main"> coupler.git </codeBase>
           <csh><![CDATA[
 
-               ( cd coupler && git checkout 14578f0 )
-                 ]]></csh>
+               ( cd coupler && git checkout $(COUPLER_GIT_TAG) )
+          ]]></csh>
         </source>
         <compile>
           <cppDefs><![CDATA[$(F2003_FLAGS) -Duse_libMPI -Duse_netCDF -DSPMD -DLAND_BND_TRACERS -Duse_AM3_physics -D_USE_LEGACY_LAND_ ]]></cppDefs>
@@ -1901,8 +1908,8 @@ SIS_OVERRIDE_EOF
 
       <!-- Namelist -->
      <!--added by Kiera May 10 -->
-      <namelist file="$(MOM6_EXAMPLES)/coupled_AM2_LM3_SIS2/AM2_SIS2_MOM6i_1deg/input.nml"/>
-	      <!-- <namelist file="$(MOM6_EXAMPLES)/coupled_AM2_LM3_SIS2/AM2_SIS2_MOM6i_1deg/static_input.nml"/>-->
+              <namelist file="$(MOM6_EXAMPLES)/coupled_AM2_LM3_SIS2/AM2_SIS2_MOM6i_1deg/input.nml"/>
+        <!--<namelist file="/gpfs/f5/gfdl_o/scratch/Kiera.Lowman/CM2G_good_INPUT/input.nml"/>-->
        <!-- Input datasets -->
       <xi:include xpointer="xpointer(//freInclude[@name='AM2_LM3_MOM6i_1deg']/input/node())"/>
      <xi:include xpointer="xpointer(//freInclude[@name='common_init_csh_blocks']/input/node())"/>
