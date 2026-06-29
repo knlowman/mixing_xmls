@@ -520,6 +520,22 @@
 "ocean_model",    "ITide_tot_residual_loss",               "ITide_tot_residual_loss",               "ocean_annual",  "all", .true., "none", 2
 "ocean_model",    "ITide_tot_allprocesses_loss",           "ITide_tot_allprocesses_loss",           "ocean_annual",  "all", .true., "none", 2
 
+# more diagnostics added to help with ray tracing calibration
+#
+"ocean_model_z","Bflx_dia_diff","Bflx_dia_diff","ocean_annual_z", "all",  "mean", "none",1
+"ocean_model_z","Bflx_dia_diff_ePBL","Bflx_dia_diff_ePBL","ocean_annual_z", "all",  "mean", "none",1
+"ocean_model_z","Bflx_dia_diff_KS","Bflx_dia_diff_KS","ocean_annual_z", "all",  "mean", "none",1
+"ocean_model_z","Bflx_dia_diff_BBL","Bflx_dia_diff_BBL","ocean_annual_z", "all",  "mean", "none",1
+"ocean_model_z","Bflx_dia_diff_bkgnd","Bflx_dia_diff_bkgnd","ocean_annual_z", "all",  "mean", "none",1
+"ocean_model_z","Bflx_dia_diff_itides","Bflx_dia_diff_itides","ocean_annual_z", "all",  "mean", "none",1
+
+"ocean_model", "Bflx_dia_diff_idz_leak", "Bflx_dia_diff_idz_leak", "ocean_annual", "all",  "mean", "none",1
+"ocean_model", "Bflx_dia_diff_idz_quad", "Bflx_dia_diff_idz_quad", "ocean_annual", "all",  "mean", "none",1
+"ocean_model", "Bflx_dia_diff_idz_slope", "Bflx_dia_diff_idz_slope", "ocean_annual", "all",  "mean", "none",1
+"ocean_model", "Bflx_dia_diff_idz_itidal", "Bflx_dia_diff_idz_itidal", "ocean_annual", "all",  "mean", "none",1
+"ocean_model", "Bflx_dia_diff_idz_Froude", "Bflx_dia_diff_idz_Froude", "ocean_annual", "all",  "mean", "none",1
+"ocean_model", "Bflx_dia_diff_idz_lowmode", "Bflx_dia_diff_idz_lowmode", "ocean_annual", "all",  "mean", "none",1
+
 #================
 # ICE DIAGNOSTICS
 #================
