@@ -1,0 +1,103 @@
+<!-- Kiera's custom post-processing -->
+<outer xmlns:xi="http://www.w3.org/2003/XInclude">
+<freInclude name="CM2G_OM5_postprocess">
+   <postProcess>
+      <component type="ocean_monthly_z" start="$(PP_START_YEAR)"  source="ocean_month_z" sourceGrid="ocean-tripolar">
+        <timeSeries freq="monthly" chunkLength="$(CHUNK_LENGTH_A)" source="ocean_month_z"/>
+        <timeSeries freq="monthly" chunkLength="$(CHUNK_LENGTH_B)" source="ocean_month_z"/>
+        <timeSeries freq="annual" chunkLength="$(CHUNK_LENGTH_A)" source="ocean_month_z"/>
+        <timeSeries freq="annual" chunkLength="$(CHUNK_LENGTH_B)" source="ocean_month_z"/>
+        <timeAverage source="monthly" interval="$(CHUNK_LENGTH_A)"/>
+        <timeAverage source="monthly" interval="$(CHUNK_LENGTH_B)"/>
+        <timeAverage source="annual" interval="$(CHUNK_LENGTH_A)"/>
+        <timeAverage source="annual" interval="$(CHUNK_LENGTH_B)"/>
+     </component>
+      <component type="ocean_month_rho2"  start="$(PP_START_YEAR)" source="ocean_month_rho2" sourceGrid="ocean-tripolar">
+        <timeSeries freq="monthly" chunkLength="$(CHUNK_LENGTH_A)" source="ocean_month_rho2"/>
+        <timeSeries freq="monthly" chunkLength="$(CHUNK_LENGTH_B)" source="ocean_month_rho2"/>
+        <timeSeries freq="annual" chunkLength="$(CHUNK_LENGTH_A)" source="ocean_month_rho2"/>
+        <timeSeries freq="annual" chunkLength="$(CHUNK_LENGTH_B)" source="ocean_month_rho2"/>
+        <timeAverage source="monthly" interval="$(CHUNK_LENGTH_A)"/>
+        <timeAverage source="monthly" interval="$(CHUNK_LENGTH_B)"/>
+        <timeAverage source="annual" interval="$(CHUNK_LENGTH_A)"/>
+        <timeAverage source="annual" interval="$(CHUNK_LENGTH_B)"/>
+      </component>
+      <component type="ocean_monthly"  start="$(PP_START_YEAR)" source="ocean_monthly" sourceGrid="ocean-tripolar">
+        <timeSeries freq="monthly" chunkLength="$(CHUNK_LENGTH_A)" source="ocean_monthly"/>
+        <timeSeries freq="monthly" chunkLength="$(CHUNK_LENGTH_B)" source="ocean_monthly"/>
+        <timeSeries freq="annual" chunkLength="$(CHUNK_LENGTH_A)" source="ocean_monthly"/>
+        <timeSeries freq="annual" chunkLength="$(CHUNK_LENGTH_B)" source="ocean_monthly"/>
+        <timeAverage source="monthly" interval="$(CHUNK_LENGTH_A)"/>
+        <timeAverage source="monthly" interval="$(CHUNK_LENGTH_B)"/>
+        <timeAverage source="annual" interval="$(CHUNK_LENGTH_A)"/>
+        <timeAverage source="annual" interval="$(CHUNK_LENGTH_B)"/>
+      </component>
+
+      <!-- ocean scalars -->
+      <component type="ocean_scalar_monthly" start="$(PP_START_YEAR)" source="ocean_scalar_month" sourceGrid="ocean-tripolar" cmip="on">
+        <timeSeries freq="monthly" chunkLength="$(CHUNK_LENGTH_A)" source="ocean_scalar_month"/>
+        <timeSeries freq="monthly" chunkLength="$(CHUNK_LENGTH_B)" source="ocean_scalar_month"/>
+        <timeSeries freq="annual" chunkLength="$(CHUNK_LENGTH_A)" source="ocean_scalar_month"/>
+        <timeSeries freq="annual" chunkLength="$(CHUNK_LENGTH_B)" source="ocean_scalar_month"/>
+        <timeAverage source="monthly" interval="$(CHUNK_LENGTH_A)"/>
+        <timeAverage source="monthly" interval="$(CHUNK_LENGTH_B)"/>
+        <timeAverage source="annual" interval="$(CHUNK_LENGTH_A)"/>
+        <timeAverage source="annual" interval="$(CHUNK_LENGTH_B)"/>
+      </component>
+
+      <!-- ANNUAL -->
+
+      <component type="ocean_annual_z"  start="$(PP_START_YEAR)" source="ocean_annual_z" sourceGrid="ocean-tripolar">
+        <timeSeries freq="annual"   chunkLength="$(CHUNK_LENGTH_A)" source="ocean_annual_z"/>
+        <timeSeries freq="annual"   chunkLength="$(CHUNK_LENGTH_B)" source="ocean_annual_z"/>
+        <timeAverage source="annual" interval="$(CHUNK_LENGTH_A)"/>
+        <timeAverage source="annual" interval="$(CHUNK_LENGTH_B)"/>
+      </component>
+      <component type="ocean_annual"  start="$(PP_START_YEAR)" source="ocean_annual" sourceGrid="ocean-tripolar">
+        <timeSeries freq="annual"   chunkLength="$(CHUNK_LENGTH_A)" source="ocean_annual"/>
+        <timeSeries freq="annual"   chunkLength="$(CHUNK_LENGTH_B)" source="ocean_annual"/>
+        <timeAverage source="annual" interval="$(CHUNK_LENGTH_A)"/>
+        <timeAverage source="annual" interval="$(CHUNK_LENGTH_B)"/>
+      </component>
+
+      
+      <!--ICE-->
+
+      <component type="ice"  start="$(PP_START_YEAR)"  source="ice_month"  sourceGrid="ocean-tripolar">
+        <timeSeries freq="monthly" chunkLength="$(CHUNK_LENGTH_A)"  source="ice_month">
+           <analysis switch="$(ANALYSIS_SWITCH)" cumulative="no" script="$(NB_ROOT)/mom6/tools/analysis/Krasting-SeaIce.csh"/>
+        </timeSeries>
+        <timeSeries freq="monthly" chunkLength="$(CHUNK_LENGTH_B)"  source="ice_month">
+           <analysis switch="$(ANALYSIS_SWITCH)" cumulative="no" script="$(NB_ROOT)/mom6/tools/analysis/Krasting-SeaIce.csh"/>
+        </timeSeries>
+        <timeAverage source="annual"  interval="$(CHUNK_LENGTH_A)"/>
+        <timeAverage source="annual"  interval="$(CHUNK_LENGTH_B)"/>
+      </component>
+  
+      <!-- AM2 post-processing -->
+      <component type="atmos_scalar_monthly" start="$(PP_START_YEAR)" source="atmos_scalar" sourceGrid="atmos-latlon" cmip="on">
+        <timeSeries freq="monthly" chunkLength="$(CHUNK_LENGTH_A)" source="atmos_scalar"/>
+        <timeSeries freq="monthly" chunkLength="$(CHUNK_LENGTH_B)" source="atmos_scalar"/>
+        <timeSeries freq="annual" chunkLength="$(CHUNK_LENGTH_A)" source="atmos_scalar"/>
+        <timeSeries freq="annual" chunkLength="$(CHUNK_LENGTH_B)" source="atmos_scalar"/>
+        <timeAverage source="monthly" interval="$(CHUNK_LENGTH_A)"/>
+        <timeAverage source="monthly" interval="$(CHUNK_LENGTH_B)"/>
+        <timeAverage source="annual" interval="$(CHUNK_LENGTH_A)"/>
+        <timeAverage source="annual" interval="$(CHUNK_LENGTH_B)"/>
+    </component>
+
+    <component type="atmos_monthly" start="$(PP_START_YEAR)" source="atmos_month" sourceGrid="atmos-latlon" cmip="on">
+        <timeSeries freq="monthly" chunkLength="$(CHUNK_LENGTH_A)" source="atmos_month"/>
+        <timeSeries freq="monthly" chunkLength="$(CHUNK_LENGTH_B)" source="atmos_month"/>
+        <timeSeries freq="annual" chunkLength="$(CHUNK_LENGTH_A)" source="atmos_month"/>
+        <timeSeries freq="annual" chunkLength="$(CHUNK_LENGTH_B)" source="atmos_month"/>
+        <timeAverage source="monthly" interval="$(CHUNK_LENGTH_A)"/>
+        <timeAverage source="monthly" interval="$(CHUNK_LENGTH_B)"/>
+        <timeAverage source="annual" interval="$(CHUNK_LENGTH_A)"/>
+        <timeAverage source="annual" interval="$(CHUNK_LENGTH_B)"/>
+    </component>
+
+  </postProcess>
+</freInclude>
+
+</outer>
