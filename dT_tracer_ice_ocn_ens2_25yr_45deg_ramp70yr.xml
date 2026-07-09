@@ -814,6 +814,47 @@ SIS_OVERRIDE_EOF
 </input>
 </experiment>
 
+<experiment name="v2_ens2_tracer_surf_ice_ocn_25yr_45deg_ramp70yr_0.2TW" inherit="ens2_tracer_surf_ice_ocn_25yr_45deg_ramp70yr_0.2TW">
+<description>
+ Version 2 of tracer code.
+</description>
+</experiment>
+
+<experiment name="ens2_tracer_surf_ice_ocn_lambda25" inherit="ens2_tracer_surf_ice_ocn_25yr_45deg_ramp70yr_0.2TW">
+<description>
+ Version 2 of tracer code using lambda_restore=25
+</description>
+<input>
+     <csh><![CDATA[
+cat > $work/INPUT/MOM_override << MOM_OVERRIDE_EOF
+#override USE_OCMIP2_CFC=False
+#override USE_IDEAL_AGE_TRACER=True
+#override TUNE_DIFFUSIVITY=True
+TUNE_KD_ADD=1.0E-05
+TUNING_RHO_V1=1022.00
+TUNING_RHO_V2=1022.01
+TUNING_RHO_V3=1035.24
+TUNING_RHO_V4=1035.25
+KD_POWER_CHANGE=2.0E+11
+TUNING_LAT_RANGE=-45,-45,45,45
+TUNING_RAMP_YRS=70.0
+TUNING_OFFSET_YRS=200
+USE_KD_TEMP_TRACER=TRUE
+LAMBDA_RESTORE=25
+MOM_OVERRIDE_EOF
+
+cat > $work/INPUT/SIS_override << SIS_OVERRIDE_EOF
+SIS_OVERRIDE_EOF
+     ]]></csh>
+</input>
+</experiment>
+
+<experiment name="v3_ens2_tracer_surf_ice_ocn_lambda25" inherit="ens2_tracer_surf_ice_ocn_lambda25">
+  <description>
+ Version 3 of tracer code using lambda_restore=25
+  </description>
+</experiment>
+
 <experiment name="ens2_tracer_therm_ice_ocn_25yr_45deg_ramp70yr_0.2TW" inherit="ens2_test_tracer_ice_ocn_ctrl_25yr">
 <description>
   Tuning added diffusivity, enhanced in thermocline.

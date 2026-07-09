@@ -92,7 +92,7 @@ NOTES:
 
 	      <!-- <property name="OM4_ANALYSIS" value="ice_ocean_SIS2/OM4_025"/>commented out by Kiera--> <!-- example containing .frepp scripts for analysis-->
                                                                  <!--Please set the value to ice_ocean_SIS2/OM4_05 for 1/2 degree ocean model runs--> 
-  <property name="PROD_SIMTIME"     value="5"/>  <!--simulation length in YEARS-->
+  <property name="PROD_SIMTIME"     value="200"/>  <!--simulation length in YEARS-->
   <property name="PP_CMIP_CHUNK_A"  value="5yr"/>  <!--smaller chunk length for pp/analysis-->
   <property name="PP_CMIP_CHUNK_B"  value="25yr"/> <!--bigger  chunk length for pp/analysis-->
   <property name="CHUNK_LENGTH_A"   value="5yr"/>
@@ -1865,16 +1865,15 @@ set nyblocks = $nyblock
 <description>
 No added diffusivity.
 </description>
-    <input>
+<input>
      <dataFile label="initCond" target="INPUT/" chksum="" size="" timestamp="">
-  <!--Replace with a tar files containing all the input files that contain res (restart) -->
-       <dataSource site="ncrc">/gpfs/f5/gfdl_o/scratch/Kiera.Lowman/control_restarts/ctrl_02010101.tar</dataSource>
+       <dataSource site="ncrc">/gpfs/f5/gfdl_o/scratch/Kiera.Lowman/inttides_restarts/ctrl_02010101_IW.tar</dataSource>
      </dataFile>
-
      <csh><![CDATA[
 cat > $work/INPUT/MOM_override << MOM_OVERRIDE_EOF
 #override USE_OCMIP2_CFC=False
 #override USE_IDEAL_AGE_TRACER=True
+#override RESTART_CHECKSUMS_REQUIRED=False
 ! this is needed for the CFL of the ray tracing scheme
 #override DT_ITIDES = 3600.0
 ! tidal forcing
@@ -1913,6 +1912,7 @@ INTERNAL_TIDE_RESIDUAL_DRAG = True
 MOM_OVERRIDE_EOF
 
 cat > $work/INPUT/SIS_override << SIS_OVERRIDE_EOF
+#override RESTART_CHECKSUMS_REQUIRED=False
 SIS_OVERRIDE_EOF
 
      ]]></csh>
@@ -1921,10 +1921,11 @@ SIS_OVERRIDE_EOF
       <!--dataFile label="gridSpec" target="INPUT/" chksum="" size="" timestamp="">
         <dataSource platform="$(platform)">$(CMIP6_ARCHIVE_ROOT)/CM4/common/c96_grid/c96_OM4_025_grid_No_mg_drag_v20160808.tar</dataSource>
       </dataFile-->
-      <!--Apr 30 tried changing filenames from 'MOM_input' to 'INPUT/MOM_input' --> 
+
+      <!-- June 26: changed input_filename from 'F' -->
       <namelist name="MOM_input_nml">
         output_directory = './',
-         input_filename = 'F'
+         input_filename = 'r'
          restart_input_dir = 'INPUT/',
          restart_output_dir = 'RESTART/',
 	 parameter_filename = 'INPUT/MOM_input',
@@ -1933,7 +1934,7 @@ SIS_OVERRIDE_EOF
 
       <namelist name="SIS_input_nml">
         output_directory = './',
-         input_filename = 'F'
+         input_filename = 'r'
          restart_input_dir = 'INPUT/',
          restart_output_dir = 'RESTART/',
 	 parameter_filename = 'INPUT/SIS_input',
@@ -1952,7 +1953,7 @@ SIS_OVERRIDE_EOF
         do_ice = .true.,
         do_ocean = .true.,
         atmos_npes = 30,
-        ocean_npes = 150,
+        ocean_npes = 90,
         concurrent = .true.
         use_lag_fluxes=.true.
       </namelist>
@@ -1998,15 +1999,9 @@ $baseDate
 
 	<refineDiag script="$(NB_ROOT)/mom6/tools/analysis/MOM6_refineDiag.csh  $(AWG_INPUT_HOME_GFDL)/refineDiag/refineDiag_data_stager_globalAve.csh"/>
   <!-- $(AWG_INPUT_HOME_GFDL)/refineDiag/refineDiag_atmos_cmip6.csh -->
-	<xi:include href="awg_include/xml_building_blocks/om4_am2_tuning_postprocess.xml" xpointer="xpointer(//freInclude[@name='tuning_OM4_postprocess']/postProcess/node())"/>
-
-  <!--      <xi:include href="awg_include/xml_building_blocks/am4c96_postprocess.xml" xpointer="xpointer(//freInclude[@name='c96_postprocess_ATMOS']/postProcess/node())"/>
-      <xi:include href="awg_include/xml_building_blocks/am4c96_postprocess.xml" xpointer="xpointer(//freInclude[@name='c96_postprocess_LAND']/postProcess/node())"/>
-
-	<xi:include href="awg_include/xml_building_blocks/atmos_cmip6_postprocess.xml" xpointer="xpointer(//freInclude[@name='postprocess_ATMOS_cmip6']/postProcess/node())"/>
-  -->
-
+	<xi:include href="awg_include/xml_building_blocks/cm2g_om5_postprocess.xml" xpointer="xpointer(//freInclude[@name='CM2G_OM5_postprocess']/postProcess/node())"/>
     </postProcess>
+
     <runtime>
       <production simTime="$(PROD_SIMTIME)" units="years">
           <segment simTime="12" units="months"/>
@@ -2014,7 +2009,7 @@ $baseDate
                <atm ranks="30" threads="1"     />
                <lnd                             />
                <ice                            />
-               <ocn ranks="150" threads="1"    />
+               <ocn ranks="90" threads="1"    />
            </resources>
       </production>
       <regression name="basic">
@@ -2054,10 +2049,169 @@ $baseDate
 
   </experiment>
 
-<experiment name="inttides_5yr_test" inherit="inttides_CM2G_OM5_ens2_const_200yr">
+<experiment name="v2_inttides_CM2G_OM5_ens2_const_200yr" inherit="inttides_CM2G_OM5_ens2_const_200yr">
 <description>
-  5-year test control experiment.
+  Same as first experiment but with INTERNAL_TIDE_RESIDUAL_DRAG = False.
 </description>
+<input>
+     <csh><![CDATA[
+cat > $work/INPUT/MOM_override << MOM_OVERRIDE_EOF
+#override USE_OCMIP2_CFC=False
+#override USE_IDEAL_AGE_TRACER=True
+#override RESTART_CHECKSUMS_REQUIRED=False
+! this is needed for the CFL of the ray tracing scheme
+#override DT_ITIDES = 3600.0
+! tidal forcing
+#override TIDEAMP_FILE = tidal_amplitude_TPXO9_OM1deg_internaltides.v20260519.nc
+! KAPPA_H2_FACTOR is THE tuning knob to control how much energy goes into the ray tracing, may need to adjust
+#override KAPPA_H2_FACTOR = 1.0
+INTERNAL_TIDES = True
+! we're gonna start with 8 harmonics and 1 vertical mode
+TIDAL_PERIODS = 44714., 86164., 43200., 45570., 43082., 92950., 86637., 96726.
+INTERNAL_TIDE_MODES = 1
+INTERNAL_TIDE_FREQS = 8
+ENERGY_FRACTION_PER_MODE = "1.0", "1.0", "1.0", "1.0", "1.0", "1.0", "1.0", "1.0"
+INTERNAL_TIDES_UPDATE_KD = True
+! KD in OM4 is typically 1e-5, this is the background diffusivity we're trying to replace
+#override KD = 2.0E-06
+#override KD_MIN = 2.0E-06
+! Osborn relationship parameter, 0.2 is good
+#override ITIDES_MIXING_EFFIC = 0.2
+#override INT_TIDE_DISSIPATION = True
+INT_TIDE_LOWMODE_DISSIPATION = False
+#override INTTIDE_AMP_VARNAMES = tideamp_m2, tideamp_k1, tideamp_s2, tideamp_n2, tideamp_k2, tideamp_o1, tideamp_p1, tideamp_q1
+#override TIDEAMP_FILE = tidal_amplitude_TPXO9_OM1deg_internaltides.v20260519.nc
+REFL_ANGLE_FILE = internal_waves_RTcoef_OM1deg.nc
+REFL_PREF_FILE = internal_waves_RTcoef_OM1deg.nc
+REFL_DBL_FILE = internal_waves_RTcoef_OM1deg.nc
+TRANS_FILE = internal_waves_RTcoef_OM1deg.nc
+USE_2D_INTERNAL_TIDE_DECAY_RATE = True
+ITIDES_DECAY_FILE = om1deg_leakage_rates_CDL2019_all_harms_ramped.nc
+INTERNAL_TIDE_WAVE_DRAG = True
+INTERNAL_TIDE_BACKGROUND_DRAG = True
+INTERNAL_TIDE_QUAD_DRAG = True
+INTERNAL_TIDE_FROUDE_DRAG = True
+INTERNAL_TIDE_RESIDUAL_DRAG = False
+! this is what we're trying to replace
+#override HENYEY_IGW_BACKGROUND = False
+MOM_OVERRIDE_EOF
+
+cat > $work/INPUT/SIS_override << SIS_OVERRIDE_EOF
+#override RESTART_CHECKSUMS_REQUIRED=False
+SIS_OVERRIDE_EOF
+
+     ]]></csh>
+</input>
+</experiment>
+
+<experiment name="v3_inttides_CM2G_OM5_ens2_const_200yr" inherit="inttides_CM2G_OM5_ens2_const_200yr">
+<description>
+  Same as first experiment but with KAPPA_H2_FACTOR = 0.8.
+</description>
+<input>
+     <csh><![CDATA[
+cat > $work/INPUT/MOM_override << MOM_OVERRIDE_EOF
+#override USE_OCMIP2_CFC=False
+#override USE_IDEAL_AGE_TRACER=True
+#override RESTART_CHECKSUMS_REQUIRED=False
+! this is needed for the CFL of the ray tracing scheme
+#override DT_ITIDES = 3600.0
+! tidal forcing
+#override TIDEAMP_FILE = tidal_amplitude_TPXO9_OM1deg_internaltides.v20260519.nc
+! KAPPA_H2_FACTOR is THE tuning knob to control how much energy goes into the ray tracing, may need to adjust
+#override KAPPA_H2_FACTOR = 0.8
+INTERNAL_TIDES = True
+! we're gonna start with 8 harmonics and 1 vertical mode
+TIDAL_PERIODS = 44714., 86164., 43200., 45570., 43082., 92950., 86637., 96726.
+INTERNAL_TIDE_MODES = 1
+INTERNAL_TIDE_FREQS = 8
+ENERGY_FRACTION_PER_MODE = "1.0", "1.0", "1.0", "1.0", "1.0", "1.0", "1.0", "1.0"
+INTERNAL_TIDES_UPDATE_KD = True
+! KD in OM4 is typically 1e-5, this is the background diffusivity we're trying to replace
+#override KD = 2.0E-06
+#override KD_MIN = 2.0E-06
+! Osborn relationship parameter, 0.2 is good
+#override ITIDES_MIXING_EFFIC = 0.2
+#override INT_TIDE_DISSIPATION = True
+INT_TIDE_LOWMODE_DISSIPATION = False
+#override INTTIDE_AMP_VARNAMES = tideamp_m2, tideamp_k1, tideamp_s2, tideamp_n2, tideamp_k2, tideamp_o1, tideamp_p1, tideamp_q1
+#override TIDEAMP_FILE = tidal_amplitude_TPXO9_OM1deg_internaltides.v20260519.nc
+REFL_ANGLE_FILE = internal_waves_RTcoef_OM1deg.nc
+REFL_PREF_FILE = internal_waves_RTcoef_OM1deg.nc
+REFL_DBL_FILE = internal_waves_RTcoef_OM1deg.nc
+TRANS_FILE = internal_waves_RTcoef_OM1deg.nc
+USE_2D_INTERNAL_TIDE_DECAY_RATE = True
+ITIDES_DECAY_FILE = om1deg_leakage_rates_CDL2019_all_harms_ramped.nc
+INTERNAL_TIDE_WAVE_DRAG = True
+INTERNAL_TIDE_BACKGROUND_DRAG = True
+INTERNAL_TIDE_QUAD_DRAG = True
+INTERNAL_TIDE_FROUDE_DRAG = True
+INTERNAL_TIDE_RESIDUAL_DRAG = True
+! this is what we're trying to replace
+#override HENYEY_IGW_BACKGROUND = False
+MOM_OVERRIDE_EOF
+
+cat > $work/INPUT/SIS_override << SIS_OVERRIDE_EOF
+#override RESTART_CHECKSUMS_REQUIRED=False
+SIS_OVERRIDE_EOF
+
+     ]]></csh>
+</input>
+</experiment>
+
+<experiment name="v4_inttides_CM2G_OM5_ens2_const_200yr" inherit="inttides_CM2G_OM5_ens2_const_200yr">
+<description>
+  Same as first experiment but with INTERNAL_TIDE_RESIDUAL_DRAG = False and KAPPA_H2_FACTOR = 0.8.
+</description>
+<input>
+     <csh><![CDATA[
+cat > $work/INPUT/MOM_override << MOM_OVERRIDE_EOF
+#override USE_OCMIP2_CFC=False
+#override USE_IDEAL_AGE_TRACER=True
+#override RESTART_CHECKSUMS_REQUIRED=False
+! this is needed for the CFL of the ray tracing scheme
+#override DT_ITIDES = 3600.0
+! tidal forcing
+#override TIDEAMP_FILE = tidal_amplitude_TPXO9_OM1deg_internaltides.v20260519.nc
+! KAPPA_H2_FACTOR is THE tuning knob to control how much energy goes into the ray tracing, may need to adjust
+#override KAPPA_H2_FACTOR = 0.8
+INTERNAL_TIDES = True
+! we're gonna start with 8 harmonics and 1 vertical mode
+TIDAL_PERIODS = 44714., 86164., 43200., 45570., 43082., 92950., 86637., 96726.
+INTERNAL_TIDE_MODES = 1
+INTERNAL_TIDE_FREQS = 8
+ENERGY_FRACTION_PER_MODE = "1.0", "1.0", "1.0", "1.0", "1.0", "1.0", "1.0", "1.0"
+INTERNAL_TIDES_UPDATE_KD = True
+! KD in OM4 is typically 1e-5, this is the background diffusivity we're trying to replace
+#override KD = 2.0E-06
+#override KD_MIN = 2.0E-06
+! Osborn relationship parameter, 0.2 is good
+#override ITIDES_MIXING_EFFIC = 0.2
+#override INT_TIDE_DISSIPATION = True
+INT_TIDE_LOWMODE_DISSIPATION = False
+#override INTTIDE_AMP_VARNAMES = tideamp_m2, tideamp_k1, tideamp_s2, tideamp_n2, tideamp_k2, tideamp_o1, tideamp_p1, tideamp_q1
+#override TIDEAMP_FILE = tidal_amplitude_TPXO9_OM1deg_internaltides.v20260519.nc
+REFL_ANGLE_FILE = internal_waves_RTcoef_OM1deg.nc
+REFL_PREF_FILE = internal_waves_RTcoef_OM1deg.nc
+REFL_DBL_FILE = internal_waves_RTcoef_OM1deg.nc
+TRANS_FILE = internal_waves_RTcoef_OM1deg.nc
+USE_2D_INTERNAL_TIDE_DECAY_RATE = True
+ITIDES_DECAY_FILE = om1deg_leakage_rates_CDL2019_all_harms_ramped.nc
+INTERNAL_TIDE_WAVE_DRAG = True
+INTERNAL_TIDE_BACKGROUND_DRAG = True
+INTERNAL_TIDE_QUAD_DRAG = True
+INTERNAL_TIDE_FROUDE_DRAG = True
+INTERNAL_TIDE_RESIDUAL_DRAG = False
+! this is what we're trying to replace
+#override HENYEY_IGW_BACKGROUND = False
+MOM_OVERRIDE_EOF
+
+cat > $work/INPUT/SIS_override << SIS_OVERRIDE_EOF
+#override RESTART_CHECKSUMS_REQUIRED=False
+SIS_OVERRIDE_EOF
+
+     ]]></csh>
+</input>
 </experiment>
 
 </experimentSuite>
