@@ -1,0 +1,133 @@
+# MOM6 ocean diagnostics file
+
+#"ocean_monthly",             1, "months", 1, "days", "time"
+#"ocean_month_z",             1, "months", 1, "days", "time"
+"ocean_month_n",             1, "months", 1, "days", "time"
+#"ocean_scalar_monthly",      1, "months", 1, "days", "time"
+
+#"ocean_annual",             1, "years", 1, "days", "time"
+#"ocean_annual_z",             1, "years", 1, "days", "time"
+"ocean_annual_n",             1, "years", 1, "days", "time"
+#"ocean_scalar_annual",      1, "years", 1, "days", "time"
+
+#"ocean_daily",             1, "days", 1, "days", "time"
+
+
+"ocean_model_z","N2_diabatic","N2_diabatic","ocean_month_z", "all",  "mean", "none",1
+"ocean_model_z","N2_temp_diabatic","N2_temp_diabatic","ocean_month_z", "all",  "mean", "none",1
+"ocean_model_z","N2_salt_diabatic","N2_salt_diabatic","ocean_month_z", "all",  "mean", "none",1
+"ocean_model_z","Bflx_dia_diff","Bflx_dia_diff","ocean_month_z", "all",  "mean", "none",1
+"ocean_model_z","Bflx_salt_dia_diff","Bflx_salt_dia_diff","ocean_month_z", "all",  "mean", "none",1
+"ocean_model_z","Bflx_temp_dia_diff","Bflx_temp_dia_diff","ocean_month_z", "all",  "mean", "none",1
+"ocean_model_z","Bflx_dia_diff_ePBL","Bflx_dia_diff_ePBL","ocean_month_z", "all",  "mean", "none",1
+"ocean_model_z","Bflx_dia_diff_KS","Bflx_dia_diff_KS","ocean_month_z", "all",  "mean", "none",1
+"ocean_model_z","Bflx_dia_diff_BBL","Bflx_dia_diff_BBL","ocean_month_z", "all",  "mean", "none",1
+"ocean_model_z","Bflx_dia_diff_bkgnd","Bflx_dia_diff_bkgnd","ocean_month_z", "all",  "mean", "none",1
+"ocean_model_z","Bflx_dia_diff_itides","Bflx_dia_diff_itides","ocean_month_z", "all",  "mean", "none",1
+"ocean_model_z","Bflx_dia_diff_ddiff_salt","Bflx_dia_diff_ddiff_salt","ocean_month_z", "all",  "mean", "none",1
+"ocean_model_z","Bflx_dia_diff_ddiff_heat","Bflx_dia_diff_ddiff_heat","ocean_month_z", "all",  "mean", "none",1
+"ocean_model","Bflx_dia_diff_dz","Bflx_dia_diff_dz","ocean_month_n", "all",  "mean", "none",1
+"ocean_model","Bflx_salt_dia_diff_dz","Bflx_salt_dia_diff_dz","ocean_month_n", "all",  "mean", "none",1
+"ocean_model","Bflx_temp_dia_diff_dz","Bflx_temp_dia_diff_dz","ocean_month_n", "all",  "mean", "none",1
+"ocean_model","Bflx_dia_diff_dz_ePBL","Bflx_dia_diff_dz_ePBL","ocean_month_n", "all",  "mean", "none",1
+"ocean_model","Bflx_dia_diff_dz_KS","Bflx_dia_diff_dz_KS","ocean_month_n", "all",  "mean", "none",1
+"ocean_model","Bflx_dia_diff_dz_BBL","Bflx_dia_diff_dz_BBL","ocean_month_n", "all",  "mean", "none",1
+"ocean_model","Bflx_dia_diff_dz_bkgnd","Bflx_dia_diff_dz_bkgnd","ocean_month_n", "all",  "mean", "none",1
+"ocean_model","Bflx_dia_diff_dz_itides","Bflx_dia_diff_dz_itides","ocean_month_n", "all",  "mean", "none",1
+"ocean_model","Bflx_dia_diff_dz_ddiff_salt","Bflx_dia_diff_dz_ddiff_salt","ocean_month_n", "all",  "mean", "none",1
+"ocean_model","Bflx_dia_diff_dz_ddiff_heat","Bflx_dia_diff_dz_ddiff_heat","ocean_month_n", "all",  "mean", "none",1
+"ocean_model","volcello","volcello","ocean_month_n", "all",  "mean", "none",1
+
+"ocean_model_z","N2_diabatic","N2_diabatic","ocean_annual_z", "all",  "mean", "none",1
+"ocean_model_z","N2_temp_diabatic","N2_temp_diabatic","ocean_annual_z", "all",  "mean", "none",1
+"ocean_model_z","N2_salt_diabatic","N2_salt_diabatic","ocean_annual_z", "all",  "mean", "none",1
+"ocean_model_z","Bflx_dia_diff","Bflx_dia_diff","ocean_annual_z", "all",  "mean", "none",1
+"ocean_model_z","Bflx_salt_dia_diff","Bflx_salt_dia_diff","ocean_annual_z", "all",  "mean", "none",1
+"ocean_model_z","Bflx_temp_dia_diff","Bflx_temp_dia_diff","ocean_annual_z", "all",  "mean", "none",1
+"ocean_model_z","Bflx_dia_diff_ePBL","Bflx_dia_diff_ePBL","ocean_annual_z", "all",  "mean", "none",1
+"ocean_model_z","Bflx_dia_diff_KS","Bflx_dia_diff_KS","ocean_annual_z", "all",  "mean", "none",1
+"ocean_model_z","Bflx_dia_diff_BBL","Bflx_dia_diff_BBL","ocean_annual_z", "all",  "mean", "none",1
+"ocean_model_z","Bflx_dia_diff_bkgnd","Bflx_dia_diff_bkgnd","ocean_annual_z", "all",  "mean", "none",1
+"ocean_model_z","Bflx_dia_diff_itides","Bflx_dia_diff_itides","ocean_annual_z", "all",  "mean", "none",1
+"ocean_model_z","Bflx_dia_diff_ddiff_salt","Bflx_dia_diff_ddiff_salt","ocean_annual_z", "all",  "mean", "none",1
+"ocean_model_z","Bflx_dia_diff_ddiff_heat","Bflx_dia_diff_ddiff_heat","ocean_annual_z", "all",  "mean", "none",1
+"ocean_model","Bflx_dia_diff_dz","Bflx_dia_diff_dz","ocean_annual_n", "all",  "mean", "none",1
+"ocean_model","Bflx_salt_dia_diff_dz","Bflx_salt_dia_diff_dz","ocean_annual_n", "all",  "mean", "none",1
+"ocean_model","Bflx_temp_dia_diff_dz","Bflx_temp_dia_diff_dz","ocean_annual_n", "all",  "mean", "none",1
+"ocean_model","Bflx_dia_diff_dz_ePBL","Bflx_dia_diff_dz_ePBL","ocean_annual_n", "all",  "mean", "none",1
+"ocean_model","Bflx_dia_diff_dz_KS","Bflx_dia_diff_dz_KS","ocean_annual_n", "all",  "mean", "none",1
+"ocean_model","Bflx_dia_diff_dz_BBL","Bflx_dia_diff_dz_BBL","ocean_annual_n", "all",  "mean", "none",1
+"ocean_model","Bflx_dia_diff_dz_bkgnd","Bflx_dia_diff_dz_bkgnd","ocean_annual_n", "all",  "mean", "none",1
+"ocean_model","Bflx_dia_diff_dz_itides","Bflx_dia_diff_dz_itides","ocean_annual_n", "all",  "mean", "none",1
+"ocean_model","Bflx_dia_diff_dz_ddiff_salt","Bflx_dia_diff_dz_ddiff_salt","ocean_annual_n", "all",  "mean", "none",1
+"ocean_model","Bflx_dia_diff_dz_ddiff_heat","Bflx_dia_diff_dz_ddiff_heat","ocean_annual_n", "all",  "mean", "none",1
+"ocean_model","volcello","volcello","ocean_annual_n", "all",  "mean", "none",1
+
+"ocean_model","Bflx_dia_diff_idz","Bflx_dia_diff_idz","ocean_annual", "all",  "mean", "none",1
+"ocean_model","Bflx_salt_dia_diff_idz","Bflx_salt_dia_diff_idz","ocean_annual", "all",  "mean", "none",1
+"ocean_model","Bflx_temp_dia_diff_idz","Bflx_temp_dia_diff_idz","ocean_annual", "all",  "mean", "none",1
+"ocean_model","Bflx_dia_diff_idz_ePBL","Bflx_dia_diff_idz_ePBL","ocean_annual", "all",  "mean", "none",1
+"ocean_model","Bflx_dia_diff_idz_KS","Bflx_dia_diff_idz_KS","ocean_annual", "all",  "mean", "none",1
+"ocean_model","Bflx_dia_diff_idz_BBL","Bflx_dia_diff_idz_BBL","ocean_annual", "all",  "mean", "none",1
+"ocean_model","Bflx_dia_diff_idz_bkgnd","Bflx_dia_diff_idz_bkgnd","ocean_annual", "all",  "mean", "none",1
+"ocean_model","Bflx_dia_diff_idz_itides","Bflx_dia_diff_idz_itides","ocean_annual", "all",  "mean", "none",1
+"ocean_model","Bflx_dia_diff_idz_ddiff_salt","Bflx_dia_diff_idz_ddiff_salt","ocean_annual", "all",  "mean", "none",1
+"ocean_model","Bflx_dia_diff_idz_ddiff_heat","Bflx_dia_diff_idz_ddiff_heat","ocean_annual", "all",  "mean", "none",1
+
+"ocean_model","Bflx_dia_diff_idz","Bflx_dia_diff_idz","ocean_monthly", "all",  "mean", "none",1
+"ocean_model","Bflx_salt_dia_diff_idz","Bflx_salt_dia_diff_idz","ocean_monthly", "all",  "mean", "none",1
+"ocean_model","Bflx_temp_dia_diff_idz","Bflx_temp_dia_diff_idz","ocean_monthly", "all",  "mean", "none",1
+"ocean_model","Bflx_dia_diff_idz_ePBL","Bflx_dia_diff_idz_ePBL","ocean_monthly", "all",  "mean", "none",1
+"ocean_model","Bflx_dia_diff_idz_KS","Bflx_dia_diff_idz_KS","ocean_monthly", "all",  "mean", "none",1
+"ocean_model","Bflx_dia_diff_idz_BBL","Bflx_dia_diff_idz_BBL","ocean_monthly", "all",  "mean", "none",1
+"ocean_model","Bflx_dia_diff_idz_bkgnd","Bflx_dia_diff_idz_bkgnd","ocean_monthly", "all",  "mean", "none",1
+"ocean_model","Bflx_dia_diff_idz_itides","Bflx_dia_diff_idz_itides","ocean_monthly", "all",  "mean", "none",1
+"ocean_model","Bflx_dia_diff_idz_ddiff_salt","Bflx_dia_diff_idz_ddiff_salt","ocean_monthly", "all",  "mean", "none",1
+"ocean_model","Bflx_dia_diff_idz_ddiff_heat","Bflx_dia_diff_idz_ddiff_heat","ocean_monthly", "all",  "mean", "none",1
+
+#"ocean_model","Bflx_dia_diff_idz","Bflx_dia_diff_idz","ocean_daily", "all",  "mean", "none",1
+#"ocean_model","Bflx_salt_dia_diff_idz","Bflx_salt_dia_diff_idz","ocean_daily", "all",  "mean", "none",1
+#"ocean_model","Bflx_temp_dia_diff_idz","Bflx_temp_dia_diff_idz","ocean_daily", "all",  "mean", "none",1
+#"ocean_model","Bflx_dia_diff_idz_ePBL","Bflx_dia_diff_idz_ePBL","ocean_daily", "all",  "mean", "none",1
+#"ocean_model","Bflx_dia_diff_idz_KS","Bflx_dia_diff_idz_KS","ocean_daily", "all",  "mean", "none",1
+#"ocean_model","Bflx_dia_diff_idz_BBL","Bflx_dia_diff_idz_BBL","ocean_daily", "all",  "mean", "none",1
+#"ocean_model","Bflx_dia_diff_idz_bkgnd","Bflx_dia_diff_idz_bkgnd","ocean_daily", "all",  "mean", "none",1
+#"ocean_model","Bflx_dia_diff_idz_itides","Bflx_dia_diff_idz_itides","ocean_daily", "all",  "mean", "none",1
+#"ocean_model","Bflx_dia_diff_idz_ddiff_salt","Bflx_dia_diff_idz_ddiff_salt","ocean_daily", "all",  "mean", "none",1
+#"ocean_model","Bflx_dia_diff_idz_ddiff_heat","Bflx_dia_diff_idz_ddiff_heat","ocean_daily", "all",  "mean", "none",1
+
+"ocean_model","Bflx_dia_diff_idV","Bflx_dia_diff_idV","ocean_scalar_annual", "all",  "mean", "none",1
+"ocean_model","Bflx_salt_dia_diff_idV","Bflx_salt_dia_diff_idV","ocean_scalar_annual", "all",  "mean", "none",1
+"ocean_model","Bflx_temp_dia_diff_idV","Bflx_temp_dia_diff_idV","ocean_scalar_annual", "all",  "mean", "none",1
+"ocean_model","Bflx_dia_diff_idV_ePBL","Bflx_dia_diff_idV_ePBL","ocean_scalar_annual", "all",  "mean", "none",1
+"ocean_model","Bflx_dia_diff_idV_KS","Bflx_dia_diff_idV_KS","ocean_scalar_annual", "all",  "mean", "none",1
+"ocean_model","Bflx_dia_diff_idV_BBL","Bflx_dia_diff_idV_BBL","ocean_scalar_annual", "all",  "mean", "none",1
+"ocean_model","Bflx_dia_diff_idV_bkgnd","Bflx_dia_diff_idV_bkgnd","ocean_scalar_annual", "all",  "mean", "none",1
+"ocean_model","Bflx_dia_diff_idV_itides","Bflx_dia_diff_idV_itides","ocean_scalar_annual", "all",  "mean", "none",1
+"ocean_model","Bflx_dia_diff_idV_ddiff_salt","Bflx_dia_diff_idV_ddiff_salt","ocean_scalar_annual", "all",  "mean", "none",1
+"ocean_model","Bflx_dia_diff_idV_ddiff_heat","Bflx_dia_diff_idV_ddiff_heat","ocean_scalar_annual", "all",  "mean", "none",1
+
+"ocean_model","Bflx_dia_diff_idV","Bflx_dia_diff_idV","ocean_scalar_month", "all",  "mean", "none",1
+"ocean_model","Bflx_salt_dia_diff_idV","Bflx_salt_dia_diff_idV","ocean_scalar_month", "all",  "mean", "none",1
+"ocean_model","Bflx_temp_dia_diff_idV","Bflx_temp_dia_diff_idV","ocean_scalar_month", "all",  "mean", "none",1
+"ocean_model","Bflx_dia_diff_idV_ePBL","Bflx_dia_diff_idV_ePBL","ocean_scalar_month", "all",  "mean", "none",1
+"ocean_model","Bflx_dia_diff_idV_KS","Bflx_dia_diff_idV_KS","ocean_scalar_month", "all",  "mean", "none",1
+"ocean_model","Bflx_dia_diff_idV_BBL","Bflx_dia_diff_idV_BBL","ocean_scalar_month", "all",  "mean", "none",1
+"ocean_model","Bflx_dia_diff_idV_bkgnd","Bflx_dia_diff_idV_bkgnd","ocean_scalar_month", "all",  "mean", "none",1
+"ocean_model","Bflx_dia_diff_idV_itides","Bflx_dia_diff_idV_itides","ocean_scalar_month", "all",  "mean", "none",1
+"ocean_model","Bflx_dia_diff_idV_ddiff_salt","Bflx_dia_diff_idV_ddiff_salt","ocean_scalar_month", "all",  "mean", "none",1
+"ocean_model","Bflx_dia_diff_idV_ddiff_heat","Bflx_dia_diff_idV_ddiff_heat","ocean_scalar_month", "all",  "mean", "none",1
+
+"ocean_model", "Bflx_dia_diff_idz_leak", "Bflx_dia_diff_idz_leak", "ocean_monthly", "all",  "mean", "none",1
+"ocean_model", "Bflx_dia_diff_idz_quad", "Bflx_dia_diff_idz_quad", "ocean_monthly", "all",  "mean", "none",1
+"ocean_model", "Bflx_dia_diff_idz_slope", "Bflx_dia_diff_idz_slope", "ocean_monthly", "all",  "mean", "none",1
+"ocean_model", "Bflx_dia_diff_idz_itidal", "Bflx_dia_diff_idz_itidal", "ocean_monthly", "all",  "mean", "none",1
+"ocean_model", "Bflx_dia_diff_idz_Froude", "Bflx_dia_diff_idz_Froude", "ocean_monthly", "all",  "mean", "none",1
+"ocean_model", "Bflx_dia_diff_idz_lowmode", "Bflx_dia_diff_idz_lowmode", "ocean_monthly", "all",  "mean", "none",1
+
+"ocean_model", "Bflx_dia_diff_idz_leak", "Bflx_dia_diff_idz_leak", "ocean_annual", "all",  "mean", "none",1
+"ocean_model", "Bflx_dia_diff_idz_quad", "Bflx_dia_diff_idz_quad", "ocean_annual", "all",  "mean", "none",1
+"ocean_model", "Bflx_dia_diff_idz_slope", "Bflx_dia_diff_idz_slope", "ocean_annual", "all",  "mean", "none",1
+"ocean_model", "Bflx_dia_diff_idz_itidal", "Bflx_dia_diff_idz_itidal", "ocean_annual", "all",  "mean", "none",1
+"ocean_model", "Bflx_dia_diff_idz_Froude", "Bflx_dia_diff_idz_Froude", "ocean_annual", "all",  "mean", "none",1
+"ocean_model", "Bflx_dia_diff_idz_lowmode", "Bflx_dia_diff_idz_lowmode", "ocean_annual", "all",  "mean", "none",1
